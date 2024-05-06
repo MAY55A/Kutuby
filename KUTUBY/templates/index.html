@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kutuby</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    
+    
+    <nav class="navbar navbar-expand-lg">
+       
+        <a class="navbar-brand" href="#" style="color: #d4cda5;">Kutuby</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" style="color: #d4cda5;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: #d4cda5;">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: #d4cda5;">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+        
+    <div><br></div>
+
+    <div class="container-fluid">
+        <div class="jumbotron d-flex align-items-center">
+            <img src="../images/img1.png" alt="Books Image" name="books" height="15%" width="15%" class="mr-3">
+            <div>
+                <b><h1 class="display-4">Kutuby, </h1></b>
+                <h1 class="display-4">A Home For Your Books.</h1> 
+                <p class="lead">Kutuby is a free, library-quality catalog to track </p>
+                <p class="lead">reading progress or your whole library.</p>
+                <div class="d-flex">
+                    <a class="btn btn-primary btn-lg mr-2 custom-btn" href="#" role="button" id ="signInLink">Sign in</a>
+                    <p class="mr-2">or</p>
+                    <a class="btn btn-primary btn-lg custom-btn" href="#" role="button" id ="JoinInLink">Join Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<!-- Sign-in form  -->
+<div id="signInForm" class="container" style="display: none;">
+    <div class="row">
+        <div class="col-md-6 offset-md-6">
+            <h2 style="color: rgb(120, 68, 0);">Sign In</h2>
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                </div>
+                <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Join -in form  -->
+<div id="JoinInForm" class="container" style="display: none;">
+    <div class="row">
+        <div class="col-md-6 offset-md-6">
+            <h2 style="color: rgb(120, 68, 0);">Join In</h2>
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                </div>
+                    <div class="form-group">
+                        <label for="password">Confirm Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Confirm your password">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Email</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter your Email">
+                    </div>
+               
+                <button type="submit"  id="submit"class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('JoinInLink').addEventListener('click', function(event) {
+event.preventDefault(); 
+console.log('Join in link clicked'); 
+document.getElementById('JoinInForm').style.display = 'block'; 
+  });
+</script>
+
+<script>
+    document.getElementById('signInLink').addEventListener('click', function(event) {
+event.preventDefault(); 
+console.log('Sign in link clicked'); 
+document.getElementById('signInForm').style.display = 'block'; 
+  });
+</script>
+
+    <br>
+    <div class="ct">
+    <div class="container">
+        <div class="features-grid">
+            <div class="left-column">
+                
+                <ul class="left">
+                    <li>◎ Kutuby is completely free </li>
+                    <li>◎ Add books for your collections</li>
+                    <li>◎ Track your reading progress, rate, and review</li>
+                    <li>◎ See detailed charts and stats about your library and reading life</li>
+                </ul>
+            </div>
+            <div class="right-column">
+                <ul>
+                    
+                    <ul>◎ Get personalized recommendations to find your new favorite book</ul>
+                    <ul>◎ Join a warm and welcoming community of nearly three million book lovers</ul>
+                    <ul>◎ Participate in groups and engage with other book lovers</ul>
+                   
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="slider">
+    <div class="slide"><img src="../images/img2.webp" alt="Slide 1"></div>
+    <div class="slide"><img src="../images/img3.png" alt="Slide 2"></div>
+   
+    <div class="slide"><img src="../images/img5.avif" alt="Slide 4"></div>
+</div>
+<script>
+    let slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+
+function showSlide(slideIndex) {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (slideIndex + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+}
+
+// Automatically change slides every 3 seconds
+setInterval(() => {
+    showSlide(currentSlide + 1);
+}, 3000);
+</script>
+
+
+
+
+
+
+
+   <div><br><br></div>
+
+    <footer class="footer mt-auto py-3 ">
+        <div class="container text-center">
+            <span class="text-muted">© 2024 Kutuby. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

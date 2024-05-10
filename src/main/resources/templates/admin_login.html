@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/images/kutuby.ico" type="image/x-icon">
+
+  <title>Admin Login</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .login-page {
+      display: flex;
+      height: 100vh;
+    }
+
+    .left-section {
+      flex: 1;
+   
+    }
+
+    .right-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #391e02;
+      padding: 20px;
+      flex-direction: column;
+    }
+
+    .form {
+      max-width: 400px;
+      width: 100%;
+      background-color: transparent;
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .form input[type="text"],
+    .form input[type="password"],
+    .form input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: transparent;
+      color: #fff;
+      border: 1px solid #fff; /* Adding border for contrast */
+    }
+
+    .signin {
+      background-color: #fff;
+      color: rgb(203, 53, 121);
+      border: none;
+      padding: 8px 16px;
+      font-family: 'Courier New', monospace;
+      cursor: pointer;
+      margin-left: 40px;
+    }
+
+    .signin:hover {
+      background-color: rgb(203, 53, 121);
+      color: #fff;
+    }
+
+    .left-section h1 {
+        margin-top: 300px;
+      text-align: center;
+      color: #fff;
+      font-size: 3rem;
+      font-family: 'Playfair Display', serif;
+      cursor: pointer; /* Add cursor pointer */
+      text-decoration: none; /* Remove underline */
+    }
+
+    .register-text {
+      font-family: 'Courier New', monospace;
+      color: #fff;
+      margin-top: 10px;
+      margin-left:30px;
+    }
+
+    .register-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .register-container .form {
+      margin-top: 10px;
+    }
+
+    .register-container .signin {
+      margin-top: 10px;
+    }
+
+    .already-signed-in {
+      font-family: 'Courier New', monospace;
+      color: #fff;
+      margin-top: 10px;
+    }
+
+    .already-signed-in a {
+      font-family: 'Courier New', monospace;
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+    }
+
+    .already-signed-in a span {
+      position: relative;
+    }
+
+    .already-signed-in a:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background-color: #fff;
+      transition: width 0.3s ease;
+    }
+
+    .already-signed-in a:hover:before {
+      width: 0%;
+    }
+
+    @media (min-width: 768px) {
+      .register-container {
+        flex-direction: row;
+      }
+
+      .register-container .form {
+        margin-right: 10px;
+      }
+    }
+    .line-separator {
+      border-left: 1px solid #ccc;
+      height: 100%;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="login-page">
+    <div class="left-section" style="background-color: #000000;">
+        <h1 id="kutuby">KUTUBY</h1>
+    </div>
+    <div class="line-separator"></div>
+
+    <div class="right-section">
+        <div class="already-signed-in">Contact the administration for assistance.</div>
+
+      <div class="form">
+        <form action="">
+
+          <input type="text" placeholder="Username or Email">
+          <input type="password" placeholder="Password">
+        </form>
+      </div>
+      <div class="register-container">
+        <input class="signin" type="submit" value="Sign In">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('kutuby').onclick = function() {
+      window.location.href = 'home.html';
+    };
+  </script>
+</body>
+</html>

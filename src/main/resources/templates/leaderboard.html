@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kutuby Bookworms Leaderboard</title>
+    <link rel="shortcut icon" href="/images/kutuby.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+      .line-separator {
+      border-top: 1px solid #ccc;
+      margin-top: 15px;
+    }
+    .line-separator4 {
+      border-top: 1px solid #ccc;
+      margin-top: 0px;
+    }
+
+        body {
+            background-color: #391e02; /* Brown color code with a hint of grey */
+            color: #fff; /* White text color */
+            margin: 0;
+            font-family: 'Courier New', monospace; /* Use Courier New font family */
+        }
+
+        header {
+            background-color: #000000; /* Brown color code with a hint of grey */
+            color: #fff; /* White text color */
+            padding: 2rem;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top:0;
+            z-index: 999;
+            font-family: 'Playfair Display', serif;
+        }
+
+        header.big {
+            padding: 0rem;
+        }
+
+     
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            cursor: pointer; /* Add cursor pointer */
+            text-decoration: none; /* Remove underline */
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Styles for the leaderboard header */
+        .leaderboard-header {
+            text-align: center;
+        }
+
+        .leaderboard-header h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-family: 'Parisienne', serif;
+        }
+
+        .leaderboard-header p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Styles for the leaderboard items */
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #fff; /* Adjusted color to make users visible */
+        }
+
+        .leaderboard-item .leaderboard-rank {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        .leaderboard-item .leaderboard-username {
+            flex-grow: 1;
+            font-size: 20px;
+        }
+
+        .leaderboard-item .leaderboard-score {
+            font-size: 16px;
+            color: #888;
+        }
+
+        /* Unicode representation for iPhone-style emojis */
+        .leaderboard-item .leaderboard-username::before {
+            content: "\1F451"; /* Crown emoji */
+            margin-right: 5px;
+            font-size: 20px;
+        }
+
+        .line-separator1 {
+            border-top: 1px solid #ccc;
+            margin-top: 30px;
+        }
+
+        .line-separator2 {
+            border-top: 1px solid #ccc;
+        }
+
+        .fun-leaderboard {
+            margin-top: 80px;
+            background-color: #000000;
+            padding: 40px;
+            border-radius: 0px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* Ensure stars don't overflow */
+            position: relative;
+            margin-bottom: -20px ;
+        }
+
+        .fun-leaderboard::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: radial-gradient(circle, #999090 1%, transparent 3%);
+            background-size: 2px 2px; /* Adjust size of stars */
+        }
+
+        .leaderboard-header a {
+            font-family: 'Courier New', monospace;
+            text-decoration: none;
+            color: #999090;
+            position: relative;
+        }
+
+        .leaderboard-header a span {
+            position: relative;
+        }
+
+        .leaderboard-header a:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 1px;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .leaderboard-header a:hover:before {
+            width: 0%;
+        }
+        
+        footer {
+            color: #bbb;
+            background-color: #000000;
+            padding: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-section {
+            margin-left: 50px;
+        }
+
+        .velouria-title h3 {
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .velouria-title p {
+            color: #bbb;
+            font-size: 1em;
+            margin: 5px 0;
+        }
+
+        .velouria-title .more-from {
+            font-weight: bold;
+        }
+
+        .footer-section {
+            margin-right: 30px;
+        }
+
+        .footer-section h3 {
+            color: #fff;
+            font-size: 2em;
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 400px;
+        }
+
+        .footer-section ul li {
+            flex-basis: 50%;
+            box-sizing: border-box;
+            padding-right: 10px;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+        }
+
+        .footer-disclaimer {
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .footer-content, .footer-section ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-section ul li {
+                flex-basis: 100%;
+            }
+
+            .footer-section {
+                margin-bottom: 20px;
+            }
+
+            .footer-links a {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+
+        /* Footer Bottom Links */
+        .footer-bottom p {
+            display: inline-block;
+            margin: 0 10px;
+            border-right: 1px solid #777;
+            padding-right: 10px;
+        }
+
+        .footer-bottom p:last-child {
+            border-right: none;
+        }
+     
+
+        .velouria-title .more-from {
+          color:#391e02;
+
+          font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header class="big" id="header">
+        <h1 id="kutuby">KUTUBY</h1>
+        <nav>
+          <a href="user_account.html" class="far fa-user"></a>
+          <a href="books.html"><svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: -7px;"  height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M248-300q53.57 0 104.28 12.5Q403-275 452-250v-427q-45-30-97.62-46.5Q301.76-740 248-740q-38 0-74.5 9.5T100-707v434q31-14 70.5-20.5T248-300Zm264 50q50-25 98-37.5T712-300q38 0 78.5 6t69.5 16v-429q-34-17-71.82-25-37.82-8-76.18-8-54 0-104.5 16.5T512-677v427Zm-30 90q-51-38-111-58.5T248-239q-36.54 0-71.77 9T106-208q-23.1 11-44.55-3Q40-225 40-251v-463q0-15 7-27.5T68-761q42-20 87.39-29.5 45.4-9.5 92.61-9.5 63 0 122.5 17T482-731q51-35 109.5-52T712-800q46.87 0 91.93 9.5Q849-781 891-761q14 7 21.5 19.5T920-714v463q0 27.89-22.5 42.45Q875-194 853-208q-34-14-69.23-22.5Q748.54-239 712-239q-63 0-121 21t-109 58ZM276-489Z"/></svg></a>
+          <a href="#collections">Collections</a>
+          <a href="about_us.html">About Us</a>
+        </nav>
+        <div class="line-separator"></div>
+    
+      </header>
+
+<section class="fun-leaderboard">
+    <div class="trophy-image" style="display: flex; justify-content: center;">
+        <img src="images/trophy.png" style="height: 30vh;" alt="Trophy Image">
+    </div>
+
+    <div class="leaderboard-header">
+        <h2>Kutuby Bookworms Leaderboard</h2>
+        <p>Join Kutuby to get on the leaderboard and see where you rank!</p>
+    </div>
+
+    <!-- Array of Users -->
+    <div class="leaderboard-users" style="border: 1px solid #fff; padding: 10px;">
+        <div class="leaderboard-item">
+            <div class="leaderboard-rank">1.</div>
+            <div class="leaderboard-username">@user1</div>
+            <div class="leaderboard-score">1000</div>
+        </div>
+        <div class="leaderboard-item">
+            <div class="leaderboard-rank">2.</div>
+            <div class="leaderboard-username">@user2</div>
+            <div class="leaderboard-score">950</div>
+        </div>
+        <div class="leaderboard-item">
+            <div class="leaderboard-rank">3.</div>
+            <div class="leaderboard-username">@user3</div>
+            <div class="leaderboard-score">900</div>
+        </div>
+     
+        <!-- Add more users as needed -->
+    </div>
+</section>
+
+
+<footer>
+    <div class="line-separator4"></div>
+    <div class="footer-content">
+        <div class="footer-section velouria-title">
+            <h3>KUTUBY</h3>
+            <br>
+            <p>Discover the latest book reviews, recommendations, author interviews, and more on Kutuby.com.</p>
+            <p class="more-from">MORE FROM KUTUBY</p>
+        </div>
+        <div class="footer-section links">
+            <div class="links-row">
+                <ul>
+                    <li>NEWSLETTER</li>
+                    <li>CUSTOMER CARE</li>
+                    <li>VERIFY SUBSCRIPTION</li>
+                    <li>CONTACT US</li>
+                    <li>ABOUT KUTUBY</li>
+                    <li>CAREERS</li>
+                    <li>PROJECTS</li>
+                    <li>KUTUBY ARCHIVE</li>
+                </ul>
+            </div>
+            <div class="links-row">
+                <ul>
+                    <!-- Add more links here if needed -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="footer-bottom">
+        <div class="footer-links">
+            <a href="#">ACCESSIBILITY HELP</a> |
+            <a href="#">MASTHEAD</a> |
+            <a href="#">VISUAL STORIES</a> |
+            <a href="#">COOKIES SETTINGS</a>
+        </div>
+        <br>
+        <p class="footer-disclaimer">© 2024 Kutuby. All rights reserved. Use of this site constitutes acceptance of our User Agreement and Privacy Policy and Cookie Statement and Your California Privacy Rights. Kutuby may earn a portion of sales from products that are purchased through our site as part of our Affiliate Partnerships with retailers. The material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except with the prior written permission of Kutuby. Ad Choices</p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('kutuby').onclick = function() {
+        window.location.href = 'home.html';
+    };
+</script>
+</body>
+</html>

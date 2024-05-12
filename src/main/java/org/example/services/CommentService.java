@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CommentService {
+public class CommentService implements ICommentService {
 
     private final CommentRepository commentRepository;
 

@@ -35,10 +35,9 @@ public class NotificationService implements INotificationService {
     }
 
     @Override
-    public void deleteNotification(Notification no) {
-        notificationRepository.delete(no);
+    public void deleteNotification(Integer id) { // Updated method signature
+        notificationRepository.deleteById(id);
     }
-
     @Override
     public Notification updateNotification(Integer id, Notification no) {
         Optional<Notification> notificationOptional = notificationRepository.findById(id);

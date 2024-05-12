@@ -7,15 +7,8 @@ import java.util.List;
 
 public interface ICommentService {
     public List<Comment>  findAll();
-    public Comment findByIdComment();
-
-
-
-
-
-
-
+    Comment findByIdComment(Integer id); // Updated to accept an Integer parameter
     public Comment addComment(Comment co);
-    public void DeleteComment(Comment co);
+    void deleteComment(Integer id); // Updated to accept an Integer parameter
     public Comment updateComment(Integer id , Comment co);
 }

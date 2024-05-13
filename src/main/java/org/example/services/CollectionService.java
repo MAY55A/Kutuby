@@ -4,6 +4,7 @@ import org.example.entities.Collection;
 import org.example.entities.CollectionItem;
 import org.example.entities.Comment;
 import org.example.entities.User;
+import org.example.repositories.CollectionItemRepository;
 import org.example.repositories.CollectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,11 +16,26 @@ import java.util.Optional;
 public class CollectionService implements ICollectionService {
 
     private final CollectionRepository collectionRepository;
+    private final CollectionItemRepository collectionItemRepository;
 
     @Autowired
-    public CollectionService(CollectionRepository collectionRepository) {
+    public CollectionService(CollectionRepository collectionRepository, CollectionItemRepository collectionItemRepository) {
         this.collectionRepository = collectionRepository;
+        this.collectionItemRepository = collectionItemRepository;
     }
+    @Override
+    public CollectionItem findCollectionItemById(Integer collectionId, Integer itemId) {
+        Optional<CollectionItem> optionalCollectionItem = collectionItemRepository.findById(itemId);
+        if (optionalCollectionItem.isPresent()) {
+            CollectionItem collectionItem = optionalCollectionItem.get();
+            // Check if the collection item belongs to the specified collection
+            if (collectionItem.getCollection().getId() == collectionId) {
+                return collectionItem;
+            }
+        }
+        return null;
+    }
+
 
     @Override
     public List<Collection> findAll() {

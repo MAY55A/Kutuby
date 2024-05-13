@@ -1,0 +1,77 @@
+/* Sidebar Styles */
+.sidebar {
+    font-family: 'Playfair Display', serif;
+
+    height: 46%;
+    width: 200px;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    background-color: #000000; /* Black background */
+    padding-top: 60px; /* Place content below the header */
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #444; /* Darker background on hover */
+}
+
+
+
+/* Adjust main content margin to accommodate the sidebar */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0; /* Reset margin for small screens */
+    }
+}
+/* Sidebar Styles */
+
+/* Sidebar Styles */
+.sidebar {
+    text-align: center;
+    height: 100%;
+    width: 0; /* Initially hidden */
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    background-color:#000000; /* Black background */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    padding-top: 60px; /* Place content below the header */
+    transition: 0.2s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #fff; /* Darker background on hover */
+    color:#000000
+}
+
+/* Adjust main content margin to accommodate the sidebar */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0; /* Reset margin for small screens */
+    }
+}
+.line-separator9{
+    border-right: 1px solid #ccc;
+    height:48.5vh;
+    margin-top :-256px;
+}

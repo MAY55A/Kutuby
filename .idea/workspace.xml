@@ -5,16 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eacd2559-c6b2-4de6-ad2c-c7266568b93c" name="Changes" comment="project creation">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/collections.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/MyFavorites.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/images/defaultColl.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/myCollections.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/settings.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/styles/collections.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/styles/profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/styles/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/about_us.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/about_us.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin_login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/books.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/collection.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/collection.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/collections.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/collections.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/leaderboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/leaderboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/sign_in.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/sign_in.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/sign_up.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/sign_up.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user_account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user_account.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +31,7 @@
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="CSS File" />
         <option value="HTML File" />
       </list>
     </option>
@@ -69,7 +74,8 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/DELL/Desktop/Iset Technologie d'Informatique/L2 iset/s4/project adnene/Kutuby",
+    "last_opened_file_path": "C:/Users/mayss/Desktop/kutuby/Kutuby/src/main/resources/templates/images",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -87,6 +93,7 @@
       <recent name="org.example.entities" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources\templates\images" />
       <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources" />
     </key>
   </component>
@@ -128,6 +135,9 @@
       <workItem from="1715332723702" duration="6470000" />
       <workItem from="1715371509742" duration="697000" />
       <workItem from="1715372244957" duration="3483000" />
+      <workItem from="1715584395249" duration="4386000" />
+      <workItem from="1715603697112" duration="4499000" />
+      <workItem from="1715616051099" duration="5889000" />
     </task>
     <task id="LOCAL-00001" summary="project creation">
       <option name="closed" value="true" />

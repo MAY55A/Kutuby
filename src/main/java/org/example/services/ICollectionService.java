@@ -27,6 +27,7 @@ public interface ICollectionService {
 
     public void addComment(Comment c, Integer idCol);
 
+    CollectionItem findCollectionItemById(Integer collectionId, Integer itemId); // Add this method
 
 
 

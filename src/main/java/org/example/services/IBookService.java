@@ -1,6 +1,7 @@
 package org.example.services;
 
 import org.example.entities.Book;
+import org.example.entities.Comment;
 import org.example.entities.User;
 
 import java.util.List;
@@ -24,4 +25,6 @@ public interface IBookService {
     public Book addBook(Book b);
     public void DeleteBook(Book b);
     public Book updateBook(Integer id , Book book);
+    void addComment(Comment comment, Integer bookId);
+
 }

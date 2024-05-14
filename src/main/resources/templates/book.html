@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="styles/style.css">
      <link rel="shortcut icon" href="images/kutuby.ico" type="image/x-icon">
 
 
@@ -18,61 +18,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <title>Book Details</title>
     <style>
-        /* styles.css */
-        .line-separatoor {
-      border-top: 1px solid #ccc;
-      margin-top: 15px;
-    }
-        body {
-            background-color: #391e02; /* Brown color code with a hint of grey */
-            color: #fff; /* White text color */
-            margin: 0;
-            font-family: Arial, sans-serif; /* Use a readable font */
-        }
-
-
-        header {
-            background-color: #000000; /* Brown color code with a hint of grey */
-            color: #fff; /* White text color */
-            padding: 2rem;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            top:0;
-            z-index: 999;
-            font-family: 'Playfair Display', serif;
-        }
-  
-
-
-        header.big {
-            padding: 0rem;
-        }
-
-
-
-        header h1 {
-            margin: 0;
-            font-size: 3rem;
-            font-family: 'Playfair Display', serif;
-            cursor: pointer; /* Add cursor pointer */
-            text-decoration: none; /* Remove underline */
-        }
-
-        nav {
-            margin-top: 1rem;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 1rem;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
 
 .article-container {
   max-width: 1200px;
@@ -235,126 +180,6 @@ margin-bottom: -8px;}
 .comment-icon:hover,.ellipsis-icon:hover {
   color: rgb(203, 53, 121);
 }
-      /* Footer Styling */
-      footer {
-          color: #bbb;
-          background-color: #000000;
-          padding: 20px 0;
-          font-size: 14px;
-        }
-        .velouria-title .more-from {
-          color:#391e02;
-
-          font-weight: bold;
-        }
-
-        .footer-content {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-        }
-
-        .footer-section {
-            margin-left: 50px;
-        }
-
-        .velouria-title h3 {
-          color: #fff;
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 700;
-          font-size: 2.5em;
-          margin-bottom: 10px;
-        }
-
-        .velouria-title p {
-          color: #bbb;
-          font-size: 1em;
-          margin: 5px 0;
-        }
-
-        .velouria-title .more-from {
-          font-weight: bold;
-        }
-
-        .footer-section {
-          margin-right: 30px;
-        }
-
-        .footer-section h3 {
-          color: #fff;
-          font-size: 2em;
-          font-weight: bold;
-          font-family: 'Playfair Display', serif;
-        }
-
-        .footer-section ul {
-          list-style-type: none;
-          padding: 0;
-          display: flex;
-          flex-wrap: wrap;
-          max-width: 400px;
-        }
-
-        .footer-section ul li {
-          flex-basis: 50%;
-          box-sizing: border-box;
-          padding-right: 10px;
-          margin-top: 10px;
-          line-height: 1.6;
-        }
-
-        .footer-bottom {
-          border-top: 1px solid #444;
-          text-align: center;
-          padding-top: 10px;
-        }
-
-        .footer-links a {
-          color: #bbb;
-          text-decoration: none;
-        }
-
-        .footer-disclaimer {
-          font-size: 12px;
-          margin-top: 10px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-          .footer-content, .footer-section ul {
-              flex-direction: column;
-              align-items: center;
-          }
-
-          .footer-section ul li {
-              flex-basis: 100%;
-          }
-
-          .footer-section {
-              margin-bottom: 20px;
-          }
-
-          .footer-links a {
-              display: block;
-              margin: 5px 0;
-          }
-        }
-
-        /* Footer Bottom Links */
-        .footer-bottom p {
-          display: inline-block;
-          margin: 0 10px;
-          border-right: 1px solid #777;
-          padding-right: 10px;
-        }
-
-        .footer-bottom p:last-child {
-          border-right: none;
-        }
-        .line-separator {
-      border-top: 1px solid #ccc;
-      margin-top: 20px;
-    }
     .article-image-section {
     flex: 1;
     background-size: contain;
@@ -442,7 +267,7 @@ margin-bottom: -8px;}
             </div>
         </div>
     </div>
-
+<br>
     <div class="line-separator"></div>
 <footer>
   <div class="footer-content">
@@ -484,6 +309,10 @@ margin-bottom: -8px;}
       <p class="footer-disclaimer">© 2024 Kutuby. All rights reserved. Use of this site constitutes acceptance of our User Agreement and Privacy Policy and Cookie Statement and Your California Privacy Rights. Kutuby may earn a portion of sales from products that are purchased through our site as part of our Affiliate Partnerships with retailers. The material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except with the prior written permission of Kutuby. Ad Choices</p>
   </div>
 </footer>
-
+    <script>
+        document.getElementById('kutuby').onclick = function() {
+            window.location.href = 'home.html';
+        };
+    </script>
 </body>
 </html>

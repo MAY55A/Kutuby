@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="85e10d8d-f930-4847-8ada-d93e8ad49401" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Configuration/SpringSecurityConfig.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/SecurityController.java" afterDir="false" />
@@ -11,6 +12,18 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/KutubyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/KutubyApplication.java" afterDir="false" />
+=======
+    <list default="true" id="eacd2559-c6b2-4de6-ad2c-c7266568b93c" name="Changes" comment="project creation">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/leaderboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/leaderboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/styles/profile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/styles/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/trah.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user_account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user_account.html" afterDir="false" />
+>>>>>>> f3d061e9a733efe550b2447fd3046f9fe14137e7
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +34,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+<<<<<<< HEAD
         <option value="HTML File" />
         <option value="Interface" />
+=======
+>>>>>>> f3d061e9a733efe550b2447fd3046f9fe14137e7
         <option value="Class" />
+        <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -49,9 +67,43 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+<<<<<<< HEAD
     "JavaScript Debug.home.html.executor": "Run",
     "git-widget-placeholder": "master",
     "node.js.selected.package.tslint": "(autodetect)"
+=======
+    "Application.Main.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.books.html.executor": "Run",
+    "JavaScript Debug.collection.html.executor": "Run",
+    "JavaScript Debug.collections.html.executor": "Run",
+    "JavaScript Debug.home.html.executor": "Run",
+    "JavaScript Debug.settings.html.executor": "Run",
+    "JavaScript Debug.sign_in.html.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.KutubyApplication.executor": "Debug",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/mayss/Desktop/kutuby/Kutuby/src/main/resources/templates/images",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
+>>>>>>> f3d061e9a733efe550b2447fd3046f9fe14137e7
   }
 }]]></component>
   <component name="RecentsManager">
@@ -59,6 +111,7 @@
       <recent name="org.example.entities" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources\templates\images" />
       <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -66,7 +119,7 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.home.html">
+  <component name="RunManager" selected="JavaScript Debug.settings.html">
     <configuration name="books.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Kutuby/src/main/resources/templates/books.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -76,7 +129,7 @@
     <configuration name="collections.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Kutuby/src/main/resources/templates/collections.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="home.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Kutuby/src/main/resources/templates/home.html" useBuiltInWebServerPort="true">
+    <configuration name="settings.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Kutuby/src/main/resources/templates/settings.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="sign_in.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Kutuby/src/main/resources/templates/sign_in.html" useBuiltInWebServerPort="true">
@@ -84,7 +137,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.home.html" />
+        <item itemvalue="JavaScript Debug.settings.html" />
         <item itemvalue="JavaScript Debug.collection.html" />
         <item itemvalue="JavaScript Debug.books.html" />
         <item itemvalue="JavaScript Debug.collections.html" />
@@ -109,9 +162,10 @@
       <workItem from="1715586304467" duration="673000" />
       <workItem from="1715332723702" duration="6470000" />
       <workItem from="1715371509742" duration="697000" />
-      <workItem from="1715372244957" duration="3902000" />
-      <workItem from="1715467617310" duration="1216000" />
-      <workItem from="1715540412707" duration="5465000" />
+      <workItem from="1715372244957" duration="3483000" />
+      <workItem from="1715584395249" duration="4386000" />
+      <workItem from="1715603697112" duration="4499000" />
+      <workItem from="1715616051099" duration="5889000" />
     </task>
     <task id="LOCAL-00001" summary="project creation">
       <option name="closed" value="true" />

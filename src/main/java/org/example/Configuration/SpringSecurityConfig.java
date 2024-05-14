@@ -38,7 +38,7 @@ public class SpringSecurityConfig {
         //httpSecurity.formLogin();
         httpSecurity.formLogin().loginPage("/login").permitAll();
 
-        httpSecurity.authorizeHttpRequests().requestMatchers("/webjars/**", "style3.css", "https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css").permitAll();
+        httpSecurity.authorizeHttpRequests().requestMatchers("/webjars/**", "style.css", "https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css").permitAll();
 
 
         //httpSecurity.authorizeHttpRequests().requestMatchers("/user/**").hasRole("USER");

@@ -1,21 +1,26 @@
 package org.example.services;
 
+import lombok.AllArgsConstructor;
 import org.example.entities.*;
+import org.example.repositories.AppRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.example.repositories.UserRepository;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
+@AllArgsConstructor
 public class UserService implements IUserService {
 
+    @Autowired
     private final UserRepository userRepository;
-@Autowired
-    public UserService( UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private AppRoleRepository appRoleRepository;
 
     @Override
     public List<User> findAll() {
@@ -29,19 +34,52 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List<User> findByUserName(String name) {
-        return (List<User>) userRepository.findByUserName(name);
+    public User findByUserName(String name) {
+        return userRepository.findByUserName(name);
     }
-
     @Override
-    public User addUser(User user) {
+    public List<User> findAdmins() {
+        return findAll().stream().filter(u -> u.getRoles().contains("ADMIN")).toList();
+    }
+    @Override
+    public int generateUniqueId() {
+        Random random = new Random();
+        return random.nextInt(Integer.MAX_VALUE);
+    }
+    @Override
+    public User addUser(String username, String password, String email, String confirmPassword) throws RuntimeException{
+        User user = findByUserName(username);
+        if (user != null) throw new RuntimeException("exists");
+        if (!password.equals(confirmPassword)) throw new RuntimeException("mismatch");
+        // Generate unique id
+        int userId = generateUniqueId();
+        user = User.builder()
+                .id(userId)
+                .userName(username)
+                .passwordHash(passwordEncoder.encode(password))
+                .build();
         user.getCollections().add(new Collection("Completed", CollectionType.Completed));
         user.getCollections().add(new Collection("Reading", CollectionType.Reading));
         user.getCollections().add(new Collection("Want to Read", CollectionType.WantToRead));
         user.getRankings().add(new Ranking(RankingPeriod.Week));
         user.getRankings().add(new Ranking(RankingPeriod.Month));
         user.getRankings().add(new Ranking(RankingPeriod.Year));
-        return userRepository.save(user);
+        User saveUser = userRepository.save(user);
+        return saveUser;
+    }
+
+    @Override
+    public void addRoleToUser(String username, String role) {
+        User user = findByUserName(username);
+        AppRole appRole = appRoleRepository.findById(role).get();
+        user.getRoles().add(appRole);
+    }
+
+    @Override
+    public void removeRoleFromUser(String username, String role) {
+        User user = userRepository.findByUserName(username);
+        AppRole appRole = appRoleRepository.findById(role).get();
+        user.getRoles().remove(appRole);
     }
 
     @Override

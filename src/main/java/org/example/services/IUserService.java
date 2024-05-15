@@ -8,11 +8,19 @@ public interface IUserService  {
 
     public List<User> findAll();
     public User findByIdUser(Integer id);
-     public List<User> findByUserName(String name);
+    public User findByUserName(String name);
 
 
+    public List<User> findAdmins();
 
-    public User addUser(User d);
+    int generateUniqueId();
+
+    public User addUser(String username, String password, String email, String confirmPassword) throws Exception;
+
+    void addRoleToUser(String username, String role);
+
+    void removeRoleFromUser(String username, String role);
+
     public void DeleteUser(Integer id);
     public User updateUser(Integer id , User user);
 

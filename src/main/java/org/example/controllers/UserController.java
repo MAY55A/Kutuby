@@ -1,5 +1,6 @@
 package org.example.controllers;
 
+import org.example.entities.Notification;
 import org.example.entities.User;
 import org.example.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +40,15 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> addUser(@RequestBody User user) {
-        User addedUser = userService.addUser(user);
-        return new ResponseEntity<>(addedUser, HttpStatus.CREATED);
+    public ResponseEntity<User> addUser(@RequestBody String name, String password1, String email, String password2) {
+        try {
+            User addedUser = userService.addUser(name, password1, email, password2);
+            return new ResponseEntity<>(addedUser, HttpStatus.CREATED);
+        } catch (Exception e){
+            if(e.getMessage().equals("exists"))
+                return new ResponseEntity<>(HttpStatus.FOUND);
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
     }
 
     @PutMapping("/{id}")

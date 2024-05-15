@@ -1,9 +1,6 @@
 package org.example.services;
 
-import org.example.entities.Collection;
-import org.example.entities.CollectionItem;
-import org.example.entities.Comment;
-import org.example.entities.User;
+import org.example.entities.*;
 import org.example.repositories.CollectionItemRepository;
 import org.example.repositories.CollectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,19 +20,6 @@ public class CollectionService implements ICollectionService {
         this.collectionRepository = collectionRepository;
         this.collectionItemRepository = collectionItemRepository;
     }
-    @Override
-    public CollectionItem findCollectionItemById(Integer collectionId, Integer itemId) {
-        Optional<CollectionItem> optionalCollectionItem = collectionItemRepository.findById(itemId);
-        if (optionalCollectionItem.isPresent()) {
-            CollectionItem collectionItem = optionalCollectionItem.get();
-            // Check if the collection item belongs to the specified collection
-            if (collectionItem.getCollection().getId() == collectionId) {
-                return collectionItem;
-            }
-        }
-        return null;
-    }
-
 
     @Override
     public List<Collection> findAll() {
@@ -85,16 +69,16 @@ public class CollectionService implements ICollectionService {
     }
 
     @Override
-    public void addItemToCollection(CollectionItem ci) {
-        Collection collection = ci.getCollection();
-        collection.getItems().add(ci);
+    public void addItem(CollectionItem item, Integer coll) {
+        Collection collection = collectionRepository.findById(coll).get();
+        collection.getItems().add(item);
         collectionRepository.save(collection);
     }
 
     @Override
-    public void removeItemFromCollection(CollectionItem ci) {
-        Collection collection = ci.getCollection();
-        collection.getItems().remove(ci);
+    public void removeItem(CollectionItem item, Integer coll) {
+        Collection collection = collectionRepository.findById(coll).get();
+        collection.getItems().remove(item);
         collectionRepository.save(collection);
     }
 
@@ -103,8 +87,5 @@ public class CollectionService implements ICollectionService {
         Collection collection = collectionRepository.findById(idCol).get();
         collection.getComments().add(c);
         collectionRepository.save(collection);
-
-
-
     }
 }

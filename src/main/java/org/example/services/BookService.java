@@ -92,9 +92,6 @@ public class BookService implements IBookService {
         Book book = bookRepository.findById(bo).get();
         book.getComments().add(c);
         bookRepository.save(book);
-
-
-
     }
 
 }

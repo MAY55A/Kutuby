@@ -22,11 +22,15 @@ public class Ranking implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int rank;
-    private int points;
+    private int points = 0;
     @Enumerated(EnumType.STRING)
     private RankingPeriod period;
 
     @ManyToOne
     private User user;
+
+    public Ranking(RankingPeriod period) {
+        this.period = period;
+    }
 
 }

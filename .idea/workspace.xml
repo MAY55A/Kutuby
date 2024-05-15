@@ -4,22 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eacd2559-c6b2-4de6-ad2c-c7266568b93c" name="Changes" comment="project creation">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/MyFavorites.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/images/defaultColl.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/myCollections.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/settings.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/styles/collections.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/styles/profile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/styles/style.css" afterDir="false" />
+    <list default="true" id="eacd2559-c6b2-4de6-ad2c-c7266568b93c" name="Changes" comment="controllers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/books.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/collection.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/collection.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/collections.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/collections.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/leaderboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/leaderboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user_account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user_account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Collection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/CollectionItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/CollectionItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Ranking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Ranking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/CollectionItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/CollectionItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/ICollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/ICollectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,11 +67,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.KutubyApplication.executor": "Debug",
+    "Spring Boot.KutubyApplication.executor": "Run",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/mayss/Desktop/kutuby/Kutuby/src/main/resources/templates/images",
+    "last_opened_file_path": "C:/Users/mayss/Desktop/Cours & TP/Spring Boot/projet1",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -97,7 +94,7 @@
       <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.collection.html">
+  <component name="RunManager" selected="JavaScript Debug.books.html">
     <configuration name="books.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Kutuby/src/main/resources/templates/books.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -138,6 +135,9 @@
       <workItem from="1715584395249" duration="4386000" />
       <workItem from="1715603697112" duration="4499000" />
       <workItem from="1715616051099" duration="5889000" />
+      <workItem from="1715678764935" duration="6433000" />
+      <workItem from="1715701261774" duration="34000" />
+      <workItem from="1715788094318" duration="1393000" />
     </task>
     <task id="LOCAL-00001" summary="project creation">
       <option name="closed" value="true" />
@@ -147,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714591218068</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="controllers">
+      <option name="closed" value="true" />
+      <created>1715626267067</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715626267067</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,7 +174,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="project creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="project creation" />
+    <MESSAGE value="ajout des pages de profil" />
+    <MESSAGE value="controllers" />
+    <option name="LAST_COMMIT_MESSAGE" value="controllers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

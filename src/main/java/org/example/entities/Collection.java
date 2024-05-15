@@ -27,7 +27,7 @@ public class Collection implements Serializable {
     @Enumerated(EnumType.STRING)
     private CollectionType type;
     @Enumerated(EnumType.STRING)
-    private Visibility visibility;
+    private Visibility visibility = Visibility.Public;
     @Column(columnDefinition = "TEXT")
     private String description;
     @Temporal(TemporalType.TIMESTAMP)
@@ -44,5 +44,10 @@ public class Collection implements Serializable {
     private Set<Comment> comments;
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "favourites")
     private Set<User> likers;
+
+    public Collection(String name, CollectionType type) {
+        this.name = name;
+        this.type = type;
+    }
 
 }

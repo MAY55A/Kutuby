@@ -1,6 +1,8 @@
 package org.example.services;
 
+import org.example.entities.Book;
 import org.example.entities.CollectionItem;
+import org.example.entities.User;
 import org.example.repositories.CollectionItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,10 @@ public class CollectionItemService implements ICollectionItemService {
     @Override
     public CollectionItem findByIdCollectionItem(Integer id) {
         Optional<CollectionItem> optionalCollectionItem = collectionItemRepository.findById(id);
+        return optionalCollectionItem.orElse(null);
+    }
+    public CollectionItem findByUserAndBook(User u, Book b) {
+        Optional<CollectionItem> optionalCollectionItem = collectionItemRepository.findByCreatorAndBook(u, b);
         return optionalCollectionItem.orElse(null);
     }
 

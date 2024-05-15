@@ -1,6 +1,6 @@
 package org.example.services;
 
-import org.example.entities.User;
+import org.example.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.example.repositories.UserRepository;
@@ -35,6 +35,12 @@ public class UserService implements IUserService {
 
     @Override
     public User addUser(User user) {
+        user.getCollections().add(new Collection("Completed", CollectionType.Completed));
+        user.getCollections().add(new Collection("Reading", CollectionType.Reading));
+        user.getCollections().add(new Collection("Want to Read", CollectionType.WantToRead));
+        user.getRankings().add(new Ranking(RankingPeriod.Week));
+        user.getRankings().add(new Ranking(RankingPeriod.Month));
+        user.getRankings().add(new Ranking(RankingPeriod.Year));
         return userRepository.save(user);
     }
 
@@ -56,5 +62,16 @@ public class UserService implements IUserService {
         } else {
             throw new RuntimeException("User not found with id: " + id);
         }
+    }
+
+    public void getNotification(Notification n, Integer userid) {
+        User user = userRepository.findById(userid).get();
+        user.getNotifications().add(n);
+        userRepository.save(user);
+    }
+    public void addToFavourites(Collection c, Integer userid) {
+        User user = userRepository.findById(userid).get();
+        user.getFavourites().add(c);
+        userRepository.save(user);
     }
 }

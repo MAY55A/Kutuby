@@ -2,12 +2,12 @@ package org.example.services;
 
 
 import org.example.entities.AppRole;
-import org.example.entities.AppUser;
+import org.example.entities.User;
 
 public  interface AccountService {
-    AppUser addNewUser(String username, String password, String email, String confirmPassword);
+    User addNewUser(String username, String password, String email, String confirmPassword);
     AppRole addNewRole(String role);
-    void addRoleToUSer(String username,String role);
-    void removeRoleFRomUSer(String username,String role);
-    AppUser loadUserByUsername(String username);
+    void addRoleToUser(String username, String role);
+    void removeRoleFromUser(String username, String role);
+    User loadUserByUsername(String username);
 }

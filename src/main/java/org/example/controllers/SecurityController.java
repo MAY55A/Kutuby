@@ -9,11 +9,11 @@ public class SecurityController {
 
     @GetMapping("/pasautorise")
     public String pasautorisé() {
-        return "pasautorise"; // on va creer une page pasautorise.html contient un message derrur
+        return "pasautorise"; //  pasautorise.html contient un message derrur
     }
     @GetMapping("/login")
     public String login() {
-        return "login"; // meme chose pour login.html
+        return "sign_in"; // redirection a sign in page
     }
 
 }

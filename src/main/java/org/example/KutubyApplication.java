@@ -1,6 +1,7 @@
 package org.example;
 
-import org.example.services.AccountService;
+import org.example.services.RoleService;
+import org.example.services.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,17 +16,17 @@ public class KutubyApplication {
     }
 
     @Bean
-    CommandLineRunner commandLineRunnerUserDetails(AccountService accountService){
+    CommandLineRunner commandLineRunnerUserDetails(UserService userService, RoleService roleService){
         return args-> {
-            accountService.addNewRole("USER");
-            accountService.addNewRole("ADMIN");
-            accountService.addNewUser("user1", "1234", "user1@gmail.com", "1234");
-            accountService.addNewUser("user2", "1234", "user2@gmail.com", "1234");
-            accountService.addNewUser("admin", "1234", "admin@gmail.com", "1234");
-            accountService.addRoleToUser("user1","USER");
-            accountService.addRoleToUser("user2","USER");
-            accountService.addRoleToUser("admin","USER");
-            accountService.addRoleToUser("admin","Admin");
+            roleService.addNewRole("USER");
+            roleService.addNewRole("ADMIN");
+            userService.addUser("user1", "1234", "user1@gmail.com", "1234");
+            userService.addUser("user2", "1234", "user2@gmail.com", "1234");
+            userService.addUser("admin", "1234", "admin@gmail.com", "1234");
+            userService.addRoleToUser("user1","USER");
+            userService.addRoleToUser("user2","USER");
+            userService.addRoleToUser("admin","USER");
+            userService.addRoleToUser("admin","Admin");
         };
     }
     @Bean

@@ -13,8 +13,6 @@ public interface IUserService  {
 
     public List<User> findAdmins();
 
-    int generateUniqueId();
-
     public User addUser(String username, String password, String email, String confirmPassword) throws Exception;
 
     void addRoleToUser(String username, String role);

@@ -41,23 +41,16 @@ public class UserService implements IUserService {
     public List<User> findAdmins() {
         return findAll().stream().filter(u -> u.getRoles().contains("ADMIN")).toList();
     }
-    @Override
-    public int generateUniqueId() {
-        Random random = new Random();
-        return random.nextInt(Integer.MAX_VALUE);
+    public boolean isAdmin(Integer id) {
+        User user = findByIdUser(id);
+        return user.getRoles().contains(new AppRole("ADMIN"));
     }
     @Override
     public User addUser(String username, String password, String email, String confirmPassword) throws RuntimeException{
         User user = findByUserName(username);
         if (user != null) throw new RuntimeException("exists");
         if (!password.equals(confirmPassword)) throw new RuntimeException("mismatch");
-        // Generate unique id
-        int userId = generateUniqueId();
-        user = User.builder()
-                .id(userId)
-                .userName(username)
-                .passwordHash(passwordEncoder.encode(password))
-                .build();
+        user = new User(username, email, passwordEncoder.encode(password));
         user.getCollections().add(new Collection("Completed", CollectionType.Completed));
         user.getCollections().add(new Collection("Reading", CollectionType.Reading));
         user.getCollections().add(new Collection("Want to Read", CollectionType.WantToRead));

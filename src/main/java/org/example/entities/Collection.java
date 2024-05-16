@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Slf4j
@@ -39,11 +40,11 @@ public class Collection implements Serializable {
     @ManyToOne
     private User owner;
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<CollectionItem> items;
+    private Set<CollectionItem> items = new HashSet<>();
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<Comment> comments;
+    private Set<Comment> comments = new HashSet<>();
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "favourites")
-    private Set<User> likers;
+    private Set<User> likers = new HashSet<>();
 
     public Collection(String name, CollectionType type) {
         this.name = name;

@@ -21,7 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.findByUserName(username);
 
-        if (user == null) throw new UsernameNotFoundException(String.format("USER %s n'existe pas", username));
+        if (user == null) throw new UsernameNotFoundException(String.format("USER %s does not exist", username));
 
         String[] roles = user.getRoles().stream().map(u -> u.getRole()).toArray(String[]::new);
         UserDetails userDetails = org.springframework.security.core.userdetails.User

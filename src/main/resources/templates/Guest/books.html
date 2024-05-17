@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="images/kutuby.ico" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{/images/kutuby.ico}" type="image/x-icon">
 
-    <title>Books - Kutuby</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <title>BOOKS - KUTUBY</title>
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
@@ -89,10 +89,10 @@
     <header class="big" id="header">
         <h1 id="kutuby">KUTUBY</h1>
         <nav>
-          <a href="user_account.html" class="far fa-user"></a>
-          <a href="books.html"><svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: -7px;"  height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M248-300q53.57 0 104.28 12.5Q403-275 452-250v-427q-45-30-97.62-46.5Q301.76-740 248-740q-38 0-74.5 9.5T100-707v434q31-14 70.5-20.5T248-300Zm264 50q50-25 98-37.5T712-300q38 0 78.5 6t69.5 16v-429q-34-17-71.82-25-37.82-8-76.18-8-54 0-104.5 16.5T512-677v427Zm-30 90q-51-38-111-58.5T248-239q-36.54 0-71.77 9T106-208q-23.1 11-44.55-3Q40-225 40-251v-463q0-15 7-27.5T68-761q42-20 87.39-29.5 45.4-9.5 92.61-9.5 63 0 122.5 17T482-731q51-35 109.5-52T712-800q46.87 0 91.93 9.5Q849-781 891-761q14 7 21.5 19.5T920-714v463q0 27.89-22.5 42.45Q875-194 853-208q-34-14-69.23-22.5Q748.54-239 712-239q-63 0-121 21t-109 58ZM276-489Z"/></svg></a>
-          <a href="collections.html">Collections</a>
-          <a href="about_us.html">About Us</a>
+            <a href="/profile" class="far fa-user"></a>
+            <a href="/books"><svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: -7px;"  height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M248-300q53.57 0 104.28 12.5Q403-275 452-250v-427q-45-30-97.62-46.5Q301.76-740 248-740q-38 0-74.5 9.5T100-707v434q31-14 70.5-20.5T248-300Zm264 50q50-25 98-37.5T712-300q38 0 78.5 6t69.5 16v-429q-34-17-71.82-25-37.82-8-76.18-8-54 0-104.5 16.5T512-677v427Zm-30 90q-51-38-111-58.5T248-239q-36.54 0-71.77 9T106-208q-23.1 11-44.55-3Q40-225 40-251v-463q0-15 7-27.5T68-761q42-20 87.39-29.5 45.4-9.5 92.61-9.5 63 0 122.5 17T482-731q51-35 109.5-52T712-800q46.87 0 91.93 9.5Q849-781 891-761q14 7 21.5 19.5T920-714v463q0 27.89-22.5 42.45Q875-194 853-208q-34-14-69.23-22.5Q748.54-239 712-239q-63 0-121 21t-109 58ZM276-489Z"/></svg></a>
+            <a href="/collections">Collections</a>
+            <a href="/about_us">About Us</a>
         </nav>
         <div class="line-separatoor"></div>
     
@@ -106,12 +106,12 @@
 
     <div class="book-card">
         <a href="book.html">
-        <img class="book-image" src="images/book6.jpg" alt="Book 1">
+        <img class="book-image" src="../../static/images/book6.jpg" alt="Book 1">
         </a>
     </div>
     <div class="book-card">
         <a href="book.html">
-        <img class="book-image" src="images/book2.jpg" alt="Book 2">
+        <img class="book-image" src="../../static/images/book2.jpg" alt="Book 2">
         </a>
     </div>
 </div>
@@ -130,82 +130,11 @@
 
 
     <div class="books2-container">
-        <div class="book-card">
-            <a href="book.html">
-                <img class="book-image" src="images/book.jpg" alt="Book 3">
+        <div th:each="book : ${books}" class="book-card">
+            <a th:href="@{/books/book/{id}(id=${book.getId()})}">
+                <img class="book-image" th:src="@{/images/books/{coverImage}(coverImage=${book.getCoverImage()})}" th:alt="${book.getTitle()}">
             </a>
         </div>
-        <div class="book-card">
-            <a href="book.html">
-                <img class="book-image" src="images/book9.jpg" alt="Book 4">
-            </a>
-        </div>
-        <div class="book-card">
-            <a href="book.html">
-                <img class="book-image" src="images/book10.jpg" alt="Book 3">
-            </a>
-        </div>
-        <div class="book-card">
-            <a href="book.html">
-                <img class="book-image" src="images/book11.jpg" alt="Book 4">
-            </a>
-        </div>
-        <div class="book-card">
-            <a href="book.html">
-                <img class="book-image" src="images/book12.jpg" alt="Book 4">
-            </a>
-        </div>
-        <div class="book-card">
-            <a href="book.html">
-                <img class="book-image" src="images/book13.jpg" alt="Book 4">
-            </a>
-        </div>
-        <div class="book-card">
-            <a href="book.html">
-                <img class="book-image" src="images/book14.jpg" alt="Book 4">
-            </a>
-        </div>
-        <div class="book-card">
-            <a href="book.html">
-                <img class="book-image" src="images/book15.jpg" alt="Book 3">
-            </a>
-        </div>
-        <div class="book-card">
-            <a href="book.html">
-                <img class="book-image" src="images/book16.jpg" alt="Book 4">
-            </a>
-        </div>
-        <div class="book-card">
-            <a href="book.html">
-                <img class="book-image" src="images/book17.jpg" alt="Book 3">
-            </a>
-        </div>
-        <div class="book-card">
-            <a href="book.html">
-                <img class="book-image" src="images/book18.jpg" alt="Book 4">
-            </a>
-        </div>
-        <div class="book-card">
-            <a href="book.html">
-                <img class="book-image" src="images/book19.jpg" alt="Book 4">
-            </a>
-        </div>
-        <div class="book-card">
-            <a href="book.html">
-                <img class="book-image" src="images/book20.jpg" alt="Book 4">
-            </a>
-        </div>
-        <div class="book-card">
-            <a href="book.html">
-                <img class="book-image" src="images/book21.jpg" alt="Book 4">
-            </a>
-        </div>
-        <div class="book-card">
-            <a href="book.html">
-                <img class="book-image" src="images/book22.jpg" alt="Book 4">
-            </a>
-        </div>
-        <!-- Add more book cards here -->
     </div>
     
     <div class="line-separator"></div>
@@ -252,7 +181,7 @@
   
 <script>
   document.getElementById('kutuby').onclick = function() {
-window.location.href = 'home.html';
+window.location.href = '/';
 };
 </script>
 </body>

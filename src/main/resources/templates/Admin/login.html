@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="images/kutuby.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../../static/images/kutuby.ico" type="image/x-icon">
 
-  <title>Sign In</title>
+  <title>Login - Admin</title>
   <style>
     body {
       margin: 0;
@@ -19,8 +19,7 @@
 
     .left-section {
       flex: 1;
-      background-size: cover;
-      background-position: center;
+   
     }
 
     .right-section {
@@ -28,9 +27,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      background-color: #391e02;
       padding: 20px;
       flex-direction: column;
-      background-color: #391e02;
     }
 
     .form {
@@ -64,7 +63,7 @@
       padding: 8px 16px;
       font-family: 'Courier New', monospace;
       cursor: pointer;
-      margin-top: 10px;
+      margin-left: 40px;
     }
 
     .signin:hover {
@@ -72,8 +71,9 @@
       color: #fff;
     }
 
-    .right-section h1 {
-      margin-top: -50px; /* Adjusted margin-top */
+    .left-section h1 {
+        margin-top: 300px;
+      text-align: center;
       color: #fff;
       font-size: 3rem;
       font-family: 'Playfair Display', serif;
@@ -81,12 +81,7 @@
       text-decoration: none; /* Remove underline */
     }
 
-    .register-text {
-      font-family: 'Courier New', monospace;
-      color: #fff;
-      margin-top: 10px;
-      margin-left:30px;
-    }
+
 
     .register-container {
       display: flex;
@@ -103,7 +98,6 @@
       margin-top: 10px;
     }
 
- 
     .already-signed-in {
       font-family: 'Courier New', monospace;
       color: #fff;
@@ -145,28 +139,32 @@
         margin-right: 10px;
       }
     }
-   
+    .line-separator {
+      border-left: 1px solid #ccc;
+      height: 100%;
+    }
 
-   
   </style>
 </head>
 <body>
   <div class="login-page">
-    <div class="left-section" style="background-image: url('images/bg30.jpg');"></div>
+    <div class="left-section" style="background-color: #000000;">
+        <h1 id="kutuby">KUTUBY</h1>
+    </div>
+    <div class="line-separator"></div>
+
     <div class="right-section">
-      <h1 id="kutuby">KUTUBY</h1>
-      <div class="register-container">
-        <div class="already-signed-in">Don't have an account? <a href="sign_up.html"><span>Sign up</span></a></div>
-      </div>
+        <div class="already-signed-in">Contact the administration for assistance.</div>
+
       <div class="form">
         <form action="">
+
           <input type="text" placeholder="Username or Email">
           <input type="password" placeholder="Password">
         </form>
       </div>
       <div class="register-container">
-      <div class="register-text">Sign in to your account</div> &nbsp;&nbsp;&nbsp;
-      <input class="signin" type="submit" value="Sign In">
+        <input class="signin" type="submit" value="Sign In">
       </div>
     </div>
   </div>

@@ -4,40 +4,183 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3fce9203-837a-4e50-9c4a-2fae6e09c564" name="Changes" comment="">
+    <list default="true" id="3fce9203-837a-4e50-9c4a-2fae6e09c564" name="Changes" comment="creation de quelques utilisateurs et des livres">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/IndexController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/ProfileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/SignupController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/books.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/collections.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/users.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Errors/not_found.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/KutubyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/KutubyApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Collection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Genre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/CollectionItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/CollectionItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Configuration/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Configuration/SpringSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/NotificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/RankingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/RankingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/SecurityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/SecurityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/IUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/books.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/AdminDashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/MyFavorites.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/User/myFavorites.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/about_us.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/about_us.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/books.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/collection.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/collection.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/collections.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/collections.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/ab1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/ab2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/ab3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/ab3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/ab4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/ab4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/ab5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/ab5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/ab6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/ab6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/ab7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/ab7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/ab8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/ab8.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg15.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg17.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg19.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg20.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg21.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg22.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg23.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg24.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg25.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg26.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg27.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg28.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg29.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg30.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg31.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg32.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/bg8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book14.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book15.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book17.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book18.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book19.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book20.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book21.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book22.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book23.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book24.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book25.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/book9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/coll1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/coll10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/coll11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/coll12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/coll13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/coll14.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/coll3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/coll4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/coll5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/coll6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/coll7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/coll8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/coll9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/commedy.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/defaultColl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/fantasy.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/fiction.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/fiction.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/frida.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/hannibal.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/jsp.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/kutuby.ico" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/kutuby.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/leaderboard.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/leaderboard.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/leaderboard2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/leaderboard2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/love1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/paris.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/paris.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/thriller.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/trophy.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/trophy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/images/video1.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/images/video1.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/leaderboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/leaderboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/myCollections.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/User/myCollections.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/pasautorise.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Errors/unauthorised.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/User/settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/sign_in.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/sign_in.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/sign_up.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/sign_up.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/styles/collections.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/styles/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user_account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/User/user_account.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2gaRSOh5L2OZuBn6v5jzbGGGwnP" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.books.html.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.KutubyApplication.executor": "Debug",
+    "Spring Boot.KutubyApplication.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/mayss/Desktop/Cours & TP/Spring Boot/projetSpringBoot",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -46,6 +189,18 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources\static\images\images" />
+      <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources\static" />
+      <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources\templates\Errors" />
+      <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources\templates\User" />
+      <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources\templates" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.controllers" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -54,11 +209,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1715873751541</updated>
-      <workItem from="1715873754740" duration="12049000" />
+      <workItem from="1715873754740" duration="13898000" />
+      <workItem from="1715933705346" duration="25573000" />
     </task>
+    <task id="LOCAL-00001" summary="creation de quelques utilisateurs et des livres">
+      <option name="closed" value="true" />
+      <created>1715889277190</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715889277190</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="creation de quelques utilisateurs et des livres" />
+    <option name="LAST_COMMIT_MESSAGE" value="creation de quelques utilisateurs et des livres" />
   </component>
 </project>

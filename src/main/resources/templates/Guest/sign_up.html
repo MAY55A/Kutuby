@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="images/kutuby.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../../static/images/kutuby.ico" type="image/x-icon">
 
-  <title>Admin Login</title>
+  <title>Sign In</title>
   <style>
     body {
       margin: 0;
@@ -19,7 +19,8 @@
 
     .left-section {
       flex: 1;
-   
+      background-size: cover;
+      background-position: center;
     }
 
     .right-section {
@@ -27,9 +28,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #391e02;
+     /* background-color: #f4f4f4;*/
       padding: 20px;
       flex-direction: column;
+      background-color: #391e02;
     }
 
     .form {
@@ -63,7 +65,7 @@
       padding: 8px 16px;
       font-family: 'Courier New', monospace;
       cursor: pointer;
-      margin-left: 40px;
+      margin-top: 10px;
     }
 
     .signin:hover {
@@ -71,9 +73,8 @@
       color: #fff;
     }
 
-    .left-section h1 {
-        margin-top: 300px;
-      text-align: center;
+    .right-section h1 {
+      margin-top: -50px; /* Adjusted margin-top */
       color: #fff;
       font-size: 3rem;
       font-family: 'Playfair Display', serif;
@@ -81,8 +82,13 @@
       text-decoration: none; /* Remove underline */
     }
 
-
-
+    .register-text {
+      font-family: 'Courier New', monospace;
+      color: #fff;
+      margin-top: 10px;
+      margin-left:30px;
+    }
+  
     .register-container {
       display: flex;
       align-items: center;
@@ -98,6 +104,7 @@
       margin-top: 10px;
     }
 
+ 
     .already-signed-in {
       font-family: 'Courier New', monospace;
       color: #fff;
@@ -139,39 +146,37 @@
         margin-right: 10px;
       }
     }
-    .line-separator {
-      border-left: 1px solid #ccc;
-      height: 100%;
-    }
+   
 
+   
   </style>
 </head>
 <body>
   <div class="login-page">
-    <div class="left-section" style="background-color: #000000;">
-        <h1 id="kutuby">KUTUBY</h1>
-    </div>
-    <div class="line-separator"></div>
-
+    <div class="left-section" style="background-image: url('../../static/images/bg30.jpg');"></div>
     <div class="right-section">
-        <div class="already-signed-in">Contact the administration for assistance.</div>
-
+      <h1 id="kutuby">KUTUBY</h1>
+      <div class="register-container">
+        <div class="already-signed-in">Already have an account? <a href="login"><span>Sign in</span></a></div>
+      </div>
       <div class="form">
         <form action="">
-
-          <input type="text" placeholder="Username or Email">
+          <input type="email" placeholder="Email">
+          <input type="text" placeholder="First Name">
+          <input type="text" placeholder="Last Name">
+          <input type="text" placeholder="Username">
           <input type="password" placeholder="Password">
         </form>
       </div>
       <div class="register-container">
-        <input class="signin" type="submit" value="Sign In">
+      <div class="register-text">Register for a new account</div> &nbsp;&nbsp;&nbsp;
+      <input class="signin" type="submit" value="Register">
       </div>
     </div>
   </div>
-
   <script>
     document.getElementById('kutuby').onclick = function() {
-      window.location.href = 'home.html';
+      window.location.href = '/';
     };
   </script>
 </body>

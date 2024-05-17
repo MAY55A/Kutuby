@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="images/kutuby.ico" type="image/x-icon">
+  <link rel="shortcut icon" th:href="@{/images/kutuby.ico}" type="image/x-icon">
 
   <title>Sign In</title>
   <style>
@@ -28,7 +28,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-     /* background-color: #f4f4f4;*/
       padding: 20px;
       flex-direction: column;
       background-color: #391e02;
@@ -88,7 +87,7 @@
       margin-top: 10px;
       margin-left:30px;
     }
-  
+
     .register-container {
       display: flex;
       align-items: center;
@@ -153,30 +152,28 @@
 </head>
 <body>
   <div class="login-page">
-    <div class="left-section" style="background-image: url('images/bg30.jpg');"></div>
+    <div class="left-section" th:style="'background-image: url('+@{/images/backgrounds/bg30.jpg}+');'"></div>
     <div class="right-section">
       <h1 id="kutuby">KUTUBY</h1>
       <div class="register-container">
-        <div class="already-signed-in">Already have an account? <a href="sign_in.html"><span>Sign in</span></a></div>
+        <div class="already-signed-in">Don't have an account? <a href="/signup"><span>Sign up</span></a></div>
       </div>
       <div class="form">
         <form action="">
-          <input type="email" placeholder="Email">
-          <input type="text" placeholder="First Name">
-          <input type="text" placeholder="Last Name">
-          <input type="text" placeholder="Username">
+          <input type="text" placeholder="Username or Email">
           <input type="password" placeholder="Password">
         </form>
       </div>
       <div class="register-container">
-      <div class="register-text">Register for a new account</div> &nbsp;&nbsp;&nbsp;
-      <input class="signin" type="submit" value="Register">
+      <div class="register-text">Sign in to your account</div> &nbsp;&nbsp;&nbsp;
+      <input class="signin" type="submit" value="Sign In">
       </div>
     </div>
   </div>
+
   <script>
     document.getElementById('kutuby').onclick = function() {
-      window.location.href = 'home.html';
+      window.location.href = '/';
     };
   </script>
 </body>

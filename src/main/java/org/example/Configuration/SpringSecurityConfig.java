@@ -35,16 +35,16 @@ public class SpringSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        //httpSecurity.formLogin();
         httpSecurity.formLogin().loginPage("/login").permitAll();
-
-        httpSecurity.authorizeHttpRequests().requestMatchers("/webjars/**", "style.css", "https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css").permitAll();
-
+        httpSecurity.formLogin().defaultSuccessUrl("/profile");
+        httpSecurity.authorizeHttpRequests().requestMatchers("/webjars/**", "/styles/**","/images/**","https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css", "https://cdnjs.cloudflare.com/**", "http://www.w3.org/**").permitAll();
+        //URLs accessible
+        httpSecurity.authorizeHttpRequests().requestMatchers("/", "/books/**", "/collections/**", "/about_us", "/signup", "/leaderboard/**", "admin/login").permitAll();
 
         //httpSecurity.authorizeHttpRequests().requestMatchers("/user/**").hasRole("USER");
         // httpSecurity.authorizeHttpRequests().requestMatchers("/admin/**").hasRole("ADMIN");
         httpSecurity.authorizeHttpRequests().anyRequest().authenticated();
-        httpSecurity.exceptionHandling().accessDeniedPage("/Pas autorisé");
+        httpSecurity.exceptionHandling().accessDeniedPage("/unauthorised");
         httpSecurity.userDetailsService(userDetailsServiceImpl);
         return httpSecurity.build();
     }

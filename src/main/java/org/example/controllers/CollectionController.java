@@ -11,13 +11,14 @@ import org.example.services.ICollectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/collections")
+@RequestMapping("/collections")
 public class CollectionController {
 
 
@@ -33,10 +34,11 @@ public class CollectionController {
     }
 
 
-    @GetMapping
-    public ResponseEntity<List<Collection>> getAllCollections() {
+    @GetMapping("/all")
+    public String getAllCollections(Model model) {
         List<Collection> collections = collectionService.findAll();
-        return new ResponseEntity<>(collections, HttpStatus.OK);
+        model.addAttribute("collections", collections);
+        return "Guest/collections";
     }
 
     @GetMapping("/{id}")

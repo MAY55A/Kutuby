@@ -2,17 +2,20 @@ package org.example.controllers;
 
 import org.example.entities.Book;
 import org.example.entities.Comment;
+import org.example.entities.Genre;
 import org.example.services.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
 
-@RestController
-@RequestMapping("/api/books")
+@Controller
+@RequestMapping("/books")
 public class BookController {
 
     private final IBookService bookService;
@@ -22,20 +25,30 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<Book>> getAllBooks() {
+    @GetMapping("/all")
+    public String getAllBooks(Model model) {
         List<Book> books = bookService.findAll();
-        return new ResponseEntity<>(books, HttpStatus.OK);
+        model.addAttribute("books", books);
+        return "Guest/books";
+    }
+    @GetMapping("/{genre}")
+    public String getBooksByGenre(@PathVariable("genre") String genre, Model model) {
+        Set<Book> books = bookService.findByGenre(genre);
+        if (books == null) {
+            return "Errors/not_found";
+        }
+        model.addAttribute("books", books);
+        return "Guest/books";
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable Integer id) {
+    @GetMapping("/book/{id}")
+    public String getBookById(@PathVariable("id") Integer id, Model model) {
         Book book = bookService.findByIdBook(id);
-        if (book != null) {
-            return new ResponseEntity<>(book, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (book == null) {
+            return "Errors/not_found";
         }
+        model.addAttribute("book", book);
+        return "Guest/book";
     }
 
     @PostMapping("/{bookId}/comments")

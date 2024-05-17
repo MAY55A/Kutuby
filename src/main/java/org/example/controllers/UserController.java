@@ -6,14 +6,18 @@ import org.example.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
-@RequestMapping("/api/users")
+@Controller
+@RequestMapping("/users")
 public class UserController {
 
     private final IUserService userService;
@@ -23,52 +27,55 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
+    @GetMapping("/")
+    public String getAllUsers(Model model) {
         List<User> users = userService.findAll();
-        return new ResponseEntity<>(users, HttpStatus.OK);
+        model.addAttribute("users", users);
+        return "Admin/users";
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Integer id) {
+    public User getUserById(@PathVariable Integer id, Model model) {
         User user = userService.findByIdUser(id);
-        if (user != null) {
-            return new ResponseEntity<>(user, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return user;
     }
 
     @PostMapping
-    public ResponseEntity<User> addUser(@RequestBody String name, String password1, String email, String password2) {
+    public  String addUser(@RequestBody String name, String password1, String email, String password2, Model model) {
         try {
             User addedUser = userService.addUser(name, password1, email, password2);
-            return new ResponseEntity<>(addedUser, HttpStatus.CREATED);
+            model.addAttribute("user", addedUser);
+            return "User/user_account";
         } catch (Exception e){
             if(e.getMessage().equals("exists"))
-                return new ResponseEntity<>(HttpStatus.FOUND);
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+                model.addAttribute("msg", "User already exits !");
+            else
+                model.addAttribute("msg", "The confirmation password does not match !");
+            return "Guest/sign_up";
         }
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Integer id, @RequestBody User user) {
+    public String updateUser(@PathVariable Integer id, @RequestBody User user, Model model) {
         User updatedUser = userService.updateUser(id, user);
+        model.addAttribute("user", updatedUser);
         if (updatedUser != null) {
-            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+            return "User/user_account";
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return "Errors/not_found";
         }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
+    public String deleteUser(@PathVariable Integer id) {
         userService.DeleteUser(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return "Guest/home";
     }
 
-    @GetMapping("/{id}/details")
-    public ResponseEntity<Map<String, Object>> getUserDetails(@PathVariable Integer id) {
+    /*@GetMapping("/")
+    public String getUserDetails(@RequestParam("id") Integer id, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String loggedInUsername = authentication.getName();
         User user = userService.findByIdUser(id);
         if (user != null) {
             Map<String, Object> userDetails = new HashMap<>();
@@ -77,10 +84,18 @@ public class UserController {
             userDetails.put("comments", user.getComments());
             userDetails.put("rankings", user.getRankings());
             userDetails.put("notifications", user.getNotifications());
-
-            return ResponseEntity.ok(userDetails);
+            model.addAttribute("user", userDetails);
+            if (loggedInUsername.equals(user.getUserName())) {
+                // User is viewing their own profile
+                model.addAttribute("myProfile", true);
+            } else {
+                // User is viewing another user's profile
+                model.addAttribute("myProfile", false);
+            }
+            return "User/user_account";
         } else {
-            return ResponseEntity.notFound().build();
+            return "Errors/not_found";
         }
     }
+    */
 }

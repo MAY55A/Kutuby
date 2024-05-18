@@ -36,6 +36,4 @@ public class CollectionItem implements Serializable {
     private Book book;
     @ManyToOne
     private User creator;
-    @ManyToOne
-    private Collection collection;
 }

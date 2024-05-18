@@ -15,13 +15,13 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private AccountService accountService;
+    private UserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = accountService.loadUserByUsername(username);
+        User user = userService.findByUserName(username);
 
-        if (user == null) throw new UsernameNotFoundException(String.format("USER %s n'existe pas", username));
+        if (user == null) throw new UsernameNotFoundException(String.format("USER %s does not exist", username));
 
         String[] roles = user.getRoles().stream().map(u -> u.getRole()).toArray(String[]::new);
         UserDetails userDetails = org.springframework.security.core.userdetails.User

@@ -23,7 +23,18 @@ public enum Genre {
     YOUNG_ADULT("Young Adult (YA)", "Works that are targeted at a teenage audience and often explore themes relevant to young adults, such as identity, friendship, and coming-of-age."),
     CHILDRENS("Children's literature", "Works that are written for and targeted at children, typically up to the age of 12, and often include imaginative stories, colorful illustrations, and moral lessons."),
     GRAPHIC_NOVEL("Graphic novel/Comic", "Works that use a combination of illustrations and text to tell a story, often in a serialized format."),
-    COOKBOOK("Cookbook", "Works that provide recipes, cooking tips, and culinary advice for preparing meals and dishes.");
+    COOKBOOK("Cookbook", "Works that provide recipes, cooking tips, and culinary advice for preparing meals and dishes."),
+    LITERARY_FICTION("Literary fiction", "Works that focus on character development, intricate prose, and exploration of deeper themes and emotions. They often prioritize artistic expression and philosophical exploration over conventional storytelling or genre conventions."),
+    SOCIAL_ISSUE("Social issue","Works that explore and addresse societal problems, inequalities, or issues affecting communities or individuals."),
+    POLITICAL("Political","Works that focus on politics, government structures, power dynamics, and political ideologies."),
+    DYSTOPIAN("Dystopian","Works that portray a society characterized by oppressive government control, environmental degradation, or other negative societal trends."),
+    CLASSIC("Classic","Works that are a representative of high quality, enduring literature that has stood the test of time and is widely recognized as culturally significant."),
+    WAR("War","Works that deal with themes related to armed conflict, its causes, consequences, and impact on individuals or societies."),
+    SCIENCE("Science","Works that explore scientific concepts, theories, discoveries, or advancements in various fields of study."),
+    COMEDY("Comedy","Works that are intended to amuse and entertain, often through humor, satire, or absurd situations."),
+    PHYSICS("Physics","Works that focus on the principles, laws, and phenomena of physics, including topics such as matter, energy, motion, and forces."),
+    BEAT_GENERATION("Beat generation","Works that reflect the cultural and literary movement of the Beat Generation, characterized by a rejection of societal norms, experimentation with language and form, and an emphasis on spontaneity and individualism."),
+    PHILOSOPHY("Philosophy","Works that delve into fundamental questions about existence, knowledge, values, reason, mind, and language, seeking to understand the nature of reality and the human experience.");
 
     private final String name;
     private final String description;

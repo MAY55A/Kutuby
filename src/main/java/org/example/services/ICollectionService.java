@@ -21,16 +21,11 @@ public interface ICollectionService {
 
 
     // collection manipulation
-    public void addItemToCollection(CollectionItem ci);
 
-    public void removeItemFromCollection(CollectionItem ci);
+    void addItem(CollectionItem item, Integer coll);
+
+    void removeItem(CollectionItem item, Integer coll);
 
     public void addComment(Comment c, Integer idCol);
-
-    CollectionItem findCollectionItemById(Integer collectionId, Integer itemId); // Add this method
-
-
-
-
 
 }

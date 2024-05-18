@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class SecurityController {
 
-    @GetMapping("/pasautorise")
-    public String pasautorisé() {
-        return "pasautorise"; //  pasautorise.html contient un message derrur
+    @GetMapping("/unauthorised")
+    public String unauthorised() {
+        return "Errors/unauthorised";
     }
     @GetMapping("/login")
     public String login() {
-        return "sign_in"; // redirection a sign in page
+        return "Guest/sign_in";
     }
 
 }

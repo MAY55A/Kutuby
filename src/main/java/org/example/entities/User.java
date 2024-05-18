@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -34,16 +35,21 @@ public class User implements Serializable {
     private Date createdAt;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
-    private Set<Collection> collections;
+    private Set<Collection> collections = new HashSet<>();
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private Set<Comment> comments;
+    private Set<Comment> comments = new HashSet<>();
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private Set<Ranking> rankings;
+    private Set<Ranking> rankings = new HashSet<>();
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Notification> notifications;
+    private Set<Notification> notifications = new HashSet<>();
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Collection> favourites;
+    private Set<Collection> favourites = new HashSet<>();
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<AppRole> roles;
+    private Set<AppRole> roles = new HashSet<>();
 
+    public User(String username, String email, String hash) {
+        this.userName = username;
+        this.email = email;
+        this.passwordHash = hash;
+    }
 }

@@ -11,8 +11,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @SpringBootApplication
 public class KutubyApplication {
     public static void main(String[] args) {
+
         SpringApplication.run(KutubyApplication.class, args);
     }
+
 
     @Bean
     CommandLineRunner commandLineRunnerUserDetails(AccountService accountService){
@@ -22,10 +24,10 @@ public class KutubyApplication {
             accountService.addNewUser("user1", "1234", "user1@gmail.com", "1234");
             accountService.addNewUser("user2", "1234", "user2@gmail.com", "1234");
             accountService.addNewUser("admin", "1234", "admin@gmail.com", "1234");
-            accountService.addRoleToUSer("user1","USER");
-            accountService.addRoleToUSer("user2","USER");
-            accountService.addRoleToUSer("admin","USER");
-            accountService.addRoleToUSer("admin","Admin");
+            accountService.addRoleToUser("user1","USER");
+            accountService.addRoleToUser("user2","USER");
+            accountService.addRoleToUser("admin","USER");
+            accountService.addRoleToUser("admin","Admin");
         };
     }
     @Bean

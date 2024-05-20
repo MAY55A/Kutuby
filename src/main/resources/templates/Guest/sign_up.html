@@ -153,24 +153,24 @@
 </head>
 <body>
   <div class="login-page">
-    <div class="left-section" style="background-image: url('../../static/images/bg30.jpg');"></div>
+    <div class="left-section" th:style="'background-image: url('+@{/images/backgrounds/bg30.jpg}+');'"></div>
     <div class="right-section">
       <h1 id="kutuby">KUTUBY</h1>
       <div class="register-container">
         <div class="already-signed-in">Already have an account? <a href="login"><span>Sign in</span></a></div>
       </div>
+      <div th:if="${msg}" th:text="${msg}"></div>
       <div class="form">
-        <form action="">
-          <input type="email" placeholder="Email">
-          <input type="text" placeholder="First Name">
-          <input type="text" placeholder="Last Name">
-          <input type="text" placeholder="Username">
-          <input type="password" placeholder="Password">
+        <form th:action="@{/signup}" method="post">
+          <input type="email" placeholder="Email" required name="email">
+          <input type="text" placeholder="Username" required name="name">
+          <input type="password" placeholder="Password" required name="password">
+          <input type="password" placeholder="Confirm password" required name="confirmPassword">
+          <input class="signin" type="submit" value="Register">
         </form>
       </div>
       <div class="register-container">
       <div class="register-text">Register for a new account</div> &nbsp;&nbsp;&nbsp;
-      <input class="signin" type="submit" value="Register">
       </div>
     </div>
   </div>

@@ -158,15 +158,21 @@
       <div class="register-container">
         <div class="already-signed-in">Don't have an account? <a href="/signup"><span>Sign up</span></a></div>
       </div>
+      <div th:if="${param.error}">
+        Invalid username and password.
+      </div>
+      <div th:if="${param.logout}">
+        You have been logged out.
+      </div>
       <div class="form">
-        <form action="">
-          <input type="text" placeholder="Username or Email">
-          <input type="password" placeholder="Password">
+        <form th:action="@{/login}" method="post">
+          <input type="text" placeholder="Username or Email" name="username" required>
+          <input type="password" placeholder="Password" name="password" required>
+          <button class="signin" type="submit" value="Sign In">Sign In</button>
         </form>
       </div>
       <div class="register-container">
       <div class="register-text">Sign in to your account</div> &nbsp;&nbsp;&nbsp;
-      <input class="signin" type="submit" value="Sign In">
       </div>
     </div>
   </div>

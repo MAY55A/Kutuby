@@ -6,12 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="3fce9203-837a-4e50-9c4a-2fae6e09c564" name="Changes" comment="creation de quelques utilisateurs et des livres">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Configuration/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Configuration/SpringSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/KutubyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/KutubyApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/IBookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/IBookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/books.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/collections.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/users.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/SignupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/SignupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/AdminNav.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/AdminNav.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/books.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/collections.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/collections.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/users.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Guest/about_us.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/about_us.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Guest/sign_in.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/sign_in.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Guest/sign_up.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/sign_up.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/User/user_account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/User/user_account.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +65,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.KutubyApplication.executor": "Run",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Merging master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/sarra/OneDrive/Desktop/Kutuby/src/main/resources/templates/Admin",
     "node.js.detected.package.eslint": "true",

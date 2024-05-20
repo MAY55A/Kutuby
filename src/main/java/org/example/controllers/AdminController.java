@@ -18,10 +18,13 @@ import java.util.List;
 public class AdminController {
     @Autowired
     private BookService bookService;
+
     @Autowired
     private CollectionService collectionService;
-   @Autowired
-   private UserService userService;
+
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/")
     public String dashboard(Model model) {
         return "Admin/dashboard";
@@ -33,7 +36,7 @@ public class AdminController {
                              Model model) {
         // Login process ...
         // If successful, then redirect to the dashboard
-        return "redirect:/admin/dashboard";
+        return "redirect:/Admin/dashboard";
         // Else handle the case accordingly
     }
 
@@ -41,6 +44,7 @@ public class AdminController {
     public String viewUsersPage() {
         return "Admin/users/users";
     }
+
     @GetMapping("/users/add")
     public String showAddUserForm(Model model) {
         model.addAttribute("user", new User());
@@ -54,9 +58,9 @@ public class AdminController {
                           @RequestParam("confirmPassword") String confirmPassword) {
         try {
             userService.addUser(username, password, email, confirmPassword);
-            return "redirect:/admin/users";
+            return "redirect:/admin/users/users";
         } catch (RuntimeException e) {
-            //cas derreur
+            // Handle error case
             return "redirect:/error/not_found";
         }
     }
@@ -79,10 +83,21 @@ public class AdminController {
     }
 
     @PostMapping("/users/delete/{id}")
-    public String deleteUser(@PathVariable("id")Integer id) {
+    public String deleteUser(@PathVariable("id") Integer id) {
         userService.DeleteUser(id);
         return "redirect:/admin/users/users";
     }
+
+    @GetMapping("/login")
+    public String viewLoginPage(Model model) {
+        return "Admin/login";
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public String viewUserPage() {
+        return "redirect:/admin/users/users";
+    }
+
     @GetMapping("/books")
     public String getAllBooks(Model model) {
         List<Book> books = bookService.findAll();
@@ -134,7 +149,8 @@ public class AdminController {
         model.addAttribute("collections", collections);
         return "Admin/collections/collections";
     }
-// please check paths !!!!
+
+    // please check paths !!!!
     @GetMapping("/collections/add")
     public String showAddCollectionForm(Model model) {
         model.addAttribute("collection", new Collection());
@@ -172,4 +188,5 @@ public class AdminController {
         }
         return "redirect:/admin/collections/collections";
     }
+
 }

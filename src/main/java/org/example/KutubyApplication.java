@@ -19,6 +19,7 @@ import java.util.Set;
 @SpringBootApplication
 public class KutubyApplication {
     public static void main(String[] args) {
+
         SpringApplication.run(KutubyApplication.class, args);
     }
 
@@ -34,6 +35,7 @@ public class KutubyApplication {
             userService.addRoleToUser("user2","USER");
             userService.addRoleToUser("admin","USER");
             userService.addRoleToUser("admin","Admin");
+
         };
     }
     @Bean

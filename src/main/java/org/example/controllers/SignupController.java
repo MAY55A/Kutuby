@@ -28,7 +28,7 @@ public class SignupController {
         } catch (Exception e) {
             if ("exists".equals(e.getMessage())) {
                 model.addAttribute("msg", "User already exists!");
-            } else if ("password_mismatch".equals(e.getMessage())) {
+            } else if ("password mismatch".equals(e.getMessage())) {
                 model.addAttribute("msg", "The confirmation password does not match!");
             } else {
                 model.addAttribute("msg", "An error occurred: " + e.getMessage());

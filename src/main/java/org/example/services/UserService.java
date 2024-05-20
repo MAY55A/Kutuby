@@ -46,10 +46,10 @@ public class UserService implements IUserService {
         return user.getRoles().contains(new AppRole("ADMIN"));
     }
     @Override
-    public User addUser(String username, String password, String email, String confirmPassword) throws RuntimeException{
+    public User addUser(String username, String email, String password, String confirmPassword) throws RuntimeException{
         User user = findByUserName(username);
         if (user != null) throw new RuntimeException("exists");
-        if (!password.equals(confirmPassword)) throw new RuntimeException("mismatch");
+        if (!password.equals(confirmPassword)) throw new RuntimeException("password mismatch");
         user = new User(username, email, passwordEncoder.encode(password));
         user.getCollections().add(new Collection("Completed", CollectionType.Completed));
         user.getCollections().add(new Collection("Reading", CollectionType.Reading));
@@ -58,6 +58,7 @@ public class UserService implements IUserService {
         user.getRankings().add(new Ranking(RankingPeriod.Month));
         user.getRankings().add(new Ranking(RankingPeriod.Year));
         User saveUser = userRepository.save(user);
+        addRoleToUser(username,"USER");
         return saveUser;
     }
 

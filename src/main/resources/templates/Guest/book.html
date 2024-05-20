@@ -20,304 +20,332 @@
     <title>Book Details</title>
     <style>
 
-.article-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+        .article-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-.article-top-section {
-  display: flex;
-}
+        .article-top-section {
+            display: flex;
+        }
 
-.article-title-section {
-  flex: 1;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Anton', sans-serif;
-  font-size: 2em;
-}
+        .article-title-section {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Anton', sans-serif;
+            font-size: 2em;
+        }
 
-.article-image-section {
-  flex: 1;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 500px; /* Adjust the height as needed */
-  margin-top: 160px;
-}
+        .article-image-section {
+            flex: 1;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 500px; /* Adjust the height as needed */
+            margin-top: 160px;
+        }
 
 
-.article-bottom-section {
-  font-family: 'Open Sans', sans-serif;
-  padding: 20px;
-}
+        .article-bottom-section {
+            font-family: 'Open Sans', sans-serif;
+            padding: 20px;
+        }
 
-.article-content::first-letter {
-  font-size: 3em;
-  font-weight: bold;
-  font-style: italic;
-  font-family: 'Rouge Script', cursive;
-  margin-left: 10px;
-}
+        .article-content::first-letter {
+            font-size: 3em;
+            font-weight: bold;
+            font-style: italic;
+            font-family: 'Rouge Script', cursive;
+            margin-left: 10px;
+        }
 
-.article-content {
+        .article-content {
 
-  margin-bottom: 20px;
-  column-gap: 20px;
-  overflow: hidden;
-}
+            overflow: hidden;
+        }
 
-.article-author {
-    
-  font-size: 1.2em;
-  display: block;
-  font-style: italic;
-  text-align: center;
-  font-family: 'Cormorant', serif;
-  column-span: all;
-}
+        .article-author {
 
-.article-interaction-section {
-  display: flex;
-  align-items: center;
-}
-.heart-icon{
-    font-size: 2.4em;
-}
-.heart-icon,
-.comment-icon,.ellipsis-icon {
-  cursor: pointer;
-}
+            font-size: 1.2em;
+            display: block;
+            font-style: italic;
+            text-align: center;
+            font-family: 'Cormorant', serif;
+            column-span: all;
+        }
 
-.comment-icon {
-    font-size: 1.53em;
+        .article-interaction-section {
+            display: flex;
+            align-items: center;
+        }
+        .heart-icon{
+            font-size: 2.4em;
+        }
+        .heart-icon,
+        .comment-icon,.ellipsis-icon {
+            cursor: pointer;
+        }
 
-margin-bottom: -8px;}
+        .comment-icon {
+            font-size: 1.53em;
 
-.comment-container {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 0px;
-  padding: 15px;
-  margin-top: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+            margin-bottom: -8px;}
 
-.comment {
-  margin-bottom: 15px;
-  position: relative;
-}
+        .comment-container {
+            background-color: #ccc; /* Gray background */
+            border: 1px solid #ddd;
+            border-radius: 0px;
+            padding: 15px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-.comment::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #e0e0e0;
-}
 
-.comment-content {
-  display: flex;
-  align-items: center;
-}
 
-.comment-username {
-          font-family: 'Courier New', monospace;
+        .comment {
+            margin-bottom: 15px;
+            position: relative;
+        }
 
-  font-weight: bold;
-  margin-right: 10px;
-  color: #333;
-}
+        .comment::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #e0e0e0;
+        }
 
-.comment-text {
-  color: #555;
-}
+        .comment-content {
+            display: flex;
+            align-items: center;
+        }
 
-.comment-input {
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-}
+        .comment-username {
+            font-family: 'Courier New', monospace;
 
-.comment-input input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
+            font-weight: bold;
+            margin-right: 10px;
+            color: #333;
+        }
 
-.comment-input button {
-  width: 30px;
-  height: 30px;
-  margin-left: 10px;
-  background-color: #f0ebeb;
-  color: #888;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 12px;
-}
+        .comment-text {
+            color: #555;
+        }
 
-.comment-input button:hover {
-  background-color: #dcd6d6;
-}
+        .comment-input {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
 
-.ellipsis-icon {
-    margin-bottom: -8px;
-  font-size: 2.4em;
-}
+        .comment-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
 
-.ellipsis-icon {
-  cursor: pointer;
-  transition: color 0.3s;
-}
+        .comment-input button {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+            background-color: #f0ebeb;
+            color: #888;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
 
-.heart-icon:hover,
-.comment-icon:hover,.ellipsis-icon:hover {
-  color: rgb(203, 53, 121);
-}
-    .article-image-section {
-    flex: 1;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 500px; /* Adjust the height as needed */
-    margin-top: 160px;
-    position: relative; /* Add this */
-}
+        .comment-input button:hover {
+            background-color: #dcd6d6;
+        }
 
-.rating-stars {
-    margin-bottom: -30px;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
+        .ellipsis-icon {
+            margin-bottom: -8px;
+            font-size: 2.4em;
+        }
 
-.star {
-    color: gold;
-    font-size: 24px;
-    margin-right: 5px; /* Adjust spacing between stars */
-}
+        .ellipsis-icon {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
 
-   
+        .heart-icon:hover,
+        .comment-icon:hover,.ellipsis-icon:hover {
+            color: rgb(203, 53, 121);
+        }
+        .article-image-section {
+            flex: 1;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 500px; /* Adjust the height as needed */
+            margin-top: 160px;
+            position: relative; /* Add this */
+        }
+
+        .rating-stars {
+            margin-bottom: -30px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .star {
+            color: gold;
+            font-size: 24px;
+            margin-right: 5px; /* Adjust spacing between stars */
+        }
+
+        .article-details {
+            margin-top:-30px;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .article-bottom-section p {
+            font-family: 'Courier New', monospace;
+        }
+        .article-details p {
+            display: inline-block; /* Display each detail next to each other */
+            margin-right: 20px; /* Add some space between details */
+        }
+
     </style>
 </head>
 <body>
-    <header class="big" id="header">
-        <h1 id="kutuby">KUTUBY</h1>
-        <nav>
-            <a href="/profile" class="far fa-user"></a>
-            <a href="/books"><svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: -7px;"  height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M248-300q53.57 0 104.28 12.5Q403-275 452-250v-427q-45-30-97.62-46.5Q301.76-740 248-740q-38 0-74.5 9.5T100-707v434q31-14 70.5-20.5T248-300Zm264 50q50-25 98-37.5T712-300q38 0 78.5 6t69.5 16v-429q-34-17-71.82-25-37.82-8-76.18-8-54 0-104.5 16.5T512-677v427Zm-30 90q-51-38-111-58.5T248-239q-36.54 0-71.77 9T106-208q-23.1 11-44.55-3Q40-225 40-251v-463q0-15 7-27.5T68-761q42-20 87.39-29.5 45.4-9.5 92.61-9.5 63 0 122.5 17T482-731q51-35 109.5-52T712-800q46.87 0 91.93 9.5Q849-781 891-761q14 7 21.5 19.5T920-714v463q0 27.89-22.5 42.45Q875-194 853-208q-34-14-69.23-22.5Q748.54-239 712-239q-63 0-121 21t-109 58ZM276-489Z"/></svg></a>
-            <a href="/collections">Collections</a>
-            <a href="/about_us">About Us</a>
-        </nav>
-        <div class="line-separatoor"></div>
-    
-      </header>
-    <div class="article-container">
-        <div class="article-top-section">
-            <div class="article-title-section">
-                <h1 class="article-title" th:text="${book.getTitle()}"></h1>
-            </div>
-            <!-- add book genres and other details(dates, ...)
-            <ul th:each="genre : ${book.getGenres()}">
-                <li th:text="${genre}"></li>
-            </ul>
-            -->
-            <div class="article-image-section" th:style="'background-image: url('+@{/images/books/{cover}(cover=${book.getCoverImage()})}+');'">
-                <div class="rating-stars">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9734;</span> <!-- Empty star -->
-                </div>
-            </div>
-        </div>
-        <span class="article-author" th:text="${book.getAuthor()}"/></span> <!-- Insert the author name here -->
+<header class="big" id="header">
+    <h1 id="kutuby">KUTUBY</h1>
+    <nav>
+        <a href="/profile" class="far fa-user"></a>
+        <a href="/books"><svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: -7px;"  height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M248-300q53.57 0 104.28 12.5Q403-275 452-250v-427q-45-30-97.62-46.5Q301.76-740 248-740q-38 0-74.5 9.5T100-707v434q31-14 70.5-20.5T248-300Zm264 50q50-25 98-37.5T712-300q38 0 78.5 6t69.5 16v-429q-34-17-71.82-25-37.82-8-76.18-8-54 0-104.5 16.5T512-677v427Zm-30 90q-51-38-111-58.5T248-239q-36.54 0-71.77 9T106-208q-23.1 11-44.55-3Q40-225 40-251v-463q0-15 7-27.5T68-761q42-20 87.39-29.5 45.4-9.5 92.61-9.5 63 0 122.5 17T482-731q51-35 109.5-52T712-800q46.87 0 91.93 9.5Q849-781 891-761q14 7 21.5 19.5T920-714v463q0 27.89-22.5 42.45Q875-194 853-208q-34-14-69.23-22.5Q748.54-239 712-239q-63 0-121 21t-109 58ZM276-489Z"/></svg></a>
+        <a href="/collections">Collections</a>
+        <a href="/about_us">About Us</a>
+    </nav>
+    <div class="line-separatoor"></div>
 
-        <div class="article-bottom-section">
-            <p class="article-content" th:text="${book.getDescription()}"></p>
-                </div>
-        <div class="article-interaction-section">
-            <span class="comment-icon" title="Comment on this book">
-                <i class="far fa-comment"></i> 
-            </span>&nbsp;&nbsp;&nbsp;
-            <span class="ellipsis-icon" title="Add to collection">
-               +
-            </span>
+</header>
+<div class="article-container">
+    <div class="article-top-section">
+        <div class="article-title-section">
+            <h1 class="article-title" th:text="${book.getTitle()}"></h1>
         </div>
-    
-        <hr class="article-separator">
-        <span class="comments-info">Comments: 20</span>
-    
-        <div class="comment-container">
-            <div class="comments">
-                <div class="comment">
-                    <div class="comment-content">
-                        <span class="comment-username">@Username</span>
-                        <p class="comment-text">Eye-opening read on wealth and mindset! 👍</p>
-                    </div>
-                </div>
-            </div>
-            <div class="comment-input">
-                <input type="text" placeholder="Write a comment...">
-                <button class="send-button">&#10148;</button>
+        <div class="article-image-section" th:style="'background-image: url('+@{/images/books/{cover}(cover=${book.getCoverImage()})}+');'">
+            <div class="rating-stars">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span> <!-- Empty star -->
             </div>
         </div>
     </div>
+
+    <span class="article-author" style="margin-top:-200px;" th:text="${book.getAuthor()}"/></span>
+    <br><br><br><br> <br><br><br><br> <br>
+    <div class="article-content-section">
+        <p class="article-content" th:text="${book.getDescription()}"></p>
+    </div>
+
+    <div class="article-details">
+        <p><strong>Language:</strong> <span th:text="${book.getLanguage()}"></span></p>
+        <p><strong>ISBN:</strong> <span th:text="${book.getIsbn()}"></span></p>
+        <p><strong>Published At:</strong> <span th:text="${#dates.format(book.getPublishedAt(), 'dd-MM-yyyy')}"></span></p>
+        <p><strong>Weight:</strong> <span th:text="${book.getWeight()}"></span> grams</p>
+        <p><strong>Genres:</strong>
+            <span th:each="genre : ${book.getGenres()}" th:text="${genre} "></span>
+        </p>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="article-interaction-section">
+            <span class="comment-icon" title="Comment on this book">
+                <i class="far fa-comment"></i>
+            </span>&nbsp;&nbsp;&nbsp;
+        <span class="ellipsis-icon" title="Add to collection">
+               +
+            </span>
+    </div>
+
+    <hr class="article-separator">
+    <span class="comments-info">Comments: 20</span>
+
+    <div class="comment-container">
+        <div class="comments">
+            <div class="comment">
+                <div class="comment-content">
+                    <span class="comment-username">@Username</span>
+                    <p class="comment-text">Eye-opening read on wealth and mindset! 👍</p>
+                </div>
+            </div>
+        </div>
+        <div class="comment-input">
+            <input type="text" placeholder="Write a comment...">
+            <button class="send-button">&#10148;</button>
+        </div>
+    </div>
+</div>
 <br>
-    <div class="line-separator"></div>
+<div class="line-separator"></div>
 <footer>
-  <div class="footer-content">
-      <div class="footer-section velouria-title">
-          <h3>KUTUBY</h3>
-          <br>
-          <p>Discover the latest book reviews, recommendations, author interviews, and more on Kutuby.com.</p>
-          <p class="more-from">MORE FROM KUTUBY</p>
-      </div>
-      <div class="footer-section links">
-          <div class="links-row">
-              <ul>
-                  <li>NEWSLETTER</li>
-                  <li>CUSTOMER CARE</li>
-                  <li>VERIFY SUBSCRIPTION</li>
-                  <li>CONTACT US</li>
-                  <li>ABOUT KUTUBY</li>
-                  <li>CAREERS</li>
-                  <li>PROJECTS</li>
-                  <li>KUTUBY ARCHIVE</li>
-              </ul>
-          </div>
-          <div class="links-row">
-              <ul>
-                  <!-- Add more links here if needed -->
-              </ul>
-          </div>
-      </div>
-  </div>
-  <br>
-  <div class="footer-bottom">
-      <div class="footer-links">
-          <a href="#">ACCESSIBILITY HELP</a> |
-          <a href="#">MASTHEAD</a> |
-          <a href="#">VISUAL STORIES</a> |
-          <a href="#">COOKIES SETTINGS</a>
-      </div>
-      <br>
-      <p class="footer-disclaimer">© 2024 Kutuby. All rights reserved. Use of this site constitutes acceptance of our User Agreement and Privacy Policy and Cookie Statement and Your California Privacy Rights. Kutuby may earn a portion of sales from products that are purchased through our site as part of our Affiliate Partnerships with retailers. The material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except with the prior written permission of Kutuby. Ad Choices</p>
-  </div>
+    <div class="footer-content">
+        <div class="footer-section velouria-title">
+            <h3>KUTUBY</h3>
+            <br>
+            <p>Discover the latest book reviews, recommendations, author interviews, and more on Kutuby.com.</p>
+            <p class="more-from">MORE FROM KUTUBY</p>
+        </div>
+        <div class="footer-section links">
+            <div class="links-row">
+                <ul>
+                    <li>NEWSLETTER</li>
+                    <li>CUSTOMER CARE</li>
+                    <li>VERIFY SUBSCRIPTION</li>
+                    <li>CONTACT US</li>
+                    <li>ABOUT KUTUBY</li>
+                    <li>CAREERS</li>
+                    <li>PROJECTS</li>
+                    <li>KUTUBY ARCHIVE</li>
+                </ul>
+            </div>
+            <div class="links-row">
+                <ul>
+                    <!-- Add more links here if needed -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="footer-bottom">
+        <div class="footer-links">
+            <a href="#">ACCESSIBILITY HELP</a> |
+            <a href="#">MASTHEAD</a> |
+            <a href="#">VISUAL STORIES</a> |
+            <a href="#">COOKIES SETTINGS</a>
+        </div>
+        <br>
+        <p class="footer-disclaimer">© 2024 Kutuby. All rights reserved. Use of this site constitutes acceptance of our User Agreement and Privacy Policy and Cookie Statement and Your California Privacy Rights. Kutuby may earn a portion of sales from products that are purchased through our site as part of our Affiliate Partnerships with retailers. The material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except with the prior written permission of Kutuby. Ad Choices</p>
+    </div>
 </footer>
-    <script>
-        document.getElementById('kutuby').onclick = function() {
-            window.location.href = '/';
-        };
-    </script>
+<script>
+    document.getElementById('kutuby').onclick = function() {
+        window.location.href = '/';
+    };
+</script>
 </body>
 </html>

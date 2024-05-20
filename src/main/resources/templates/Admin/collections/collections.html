@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        document.getElementById("admin-dashboard").innerHTML = this.responseText;
+                    } else {
+                        console.error("Failed to load AdminNav.html: " + this.statusText);
+                    }
+                }
+            };
+            xhttp.open("GET", "../AdminNav.html", true);
+            xhttp.send();
+        });
+    </script>
+    <meta charset="UTF-8">
+    <title>Collections</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Collections</h1>
+    <div id="admin-dashboard"></div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="collection : ${collections}">
+            <td th:text="${collection.name}"></td>
+            <td th:text="${collection.type}"></td>
+            <td th:text="${#dates.format(collection.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+            <td>
+                <!-- Edit button -->
+                <a th:href="@{/collections/edit/{id}(id=${collection.id})}" class="btn btn-primary btn-sm">Edit</a>
+                <!-- Delete button -->
+                <form th:action="@{/collections/delete/{id}(id=${collection.id})}" method="post" style="display: inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/collections/add}" class="btn btn-success">Add Collection</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -21,10 +21,17 @@ public class AdminController {
     private BookService bookService;
     @Autowired
     private CollectionService collectionService;
+
     @GetMapping("/")
     public String dashboard(Model model) {
         return "Admin/dashboard";
     }
+    @GetMapping("/login")
+    public String viewLoginPage(Model model) {
+        return "Admin/login";
+    }
+
+
     @PostMapping("/login")
     public String signupUser(@RequestParam("username") String username,
                              @RequestParam("password") String password, Model model) {
@@ -33,23 +40,26 @@ public class AdminController {
         return "redirect:admin/dashboard";
         //else...
     }
+
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String viewUsersPage()
-    {
+    public String viewUsersPage() {
         return "redirect:/users";
     }
+
     @GetMapping("/books")
     public String getAllBooks(Model model) {
         List<Book> books = bookService.findAll();
         model.addAttribute("books", books);
         return "Admin/books";
     }
+
     @GetMapping("/collections")
     public String getAllCollections(Model model) {
         List<Collection> collections = collectionService.findAll();
         model.addAttribute("collections", collections);
         return "Admin/collections";
     }
+}
 
 
 

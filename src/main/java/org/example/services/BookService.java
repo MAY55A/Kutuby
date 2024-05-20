@@ -1,9 +1,6 @@
 package org.example.services;
 
-import org.example.entities.Book;
-import org.example.entities.Collection;
-import org.example.entities.Comment;
-import org.example.entities.User;
+import org.example.entities.*;
 import org.example.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +8,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
+
+import static java.util.Objects.nonNull;
 
 @Service
 public class BookService implements IBookService {
@@ -87,6 +87,11 @@ public class BookService implements IBookService {
             // sinon retourner nulle
             return null;
         }
+    }
+    public float getRating(Integer id) {
+        Book book = bookRepository.findById(id).get();
+        Stream<Short> ratings = book.getCollectionItems().stream().filter(item -> nonNull(item.getRating())).map(item -> item.getRating());
+        return (float) ratings.reduce((short) 0, (rating1, rating2) -> (short) (rating1 + rating2)) / ratings.count();
     }
     public void addComment(Comment c, Integer bo) {
         Book book = bookRepository.findById(bo).get();

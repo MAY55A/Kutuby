@@ -26,15 +26,15 @@ public class KutubyApplication {
     //@Bean
     CommandLineRunner commandLineRunnerUserDetails(UserService userService, RoleService roleService){
         return args-> {
-            roleService.addNewRole("USER");
-            roleService.addNewRole("ADMIN");
-            userService.addUser("user1", "1234", "user1@gmail.com", "1234");
-            userService.addUser("user2", "1234", "user2@gmail.com", "1234");
-            userService.addUser("admin", "1234", "admin@gmail.com", "1234");
+            //roleService.addNewRole("USER");
+            //roleService.addNewRole("ADMIN");
+            //userService.addUser("user1", "1234", "user1@gmail.com", "1234");
+            //userService.addUser("user2", "1234", "user2@gmail.com", "1234");
+            //userService.addUser("admin", "1234", "admin@gmail.com", "1234");
             userService.addRoleToUser("user1","USER");
             userService.addRoleToUser("user2","USER");
-            userService.addRoleToUser("admin","USER");
-            userService.addRoleToUser("admin","Admin");
+            //userService.addRoleToUser("admin","USER");
+            userService.addRoleToUser("admin","ADMIN");
 
         };
     }

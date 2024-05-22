@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.example.repositories.UserRepository;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 @Service
 @AllArgsConstructor
@@ -57,16 +56,16 @@ public class UserService implements IUserService {
         user.getRankings().add(new Ranking(RankingPeriod.Week));
         user.getRankings().add(new Ranking(RankingPeriod.Month));
         user.getRankings().add(new Ranking(RankingPeriod.Year));
-        User saveUser = userRepository.save(user);
-        addRoleToUser(username,"USER");
-        return saveUser;
+        userRepository.save(user);
+        return addRoleToUser(username,"USER");
     }
 
     @Override
-    public void addRoleToUser(String username, String role) {
+    public User addRoleToUser(String username, String role) {
         User user = findByUserName(username);
         AppRole appRole = appRoleRepository.findById(role).get();
         user.getRoles().add(appRole);
+        return userRepository.save(user);
     }
 
     @Override
@@ -74,6 +73,7 @@ public class UserService implements IUserService {
         User user = userRepository.findByUserName(username);
         AppRole appRole = appRoleRepository.findById(role).get();
         user.getRoles().remove(appRole);
+        userRepository.save(user);
     }
 
     @Override

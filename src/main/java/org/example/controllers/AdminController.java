@@ -1,11 +1,16 @@
 package org.example.controllers;
 
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.example.entities.Book;
 import org.example.entities.Collection;
 import org.example.services.BookService;
 import org.example.services.CollectionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,23 +27,13 @@ public class AdminController {
     @Autowired
     private CollectionService collectionService;
 
-    @GetMapping("/")
-    public String dashboard(Model model) {
+    @GetMapping("/dashboard")
+    public String dashboard() {
         return "Admin/dashboard";
     }
     @GetMapping("/login")
-    public String viewLoginPage(Model model) {
+    public String viewLoginPage() {
         return "Admin/login";
-    }
-
-
-    @PostMapping("/login")
-    public String signupUser(@RequestParam("username") String username,
-                             @RequestParam("password") String password, Model model) {
-        //login process ...
-        //if successful then
-        return "redirect:admin/dashboard";
-        //else...
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
@@ -58,6 +53,14 @@ public class AdminController {
         List<Collection> collections = collectionService.findAll();
         model.addAttribute("collections", collections);
         return "Admin/collections";
+    }
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null) {
+            new SecurityContextLogoutHandler().logout(request, response, authentication);
+        }
+        return "redirect:/admin/login";
     }
 }
 

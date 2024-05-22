@@ -6,10 +6,15 @@ import org.example.entities.AppRole;
 import org.example.repositories.AppRoleRepository;
 import org.example.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -23,11 +28,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         if (user == null) throw new UsernameNotFoundException(String.format("USER %s does not exist", username));
 
-        String[] roles = user.getRoles().stream().map(u -> u.getRole()).toArray(String[]::new);
-        UserDetails userDetails = org.springframework.security.core.userdetails.User
+        List<GrantedAuthority> authorities = user.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRole()))
+                .collect(Collectors.toList());
+        return org.springframework.security.core.userdetails.User
                 .withUsername(user.getUserName())
                 .password(user.getPasswordHash())
-                .roles(roles).build();
-        return userDetails;
+                .authorities(authorities) // Using authorities instead of roles
+                .build();
     }
 }

@@ -30,6 +30,11 @@ public class IndexController {
     {
         return "Guest/sign_up";
     }
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public String viewProfilePage()
+    {
+        return "redirect:/profile/home";
+    }
     @RequestMapping(value = "/about_us", method = RequestMethod.GET)
     public String viewAboutUsPage()
     {

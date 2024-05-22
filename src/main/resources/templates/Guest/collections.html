@@ -31,65 +31,12 @@
 
 <!-- Example of collections with image and title in the same card -->
 <div class="collections-list">
-    <div class="collection-card">
-        <a href="collection.html">
-            <img class="collection-image" src="../../static/images/coll1.jpg" alt="Collection 1">
-            <h2 class="collection-title">Collection 1 Title</h2>
+    <div class="collection-card" th:each="col : ${collections}">
+        <a th:href="@{/collections/{id}(id=${col.getId()})}">
+            <img class="collection-image" th:src="@{/images/collections/{cover}(cover=${col.getCoverImage()})}" th:alt="${col.getName()}">
+            <h2 class="collection-title" th:text="${col.getName()}"></h2>
         </a>
     </div>
-    <div class="collection-card">
-        <a href="collection.html">
-            <img class="collection-image" src="../../static/images/coll3.jpg" alt="Collection 2">
-            <h2 class="collection-title">Collection 2 Title</h2>
-        </a>
-    </div>
-    <div class="collection-card">
-        <a href="collection.html">
-            <img class="collection-image" src="../../static/images/coll4.jpg" alt="Collection 2">
-            <h2 class="collection-title">Collection 3 Title</h2>
-        </a>
-    </div>
-    <div class="collection-card">
-        <a href="collection.html">
-            <img class="collection-image" src="../../static/images/coll5.jpg" alt="Collection 2">
-            <h2 class="collection-title">Collection 4 Title</h2>
-        </a>
-    </div>
-    <div class="collection-card">
-    <a href="collection.html">
-        <img class="collection-image" src="../../static/images/coll6.jpg" alt="Collection 2">
-        <h2 class="collection-title">Collection 5 Title</h2>
-    </a>
-</div>  <div class="collection-card">
-    <a href="collection.html">
-        <img class="collection-image" src="../../static/images/coll7.jpg" alt="Collection 2">
-        <h2 class="collection-title">Collection 6 Title</h2>
-    </a>
-</div>  <div class="collection-card">
-    <a href="collection.html">
-        <img class="collection-image" src="../../static/images/coll8.jpg" alt="Collection 2">
-        <h2 class="collection-title">Collection 7 Title</h2>
-    </a>
-</div>  <div class="collection-card">
-    <a href="collection.html">
-        <img class="collection-image" src="../../static/images/coll9.jpg" alt="Collection 2">
-        <h2 class="collection-title">Collection 8 Title</h2>
-    </a>
-</div>  <div class="collection-card">
-    <a href="collection.html">
-        <img class="collection-image" src="../../static/images/coll10.jpg" alt="Collection 2">
-        <h2 class="collection-title">Collection 9 Title</h2>
-    </a>
-</div>  <div class="collection-card">
-    <a href="collection.html">
-        <img class="collection-image" src="../../static/images/coll11.jpg" alt="Collection 2">
-        <h2 class="collection-title">Collection 10 Title</h2>
-    </a>
-</div>
-
-</div>
-
-    <!-- Add more collections with image and title here -->
 </div>
 
 <div class="line-separator"></div>

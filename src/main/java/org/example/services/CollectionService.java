@@ -88,4 +88,9 @@ public class CollectionService implements ICollectionService {
         collection.getComments().add(c);
         collectionRepository.save(collection);
     }
+    @Override
+    public Collection viewCollection(Collection c) {
+        c.setViews(c.getViews()+1);
+        return collectionRepository.save(c);
+    }
 }

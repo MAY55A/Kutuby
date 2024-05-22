@@ -50,9 +50,9 @@ public class UserService implements IUserService {
         if (user != null) throw new RuntimeException("exists");
         if (!password.equals(confirmPassword)) throw new RuntimeException("password mismatch");
         user = new User(username, email, passwordEncoder.encode(password));
-        user.getCollections().add(new Collection("Completed", CollectionType.Completed));
-        user.getCollections().add(new Collection("Reading", CollectionType.Reading));
-        user.getCollections().add(new Collection("Want to Read", CollectionType.WantToRead));
+        user.getCollections().add(new Collection("Completed", CollectionType.Completed, user, "completed.jpg"));
+        user.getCollections().add(new Collection("Reading", CollectionType.Reading, user, "reading.jpg"));
+        user.getCollections().add(new Collection("Want to Read", CollectionType.WantToRead, user, "wantToRead.jpg"));
         user.getRankings().add(new Ranking(RankingPeriod.Week));
         user.getRankings().add(new Ranking(RankingPeriod.Month));
         user.getRankings().add(new Ranking(RankingPeriod.Year));

@@ -11,25 +11,24 @@ import org.example.services.ICollectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/collections")
 public class CollectionController {
 
 
-    private final IBookService bookService; // Inject the BookService
     private final ICollectionService collectionService;
     private final ICollectionItemService collectionItemService;
 
     @Autowired
     public CollectionController(ICollectionService collectionService, IBookService bookService, ICollectionItemService collectionItemService) {
         this.collectionService = collectionService;
-        this.bookService = bookService;
         this.collectionItemService = collectionItemService;
     }
 
@@ -42,12 +41,14 @@ public class CollectionController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Collection> getCollectionById(@PathVariable Integer id) {
+    public String getCollectionById(@PathVariable Integer id, Model model) {
         Collection collection = collectionService.findByIdCollection(id);
         if (collection != null) {
-            return new ResponseEntity<>(collection, HttpStatus.OK);
+            collectionService.viewCollection(collection);
+            model.addAttribute("collection", collection);
+            return "Guest/collection";
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return "Errors/not_found";
         }
     }
 

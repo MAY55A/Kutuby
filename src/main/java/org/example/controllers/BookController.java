@@ -61,32 +61,43 @@ public class BookController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
-    @PostMapping
-    public ResponseEntity<Book> addBook(@RequestBody Book book) {
-        Book addedBook = bookService.addBook(book);
-        return new ResponseEntity<>(addedBook, HttpStatus.CREATED);
+    @GetMapping("/add")
+    public String viewAddPage() {
+        return "Admin/books/AddBook";
     }
-
+    @PostMapping
+    public String addBook(@RequestBody Book book) {
+        Book addedBook = bookService.addBook(book);
+        return "redirect:/admin/books";
+    }
+    @GetMapping("/update/{id}")
+    public String viewUpdatePage(@PathVariable("id") Integer id, Model model) {
+        Book book = bookService.findByIdBook(id);
+        if (book == null) {
+            return "Errors/not_found";
+        }
+        model.addAttribute("book", book);
+        return "Admin/books/UpdateBook";
+    }
     @PutMapping("/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable Integer id, @RequestBody Book updatedBook) {
+    public String updateBook(@PathVariable Integer id, @RequestBody Book updatedBook) {
         Book book = bookService.findByIdBook(id);
         if (book != null) {
             Book updated = bookService.updateBook(id, updatedBook);
-            return new ResponseEntity<>(updated, HttpStatus.OK);
+            return "redirect:/admin/books";
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return "Errors/not_found";
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBook(@PathVariable Integer id) {
+    @GetMapping("delete/{id}")
+    public String deleteBook(@PathVariable Integer id) {
         Book book = bookService.findByIdBook(id);
         if (book != null) {
             bookService.DeleteBook(book);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return "redirect:/admin/books";
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return "Errors/not_found";
         }
     }
 }

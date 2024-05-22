@@ -7,6 +7,7 @@ import org.example.entities.Book;
 import org.example.entities.Collection;
 import org.example.services.BookService;
 import org.example.services.CollectionService;
+import org.example.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,6 +27,10 @@ public class AdminController {
     private BookService bookService;
     @Autowired
     private CollectionService collectionService;
+    @Autowired
+    private ProfileController profileController;
+    @Autowired
+    private IUserService userService;
 
     @GetMapping("/dashboard")
     public String dashboard() {
@@ -38,14 +43,24 @@ public class AdminController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String viewUsersPage() {
-        return "redirect:/users";
+        return "redirect:/users/all";
+    }
+    @GetMapping("/delete-user/{id}")
+    public String deleteUser(@PathVariable Integer id) {
+        userService.DeleteUser(id);
+        return "redirect:/admin/users";
+    }
+    @GetMapping("/delete-collection/{id}")
+    public String deleteCollection(@PathVariable Integer id) {
+        collectionService.DeleteCollection(id);
+        return "redirect:/admin/collections";
     }
 
     @GetMapping("/books")
     public String getAllBooks(Model model) {
         List<Book> books = bookService.findAll();
         model.addAttribute("books", books);
-        return "Admin/books";
+        return "Admin/books/books";
     }
 
     @GetMapping("/collections")
@@ -53,6 +68,11 @@ public class AdminController {
         List<Collection> collections = collectionService.findAll();
         model.addAttribute("collections", collections);
         return "Admin/collections";
+    }
+    @GetMapping("/settings")
+    public String getSettings(Model model) {
+        model.addAttribute("user", profileController.getCurrentUser());
+        return "Admin/settings";
     }
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {

@@ -23,7 +23,7 @@ public interface IBookService {
 
     //CRUD
     public Book addBook(Book b);
-    public void DeleteBook(Book b);
+    public void DeleteBook(Book id);
     public Book updateBook(Integer id , Book book);
     void addComment(Comment comment, Integer bookId);
 

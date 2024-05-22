@@ -17,7 +17,7 @@
                     }
                 }
             };
-            xhttp.open("GET", "AdminNav.html", true);
+            xhttp.open("GET", "../AdminNav.html", true);
             xhttp.send();
         });
     </script>
@@ -37,7 +37,7 @@
     </style>
 </head>
 <body>
-<!-- Ensure there is a div with id="admin-dashboard" -->
+
 <div id="admin-dashboard"></div>
 
 <div class="container">
@@ -50,27 +50,24 @@
             <th>ID</th>
             <th>User Name</th>
             <th>Email</th>
-            <th>Profile Picture</th>
             <th>Created At</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <!-- Loop through users and display each user in a row -->
+
         <tr th:each="user : ${users}">
-            <td th:text="${user.id}"></td>
-            <td th:text="${user.userName}"></td>
-            <td th:text="${user.email}"></td>
+            <td th:text="${user.getId()}"></td>
+            <td th:text="${user.getUserName()}"></td>
+            <td th:text="${user.getEmail()}"></td>
             <td>
-                <!-- Display profile picture-->
-                <img th:src="@{${user.profilePicture}}" alt="Profile Picture" style="max-width: 100px;">
             </td>
-            <td th:text="${#dates.format(user.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${#dates.format(user.getCreatedAt(), 'yyyy-MM-dd HH:mm')}"></td>
             <td>
                 <!-- Edit button -->
-                <a th:href="@{/edit-user/{id}(id=${user.id})}" class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{/edit-user/{id}(id=${user.getId()})}" class="btn btn-primary btn-sm">Edit</a>
                 <!-- Delete button -->
-                <form th:action="@{/delete-user/{id}(id=${user.id})}" method="post" style="display: inline;">
+                <form th:action="@{/delete-user/{id}(id=${user.getId()})}" method="post" style="display: inline;">
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                 </form>
             </td>

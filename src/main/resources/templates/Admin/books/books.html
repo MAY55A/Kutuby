@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Collections</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var xhttp = new XMLHttpRequest();
@@ -16,63 +13,55 @@
                     }
                 }
             };
-            xhttp.open("GET", "AdminNav.html", true);
+            xhttp.open("GET", "../AdminNav.html", true);
             xhttp.send();
         });
     </script>
-    <style>
-
-        .table {
-            margin-left:90px;
-        }
-        .btn-success{
-            margin-left:90px;
-        }
-        .title{
-            margin-left:90px;
-
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 <div id="admin-dashboard"></div>
 <div class="container">
-    <h1 class="title">Collections</h1>
+    <h1 class="title">Books</h1>
+    <!-- Add book button -->
+    <a th:href="@{/books/add}" class="btn btn-success">Add Book</a>
     <table class="table table-bordered">
-
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Created At</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Language</th>
+            <th>Published At</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-
-        <tr th:each="collection : ${collections}">
-            <a th:href="@{/add-collection}" class="btn btn-success">Add Collection</a>
-            <td th:text="${collection.name}"></td>
-            <td th:text="${collection.type}"></td>
-            <td th:text="${#dates.format(collection.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+        <!-- Loop through books and display each book in a row -->
+        <tr th:each="book : ${books}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.language}"></td>
+            <td th:text="${#dates.format(book.publishedAt, 'yyyy-MM-dd')}"></td>
             <td>
                 <!-- Edit button -->
-                <a th:href="@{/edit-collection/{id}(id=${collection.id})}" class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{/books/update/{id}(id=${book.id})}" class="btn btn-primary btn-sm">Edit</a>
                 <!-- Delete button -->
-                <form th:action="@{/delete-collection/{id}(id=${collection.id})}" method="post" style="display: inline;">
+                <form th:action="@{/books/delete/{id}(id=${book.id})}" method="post" style="display: inline;">
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                 </form>
             </td>
         </tr>
         </tbody>
     </table>
-
-
 </div>
 
-
+<!-- Include Bootstrap JS and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>

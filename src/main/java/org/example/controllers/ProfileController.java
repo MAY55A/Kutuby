@@ -19,7 +19,7 @@ public class ProfileController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String viewProfile(Model model, @RequestParam(required = false) Integer userId) {
         User user = (userId != null) ? userService.findByIdUser(userId) : getCurrentUser();
         model.addAttribute("user", user);
@@ -57,9 +57,9 @@ public class ProfileController {
 
     private User getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated() && authentication.getPrincipal() instanceof User) {
-            return (User) authentication.getPrincipal();
-        }
-        throw new IllegalStateException("User not authenticated");
+        if (authentication != null && authentication.isAuthenticated() && authentication.getPrincipal() instanceof UserDetails) {
+            return userService.findByUserName(authentication.getName());
+        } else
+            throw new IllegalStateException("User not authenticated");
     }
 }

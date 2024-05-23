@@ -4,7 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="3fce9203-837a-4e50-9c4a-2fae6e09c564" name="Changes" comment="creation de quelques utilisateurs et des livres" />
+
+    <list default="true" id="3fce9203-837a-4e50-9c4a-2fae6e09c564" name="Changes" comment="merging commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/NotificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/RankingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/RankingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/SignupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/SignupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Collection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/ICollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/ICollectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/AdminNav.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/books/AddBook.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/books/AddBook.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/books/UpdateBook.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/books/UpdateBook.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/books/books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/books/books.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/collections/collections.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/collections.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/users/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/users.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Guest/collection.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/collection.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Guest/collections.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/collections.html" afterDir="false" />
+    </list>
+
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,12 +43,27 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="CSS File" />
         <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "MAY55A"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="2ecd052b-dbc7-4a9a-9a0c-e420b0a808c5" />
+        <option name="url" value="https://github.com/MAY55A/Kutuby" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -36,6 +80,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
@@ -56,18 +101,41 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.books.html.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.KutubyApplication.executor": "Run",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/mayss/Desktop/kutuby/Kutuby/src/main/resources/static/images/users",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources\static\images\users" />
       <recent name="C:\Users\sarra\OneDrive\Desktop\Kutuby\src\main\resources\templates\Admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources\templates\Admin" />
       <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources\static\images\images" />
       <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources\static" />
       <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources\templates\Errors" />
       <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources\templates\User" />
-      <recent name="C:\Users\mayss\Desktop\kutuby\Kutuby\src\main\resources\templates" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.example.controllers" />
@@ -100,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715889277190</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="merging commit">
+      <option name="closed" value="true" />
+      <created>1716399237086</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1716399237086</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,6 +184,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="creation de quelques utilisateurs et des livres" />
-    <option name="LAST_COMMIT_MESSAGE" value="creation de quelques utilisateurs et des livres" />
+    <MESSAGE value="redirection to admin dashboard and roles fix" />
+    <MESSAGE value="merging commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="merging commit" />
   </component>
 </project>

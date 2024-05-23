@@ -9,5 +9,6 @@ import java.util.Set;
 
 public interface RankingRepository extends JpaRepository<Ranking, Integer> {
     Ranking findByUser(User user);
+    Set<Ranking> findByPeriod(RankingPeriod rp);
     Ranking findByUserAndPeriod(User user, RankingPeriod period);
 }

@@ -28,4 +28,5 @@ public interface ICollectionService {
 
     public void addComment(Comment c, Integer idCol);
 
+    Collection viewCollection(Collection c);
 }

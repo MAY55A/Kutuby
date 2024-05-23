@@ -1,18 +1,28 @@
 package org.example.controllers;
 
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.example.entities.Book;
 import org.example.entities.Collection;
-import org.example.entities.User;
 import org.example.services.BookService;
 import org.example.services.CollectionService;
-import org.example.services.UserService;
+import org.example.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.security.access.annotation.Secured;
+=======
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+>>>>>>> ce79405141e623828ad18441bfffede37f12562c
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+
 
 @Controller
 @RequestMapping("/admin")
@@ -21,13 +31,14 @@ public class AdminController {
 
     @Autowired
     private BookService bookService;
-
     @Autowired
     private CollectionService collectionService;
-
     @Autowired
-    private UserService userService;
+    private ProfileController profileController;
+    @Autowired
+    private IUserService userService;
 
+<<<<<<< HEAD
     @GetMapping("/admin/dashboard")
     public String dashboard(Model model) {
         return "/Admin/dashboard";
@@ -93,11 +104,35 @@ public class AdminController {
         return "redirect:/admin/users";
     }
 
+=======
+    @GetMapping("/dashboard")
+    public String dashboard() {
+        return "Admin/dashboard";
+    }
+>>>>>>> ce79405141e623828ad18441bfffede37f12562c
     @GetMapping("/login")
-    public String viewLoginPage(Model model) {
+    public String viewLoginPage() {
         return "Admin/login";
     }
 
+<<<<<<< HEAD
+=======
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public String viewUsersPage() {
+        return "redirect:/users/all";
+    }
+    @GetMapping("/delete-user/{id}")
+    public String deleteUser(@PathVariable Integer id) {
+        userService.DeleteUser(id);
+        return "redirect:/admin/users";
+    }
+    @GetMapping("/delete-collection/{id}")
+    public String deleteCollection(@PathVariable Integer id) {
+        collectionService.DeleteCollection(id);
+        return "redirect:/admin/collections";
+    }
+
+>>>>>>> ce79405141e623828ad18441bfffede37f12562c
     @GetMapping("/books")
     public String getAllBooks(Model model) {
         List<Book> books = bookService.findAll();
@@ -105,6 +140,7 @@ public class AdminController {
         return "Admin/books/books";
     }
 
+<<<<<<< HEAD
     @GetMapping("/books/add")
     public String showAddBookForm(Model model) {
         model.addAttribute("book", new Book());
@@ -139,12 +175,15 @@ public class AdminController {
         if (book != null) { bookService.DeleteBook(book); }
         return "redirect:/admin/books/books"; }
 
+=======
+>>>>>>> ce79405141e623828ad18441bfffede37f12562c
     @GetMapping("/collections")
     public String getAllCollections(Model model) {
         List<Collection> collections = collectionService.findAll();
         model.addAttribute("collections", collections);
-        return "Admin/collections/collections";
+        return "Admin/collections";
     }
+<<<<<<< HEAD
 
     @GetMapping("/collections/add")
     public String showAddCollectionForm(Model model) {
@@ -166,12 +205,31 @@ public class AdminController {
             return "Admin/collections/updateCollection";
         } else {
             return "redirect:/admin/collections";
-        }
+=======
+    @GetMapping("/settings")
+    public String getSettings(Model model) {
+        model.addAttribute("user", profileController.getCurrentUser());
+        return "Admin/settings";
     }
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null) {
+            new SecurityContextLogoutHandler().logout(request, response, authentication);
+>>>>>>> ce79405141e623828ad18441bfffede37f12562c
+        }
+        return "redirect:/admin/login";
+    }
+<<<<<<< HEAD
 
     @PostMapping("/collections/delete/{id}")
     public String deleteCollection(@PathVariable("id") Integer id) {
         collectionService.DeleteCollection(id);
         return "redirect:/admin/collections";
     }
+=======
+>>>>>>> ce79405141e623828ad18441bfffede37f12562c
 }
+
+
+

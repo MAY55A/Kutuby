@@ -24,7 +24,7 @@ public class SignupController {
         try {
             User addedUser = userService.addUser(name, email, password, confirmPassword);
             model.addAttribute("user", addedUser);
-            return "User/user_account";
+            return "redirect:/login";
         } catch (Exception e) {
             if ("exists".equals(e.getMessage())) {
                 model.addAttribute("msg", "User already exists!");

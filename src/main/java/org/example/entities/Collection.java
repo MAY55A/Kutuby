@@ -46,9 +46,11 @@ public class Collection implements Serializable {
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "favourites")
     private Set<User> likers = new HashSet<>();
 
-    public Collection(String name, CollectionType type) {
+    public Collection(String name, CollectionType type, User owner, String coverImage) {
         this.name = name;
         this.type = type;
+        this.owner = owner;
+        this.coverImage = coverImage;
     }
 
 }

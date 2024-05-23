@@ -290,7 +290,11 @@
     font-size: 18px;
     margin-top: 20px;
 }
-
+ .genre a {
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -358,42 +362,59 @@
   <div class="phrase8" style="font-family: 'Courier New', monospace;">Embark on a literary journey: Choose a genre and begin your exploration.</div>
 
 
-    <div class="genres">
+    
+  <div class="genres">
       <div class="genre">
-        <img th:src="@{/images/genres/frida.jpg}" alt="Biography">
-        <div class="genre-name">Biography</div>
+          <a href="/books/all?genre=Biography">
+              <img src="/images/genres/frida.jpg" alt="Biography">
+              <div class="genre-name">Biography</div>
+          </a>
       </div>
       <div class="genre">
-        <img th:src="@{/images/genres/jsp.jpg}" alt="Mystery">
-        <div class="genre-name">Mystery</div>
+          <a href="/books/all?genre=Mystery">
+              <img src="/images/genres/jsp.jpg" alt="Mystery">
+              <div class="genre-name">Mystery</div>
+          </a>
       </div>
       <div class="genre">
-        <img th:src="@{/images/genres/fantasy.jpg}" alt="Fantasy">
-        <div class="genre-name">Fantasy</div>
+          <a href="/books/all?genre=Fantasy">
+              <img src="/images/genres/fantasy.jpg" alt="Fantasy">
+              <div class="genre-name">Fantasy</div>
+          </a>
       </div>
       <div class="genre">
-        <img th:src="@{/images/genres/love1.jpg}" alt="Romance">
-        <div class="genre-name">Romance</div>
+          <a href="/books/all?genre=Romance">
+              <img src="/images/genres/love1.jpg" alt="Romance">
+              <div class="genre-name">Romance</div>
+          </a>
       </div>
-    </div>
-    <div class="genres">
+  </div>
+  <div class="genres">
       <div class="genre">
-        <img th:src="@{/images/genres/fiction.jpg}" alt="Science Fiction">
-        <div class="genre-name">Science Fiction</div>
-      </div>
-      <div class="genre">
-        <img th:src="@{/images/genres/thriller.jpg}" alt="Thriller">
-        <div class="genre-name">Thriller</div>
-      </div>
-      <div class="genre">
-        <img th:src="@{/images/genres/hannibal.jpg}" alt="Historical">
-        <div class="genre-name">Historical</div>
+          <a href="/books/all?genre=Science">
+              <img src="/images/genres/fiction.jpg" alt="Science">
+              <div class="genre-name">Science</div>
+          </a>
       </div>
       <div class="genre">
-        <img th:src="@{/images/genres/commedy.jpg}" alt="Fiction">
-        <div class="genre-name">Commedy</div>
+          <a href="/books/all?genre=Thriller">
+              <img src="/images/genres/thriller.jpg" alt="Thriller">
+              <div class="genre-name">Thriller</div>
+          </a>
       </div>
-    </div>
+      <div class="genre">
+          <a href="/books/all?genre=Historical">
+              <img src="/images/genres/hannibal.jpg" alt="Historical">
+              <div class="genre-name">Historical</div>
+          </a>
+      </div>
+      <div class="genre">
+          <a href="/books/all?genre=Comedy">
+              <img src="/images/genres/commedy.jpg" alt="Comedy">
+              <div class="genre-name">Comedy</div>
+          </a>
+      </div>
+  </div>
 
   <div class="line-separator1"></div>
 

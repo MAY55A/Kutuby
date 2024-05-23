@@ -26,15 +26,15 @@ public class KutubyApplication {
     //@Bean
     CommandLineRunner commandLineRunnerUserDetails(UserService userService, RoleService roleService){
         return args-> {
-            roleService.addNewRole("USER");
-            roleService.addNewRole("ADMIN");
-            userService.addUser("user1", "1234", "user1@gmail.com", "1234");
-            userService.addUser("user2", "1234", "user2@gmail.com", "1234");
-            userService.addUser("admin", "1234", "admin@gmail.com", "1234");
+            //roleService.addNewRole("USER");
+            //roleService.addNewRole("ADMIN");
+            //userService.addUser("user1", "1234", "user1@gmail.com", "1234");
+            //userService.addUser("user2", "1234", "user2@gmail.com", "1234");
+            //userService.addUser("admin", "1234", "admin@gmail.com", "1234");
             userService.addRoleToUser("user1","USER");
             userService.addRoleToUser("user2","USER");
-            userService.addRoleToUser("admin","USER");
-            userService.addRoleToUser("admin","Admin");
+            //userService.addRoleToUser("admin","USER");
+            userService.addRoleToUser("admin","ADMIN");
 
         };
     }
@@ -71,7 +71,7 @@ public class KutubyApplication {
                     Set.of(Genre.MYSTERY), dateFormat.parse("1934-01-14"),
                     "A detective novel featuring the famous Hercule Poirot solving a murder mystery on a train.", 90));
             bookService.addBook(new Book("The Help", "Kathryn Stockett", "English", "images/the_help.jpg",
-                    Set.of(Genre.HISTORICAL_FICTION, Genre.SOCIAL_ISSUE), dateFormat.parse("2009-02-10"),
+                    Set.of(Genre.HISTORICAL, Genre.SOCIAL_ISSUE), dateFormat.parse("2009-02-10"),
                     "Set in 1960s Mississippi, the novel explores the lives of African American maids during the civil rights movement.", 85));
             bookService.addBook(new Book("Pride and Prejudice", "Jane Austen", "English", "images/book8.jpg",
                     Set.of(Genre.CLASSIC, Genre.ROMANCE, Genre.SOCIAL_ISSUE), dateFormat.parse("1813-01-28"),

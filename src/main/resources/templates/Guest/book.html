@@ -219,6 +219,36 @@
             display: inline-block; /* Display each detail next to each other */
             margin-right: 20px; /* Add some space between details */
         }
+ /* Rating Section Styles */
+         .rating-section {
+             display: inline-block;
+             margin-left: auto; /* Push the rating section to the end of the line */
+         }
+
+        .rating-section label {
+            font-size: 1em;
+            color: white;
+            margin-right: 5px; /* Add some spacing between label and input */
+        }
+
+        .rating-input {
+            width: 50px; /* Adjust width as needed */
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .rating-input:focus {
+            outline: none; /* Remove focus outline */
+        }
+
+        .rating-input::-webkit-inner-spin-button,
+        .rating-input::-webkit-outer-spin-button {
+            -webkit-appearance: none; /* Remove spin button */
+            margin: 0; /* Remove default margin */
+        }
 
     </style>
 </head>
@@ -250,13 +280,14 @@
         </div>
     </div>
 
-    <span class="article-author" style="margin-top:-200px;" th:text="${book.getAuthor()}"/></span>
-    <br><br><br><br> <br><br><br><br> <br>
+    <span class="article-author" style="margin-top:-220px;" th:text="${book.getAuthor()}"/></span>
+       <br><br><br><br> <br><br><br><br> <br><br><br>
     <div class="article-content-section">
         <p class="article-content" th:text="${book.getDescription()}"></p>
     </div>
 
-    <div class="article-details">
+  
+  <div class="article-details">
         <p><strong>Language:</strong> <span th:text="${book.getLanguage()}"></span></p>
         <p><strong>ISBN:</strong> <span th:text="${book.getIsbn()}"></span></p>
         <p><strong>Published At:</strong> <span th:text="${#dates.format(book.getPublishedAt(), 'dd-MM-yyyy')}"></span></p>
@@ -267,20 +298,18 @@
     </div>
 
 
-
-
-
-
-
-
     <div class="article-interaction-section">
-            <span class="comment-icon" title="Comment on this book">
-                <i class="far fa-comment"></i>
-            </span>&nbsp;&nbsp;&nbsp;
-        <span class="ellipsis-icon" title="Add to collection">
-               +
-            </span>
+    <span class="comment-icon" title="Comment on this book">
+        <i class="far fa-comment"></i>
+    </span>&nbsp;&nbsp;&nbsp;
+        <span class="ellipsis-icon" title="Add to collection">+</span>
+        <!-- Rating Section -->
+        <div class="rating-section">
+            <label for="rating">Rate this book:</label>
+            <input type="number" class="rating-input" id="rating" name="rating" min="1" max="5">
+        </div>
     </div>
+
 
     <hr class="article-separator">
     <span class="comments-info">Comments: 20</span>

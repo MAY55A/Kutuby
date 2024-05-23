@@ -115,4 +115,9 @@ public class CollectionService implements ICollectionService {
             rankingRepository.save(newRanking);
         }
     }
+    @Override
+    public Collection viewCollection(Collection c) {
+        c.setViews(c.getViews()+1);
+        return collectionRepository.save(c);
+    }
 }

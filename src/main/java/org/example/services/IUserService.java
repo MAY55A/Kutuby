@@ -15,7 +15,7 @@ public interface IUserService  {
 
     public User addUser(String username, String password, String email, String confirmPassword) throws Exception;
 
-    void addRoleToUser(String username, String role);
+    User addRoleToUser(String username, String role);
 
     void removeRoleFromUser(String username, String role);
 

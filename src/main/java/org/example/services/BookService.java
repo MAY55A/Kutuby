@@ -118,4 +118,10 @@ public class BookService implements IBookService {
         bookRepository.save(book);
     }
 
+    @Override
+    public List<Book> findAllFilteredAndSorted(Specification<Book> spec, Pageable pageable) {
+        Page<Book> page = bookRepository.findAll(spec, pageable);
+        return page.getContent();
+    }
+
 }

@@ -3,6 +3,9 @@ package org.example.services;
 import org.example.entities.*;
 import org.example.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +14,15 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import static java.util.Objects.nonNull;
+
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 
 @Service
 public class BookService implements IBookService {
@@ -26,7 +38,13 @@ public class BookService implements IBookService {
     public List<Book> findAll() {
         return bookRepository.findAll();
     }
+@Override
+    public List<Book> findAllSorted(String sortBy, String order) {
+        Sort.Direction direction = "desc".equalsIgnoreCase(order) ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Sort sort = Sort.by(direction, sortBy != null ? sortBy : "id");
 
+        return bookRepository.findAll(sort);
+    }
     @Override
     public Book findByIdBook(Integer id) {
         return bookRepository.findById(id).orElse(null);
@@ -98,6 +116,12 @@ public class BookService implements IBookService {
         Book book = bookRepository.findById(bo).get();
         book.getComments().add(c);
         bookRepository.save(book);
+    }
+
+    @Override
+    public List<Book> findAllFilteredAndSorted(Specification<Book> spec, Pageable pageable) {
+        Page<Book> page = bookRepository.findAll(spec, pageable);
+        return page.getContent();
     }
 
 }

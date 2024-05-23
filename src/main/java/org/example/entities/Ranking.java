@@ -33,4 +33,8 @@ public class Ranking implements Serializable {
         this.period = period;
     }
 
+    //ajout de methode inceremnte le score de lutilisateur
+    public void incrementPoints(int points) {
+        this.points += points;
+    }
 }

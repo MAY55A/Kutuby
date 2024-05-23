@@ -82,6 +82,44 @@
       margin-top: 15px;
     }
 
+             /* Sort by and Filter styling */
+         .sort-filter-container {
+             display: flex;
+             align-items: center;
+             justify-content: center; /* Center horizontally */
+             margin-top: 20px;
+         }
+
+        .sort-filter-container label {
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            margin-right: 10px;
+        }
+
+        .sort-filter-container input[type="radio"],
+        .sort-filter-container input[type="text"],
+        .sort-filter-container input[type="number"],
+        .sort-filter-container button {
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            background-color: transparent;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin-right: 10px;
+        }
+
+        .sort-filter-container button {
+            color: rgb(203, 53, 121);
+            border-color: rgb(203, 53, 121);
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        .sort-filter-container button:hover {
+            background-color: rgb(203, 53, 121);
+            color: #ffffff;
+        }
         
     </style>
 </head>
@@ -115,17 +153,24 @@
         </a>
     </div>
 </div>
-
-
-
-    <div style="color: #f6f1eb; font-family: 'Courier New', monospace;margin-top: 20px;  margin-left: 10px;" >
-        Sort by:
+    
+  <div class="sort-filter-container">
+        <label for="sort-title">Sort by:</label>
         <input type="radio" id="sort-title" name="sort" value="title">
         <label for="sort-title">Title</label>
         <input type="radio" id="sort-author" name="sort" value="author">
         <label for="sort-author">Author</label>
         <input type="radio" id="sort-rating" name="sort" value="rating">
         <label for="sort-rating">Rating</label>
+    </div>
+
+    <div class="sort-filter-container">
+        <label for="filter-genre">Filter by:</label>
+        <input type="text" id="filter-genre" placeholder="Genre">
+        <input type="text" id="filter-author" placeholder="Author">
+        <input type="number" id="filter-weight" placeholder="Weight">
+        <input type="number" id="filter-year" placeholder="Published Year">
+        <button onclick="applyFilters()">Apply Filters</button>
     </div>
 
 
@@ -184,5 +229,48 @@
 window.location.href = '/';
 };
 </script>
+<script>
+        // Function to reload the page with the selected sorting option
+        function sortBooks(sortBy) {
+            window.location.href = '/books/all?sortBy=' + sortBy;
+        }
+
+        // Add event listeners to the radio buttons
+        document.getElementById('sort-title').addEventListener('change', function() {
+            if (this.checked) {
+                sortBooks('title');
+            }
+        });
+
+        document.getElementById('sort-author').addEventListener('change', function() {
+            if (this.checked) {
+                sortBooks('author');
+            }
+        });
+
+        document.getElementById('sort-rating').addEventListener('change', function() {
+            if (this.checked) {
+                sortBooks('rating');
+            }
+        });
+    </script>
+    <script>
+        function applyFilters() {
+            const genre = document.getElementById('filter-genre').value;
+            const author = document.getElementById('filter-author').value;
+            const weight = document.getElementById('filter-weight').value;
+            const year = document.getElementById('filter-year').value;
+
+            let filters = [];
+            if (genre) filters.push(`genre=${genre}`);
+            if (author) filters.push(`author=${author}`);
+            if (weight) filters.push(`weight=${weight}`);
+            if (year) filters.push(`publishedYear=${year}`);
+
+            const filterQueryString = filters.join('&');
+            window.location.href = '/books/all?' + filterQueryString;
+        }
+    </script>
+
 </body>
 </html>

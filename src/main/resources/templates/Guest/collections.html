@@ -35,9 +35,13 @@
         <a th:href="@{/collections/{id}(id=${col.getId()})}">
             <img class="collection-image" th:src="@{/images/collections/{cover}(cover=${col.getCoverImage()})}" th:alt="${col.getName()}">
             <h2 class="collection-title" th:text="${col.getName()}"></h2>
+            <span class="views-count"><i class="fas fa-eye"></i><span th:text="${col.getViews()}"></span></span>
+            <span class="collection-description" th:text="${col.getDescription()}"></span>
         </a>
     </div>
 </div>
+
+
 
 <div class="line-separator"></div>
 
@@ -87,5 +91,16 @@
         window.location.href = '/';
     };
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var descriptions = document.querySelectorAll('.collection-description');
+        descriptions.forEach(function(description) {
+            var text = description.textContent.trim();
+            var words = text.split(' ').slice(0, 5).join(' ');
+            description.textContent = words + (text.split(' ').length >5 ? '...' : '');
+        });
+    });
+</script>
+
 </body>
 </html>

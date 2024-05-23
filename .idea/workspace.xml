@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3fce9203-837a-4e50-9c4a-2fae6e09c564" name="Changes" comment="creation de quelques utilisateurs et des livres">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Ranking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Ranking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/RankingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/RankingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/AdminNav.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/AdminNav.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/books/books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/books/books.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/collections/collections.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/collections/collections.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/users/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/users/users.html" afterDir="false" />
-    </list>
+    <list default="true" id="3fce9203-837a-4e50-9c4a-2fae6e09c564" name="Changes" comment="creation de quelques utilisateurs et des livres" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,7 +90,7 @@
       <updated>1715873751541</updated>
       <workItem from="1715873754740" duration="13898000" />
       <workItem from="1715933705346" duration="25573000" />
-      <workItem from="1716371951443" duration="3911000" />
+      <workItem from="1716371951443" duration="4221000" />
     </task>
     <task id="LOCAL-00001" summary="creation de quelques utilisateurs et des livres">
       <option name="closed" value="true" />

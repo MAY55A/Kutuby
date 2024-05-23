@@ -16,22 +16,54 @@
     <h1>Update Book</h1>
     <form th:action="@{/books/update/{id}(id=${book.id})}" method="post">
         <input type="hidden" name="id" th:value="${book.getId()}"> <!-- Hidden field for book ID -->
+
         <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" id="title" name="title" th:value="${book.getTitle()}" required>
         </div>
+
         <div class="form-group">
             <label for="author">Author</label>
             <input type="text" class="form-control" id="author" name="author" th:value="${book.getAuthor()}" required>
         </div>
+
         <div class="form-group">
             <label for="language">Language</label>
-            <input type="text" class="form-control" id="language" name="language" th:value="${language}" required>
+            <input type="text" class="form-control" id="language" name="language" th:value="${book.getLanguage()}" required>
         </div>
+
+        <div class="form-group">
+            <label for="coverImage">Cover Image</label>
+            <input type="text" class="form-control" id="coverImage" name="coverImage" th:value="${book.getCoverImage()}">
+        </div>
+
+        <div class="form-group">
+            <label for="isbn">ISBN</label>
+            <input type="number" class="form-control" id="isbn" name="isbn" th:value="${book.getIsbn()}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="genres">Genres</label>
+            <select multiple class="form-control" id="genres" name="genres" th:value="${book.getGenres()}">
+                <option th:each="genre : ${#arrays.asList(T(java.util.stream.Collectors).toSet(book.getGenres()).toArray())}" th:text="${genre}" th:value="${genre}"></option>
+            </select>
+        </div>
+
         <div class="form-group">
             <label for="publishedAt">Published At</label>
-            <input type="date" class="form-control" id="publishedAt" name="publishedAt" th:value="${publishedAt}" required>
+            <input type="date" class="form-control" id="publishedAt" name="publishedAt" th:value="${#dates.format(book.getPublishedAt(), 'yyyy-MM-dd')}" required>
         </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" th:text="${book.getDescription()}"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="weight">Weight</label>
+            <input type="number" class="form-control" id="weight" name="weight" th:value="${book.getWeight()}" required>
+        </div>
+
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>

@@ -11,7 +11,7 @@ public enum Genre {
     ROMANCE("Romance", "Works that focus on romantic relationships, love, and emotional connections between characters."),
     SCIENCE_FICTION("Science fiction (Sci-Fi)", "Works that explore imaginative and futuristic concepts, often involving advanced technology, space exploration, and extraterrestrial life."),
     FANTASY("Fantasy", "Works that involve magical or supernatural elements, often set in imaginary worlds with unique creatures, magic systems, and mythologies."),
-    HISTORICAL_FICTION("Historical fiction", "Works that are set in the past and incorporate real historical events, settings, and figures."),
+    HISTORICAL("Historical fiction", "Works that are set in the past and incorporate real historical events, settings, and figures."),
     HORROR("Horror", "Works that are intended to frighten, unsettle, or evoke feelings of fear or dread in the reader."),
     BIOGRAPHY("Biography/Autobiography", "Works that tell the story of a person's life, written by someone else (biography) or by the person themselves (autobiography)."),
     MEMOIR("Memoir", "Works that are based on personal experiences, memories, and reflections of the author."),

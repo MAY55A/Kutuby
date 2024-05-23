@@ -1,19 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../static/images/kutuby.ico" type="image/x-icon">
     <title>Collection - Kutuby</title>
     <link rel="stylesheet" href="../styles/style.css">
-    <!-- Add other stylesheets -->
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <style>
-        /* Add your other CSS styles here */
+        /* Add your CSS styles here */
+        /* Add your CSS styles here */
+
+        .books-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .book-item {
+            margin: 10px; /* Adjusted margin */
+        }
+
+        .book-card {
+            height: 400px;
+            width: 250px;
+            background-color: #f6f1eb;
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .book-image {
+            width: 100%;
+            height: 100%; /* Adjusted height */
+            object-fit: cover;
+        }
+
+        .heart-icon {
+            font-size: 2em;
+            margin-top: 15px;
+            margin-left: 2px;
+            cursor: pointer;
+        }
+
+        .heart-icon:hover {
+            color: rgb(203, 53, 121);
+        }
+
+        /* Collection Details Section */
+        .collection-details-section {}
+
+        .collection-details p {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .description {
+            text-align: left;
+            font-size: 16px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .collection-details strong {
+            font-family: 'Anton', sans-serif;
+        }
+
+        .centered {
+            text-align: center;
+        }
 
         .collections-banner {
             margin-top: 90px;
@@ -61,16 +118,43 @@
             width: 100%;
         }
 
-        .heart-icon{
+        .heart-icon {
             font-size: 2em;
             margin-top: 15px;
             margin-left: 2px;
-        }
-        .heart-icon{
             cursor: pointer;
-        }.heart-icon:hover{
-             color: rgb(203, 53, 121);
-         }
+        }
+
+        .heart-icon:hover {
+            color: rgb(203, 53, 121);
+        }
+
+        /* Collection Details Section */
+        .collection-details-section {}
+
+        .collection-details p {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .description {
+            text-align: left;
+            font-size: 16px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .collection-details strong {
+            font-family: 'Anton', sans-serif;
+        }
+
+        .centered {
+            text-align: center;
+        }
+.article-separator{
+    width:80%;
+    align-items: center;
+}
     </style>
 </head>
 <body>
@@ -78,7 +162,8 @@
     <h1 id="kutuby">KUTUBY</h1>
     <nav>
         <a href="/profile" class="far fa-user"></a>
-        <a href="/books"><svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: -7px;"  height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M248-300q53.57 0 104.28 12.5Q403-275 452-250v-427q-45-30-97.62-46.5Q301.76-740 248-740q-38 0-74.5 9.5T100-707v434q31-14 70.5-20.5T248-300Zm264 50q50-25 98-37.5T712-300q38 0 78.5 6t69.5 16v-429q-34-17-71.82-25-37.82-8-76.18-8-54 0-104.5 16.5T512-677v427Zm-30 90q-51-38-111-58.5T248-239q-36.54 0-71.77 9T106-208q-23.1 11-44.55-3Q40-225 40-251v-463q0-15 7-27.5T68-761q42-20 87.39-29.5 45.4-9.5 92.61-9.5 63 0 122.5 17T482-731q51-35 109.5-52T712-800q46.87 0 91.93 9.5Q849-781 891-761q14 7 21.5 19.5T920-714v463q0 27.89-22.5 42.45Q875-194 853-208q-34-14-69.23-22.5Q748.54-239 712-239q-63 0-121 21t-109 58ZM276-489Z"/></svg></a>
+        <a href="/books">
+            <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: -7px;" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M248-300q53.57 0 104.28 12.5Q403-275 452-250v-427q-45-30-97.62-46.5Q301.76-740 248-740q-38 0-74.5 9.5T100-707v434q31-14 70.5-20.5T248-300Zm264 50q50-25 98-37.5T712-300q38 0 78.5 6t69.5 16v-429q-34-17-71.82-25-37.82-8-76.18-8-54 0-104.5 16.5T512-677v427Zm-30 90q-51-38-111-58.5T248-239q-36.54 0-71.77 9T106-208q-23.1 11-44.55-3Q40-225 40-251v-463q0-15 7-27.5T68-761q42-20 87.39-29.5 45.4-9.5 92.61-9.5 63 0 122.5 17T482-731q51-35 109.5-52T712-800q46.87 0 91.93 9.5Q849-781 891-761q14 7 21.5 19.5T920-714v463q0 27.89-22.5 42.45Q875-194 853-208q-34-14-69.23-22.5Q748.54-239 712-239q-63 0-121 21t-109 58ZM276-489Z"/></svg></a>
         <a href="/collections">Collections</a>
         <a href="/about_us">About Us</a>
     </nav>
@@ -89,92 +174,39 @@
 <div class="collections-banner">
     <h2 class="collection-title" th:text="${collection.getName()}"></h2>
     <span class="heart-icon" title="Favorite this collection">♡</span>&nbsp;&nbsp;&nbsp;
-
-    <!-- Replace "Collection Title" with the dynamic collection name -->
 </div>
+
+<!-- Collection Details Section -->
+<div class="collection-details-section">
+    <div class="collection-details">
+        <p><strong>Visibility :</strong> <span th:text="${collection.getVisibility()}"></span></p>
+        <p><strong>Created At :</strong> <span th:text="${collection.getCreatedAt()}"></span></p>
+        <p><strong>Views :</strong> <span th:text="${collection.getViews()}"></span></p>
+        <p class="description centered" th:text="${collection.getDescription()}"></p>
+    </div>
+</div>
+<hr class="article-separator">
+
+<!-- List of Books in the Collection -->
+<ul class="books-list">
+    <li th:each="item, iterStat : ${collection.getItems()}" class="book-item">
+        <!-- Display item information -->
+        <div class="book-card">
+            <a th:href="@{'/books/book/' + ${item.book.id}}">
+                <img class="book-image" th:src="@{'/images/books/' + ${item.book.coverImage}}" th:alt="${item.book.title}">
+            </a>
+        </div>
+    </li>
+    <!-- Add empty placeholders to ensure 4 items per row -->
+    <li th:if="${iterStat != null and iterStat.index % 4 == 0}" th:remove="tag">
+        <div class="book-card empty"></div>
+    </li>
+</ul>
+
+
 
 <!--<span class="likes-info">Favorites: 100</span> &nbsp;-->
 
-<!-- List of Books in the Collection -->
-<div class="collections-list">
-    <!-- Example of book card -->
-    <div class="book-card">
-        <a href="book.html">
-            <img class="book-image" src="../../static/images/book.jpg" alt="Book 3">
-        </a>
-    </div>
-    <div class="book-card">
-        <a href="book.html">
-            <img class="book-image" src="../../static/images/book9.jpg" alt="Book 4">
-        </a>
-    </div>
-    <div class="book-card">
-        <a href="book.html">
-            <img class="book-image" src="../../static/images/book10.jpg" alt="Book 3">
-        </a>
-    </div>
-    <div class="book-card">
-        <a href="book.html">
-            <img class="book-image" src="../../static/images/book11.jpg" alt="Book 4">
-        </a>
-    </div>
-    <div class="book-card">
-        <a href="book.html">
-            <img class="book-image" src="../../static/images/book12.jpg" alt="Book 4">
-        </a>
-    </div>
-    <div class="book-card">
-        <a href="book.html">
-            <img class="book-image" src="../../static/images/book13.jpg" alt="Book 4">
-        </a>
-    </div>
-    <div class="book-card">
-        <a href="book.html">
-            <img class="book-image" src="../../static/images/book14.jpg" alt="Book 4">
-        </a>
-    </div>
-    <div class="book-card">
-        <a href="book.html">
-            <img class="book-image" src="../../static/images/book15.jpg" alt="Book 3">
-        </a>
-    </div>
-    <div class="book-card">
-        <a href="book.html">
-            <img class="book-image" src="../../static/images/book16.jpg" alt="Book 4">
-        </a>
-    </div>
-    <div class="book-card">
-        <a href="book.html">
-            <img class="book-image" src="../../static/images/book17.jpg" alt="Book 3">
-        </a>
-    </div>
-    <div class="book-card">
-        <a href="book.html">
-            <img class="book-image" src="../../static/images/book18.jpg" alt="Book 4">
-        </a>
-    </div>
-    <div class="book-card">
-        <a href="book.html">
-            <img class="book-image" src="../../static/images/book19.jpg" alt="Book 4">
-        </a>
-    </div>
-    <div class="book-card">
-        <a href="book.html">
-            <img class="book-image" src="../../static/images/book20.jpg" alt="Book 4">
-        </a>
-    </div>
-    <div class="book-card">
-        <a href="book.html">
-            <img class="book-image" src="../../static/images/book21.jpg" alt="Book 4">
-        </a>
-    </div>
-    <div class="book-card">
-        <a href="book.html">
-            <img class="book-image" src="../../static/images/book22.jpg" alt="Book 4">
-        </a>
-    </div>
-    <!-- Add more book cards for the collection -->
-</div>
 
 <div class="line-separator"></div>
 

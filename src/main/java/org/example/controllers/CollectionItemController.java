@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/collection-items")
+@RequestMapping("/collection-items")
 public class CollectionItemController {
 
     private final ICollectionItemService collectionItemService;
@@ -20,7 +20,7 @@ public class CollectionItemController {
         this.collectionItemService = collectionItemService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<CollectionItem>> getAllCollectionItems() {
         List<CollectionItem> collectionItems = collectionItemService.findAll();
         return new ResponseEntity<>(collectionItems, HttpStatus.OK);

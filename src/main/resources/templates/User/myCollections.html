@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../static/images/kutuby.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="styles/profile.css">
-    <link rel="stylesheet" href="../styles/collections.css">
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
+    <link rel="stylesheet" th:href="@{/styles/profile.css}">
+    <link rel="stylesheet" th:href="@{/styles/collections.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <title>Profile</title>
+    <title>Collections - Profile</title>
     <style>
         /* Global styles */
 
@@ -97,11 +97,11 @@
     <br><br>
     <!-- Page content        -->
 
-    <a href="user_account.html">My Account</a>
-    <a href="myCollections.html">My Collections</a>
-    <a href="myFavorites.html">My Favorites</a>
-    <a href="settings.html">Settings</a>
-    <a href="logout.html">Logout</a>
+    <a href="profile/home">My Account</a>
+    <a href="profile/collections">My Collections</a>
+    <a href="profile/favorites">My Favorites</a>
+    <a href="profile/settings">Settings</a>
+    <a href="profile/logout">Logout</a>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="line-separator9"></div> <!-- Add this line for the vertical separator -->
 

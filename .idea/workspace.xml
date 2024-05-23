@@ -4,13 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3fce9203-837a-4e50-9c4a-2fae6e09c564" name="Changes" comment="admin routes fix">
+    <list default="true" id="3fce9203-837a-4e50-9c4a-2fae6e09c564" name="Changes" comment="add styling and settings for admin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionItemController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/CommentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/NotificationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/RankingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/RankingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Collection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/books/books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/books/books.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Guest/about_us.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/about_us.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/User/myCollections.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/User/myCollections.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +73,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Spring Boot.KutubyApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/mayss/Desktop/kutuby/Kutuby/src/main/resources/static/images/users&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
@@ -107,7 +111,7 @@
       <updated>1715873751541</updated>
       <workItem from="1715873754740" duration="13898000" />
       <workItem from="1715933705346" duration="25573000" />
-      <workItem from="1716473885859" duration="3771000" />
+      <workItem from="1716473885859" duration="9704000" />
     </task>
     <task id="LOCAL-00001" summary="creation de quelques utilisateurs et des livres">
       <option name="closed" value="true" />
@@ -141,18 +145,61 @@
       <option name="project" value="LOCAL" />
       <updated>1716414136907</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="admin routes fix">
+      <option name="closed" value="true" />
+      <created>1716478912743</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716478912743</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add styling and settings for admin">
+      <option name="closed" value="true" />
+      <created>1716478950598</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1716478950598</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -164,6 +211,7 @@
     <MESSAGE value="merging commit" />
     <MESSAGE value="collections display problem fix and adding views count" />
     <MESSAGE value="admin routes fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin routes fix" />
+    <MESSAGE value="add styling and settings for admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="add styling and settings for admin" />
   </component>
 </project>

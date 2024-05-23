@@ -23,6 +23,10 @@
     </script>
     <style>
 
+        .cont{
+            margin-left: 200px;
+        }
+
         .table {
             margin-left:90px;
         }
@@ -34,13 +38,14 @@
 
         }
 
+
     </style>
 </head>
 <body>
 
 <div id="admin-dashboard"></div>
 
-<div class="container">
+<div class="cont">
     <h1 class="title">Users</h1>
     <!-- Add user button -->
     <a th:href="@{/add-user}" class="btn btn-success">Add User</a>

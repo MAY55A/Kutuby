@@ -7,6 +7,7 @@ import org.example.services.BookService;
 import org.example.services.CollectionService;
 import org.example.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,9 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
+
 public class AdminController {
+
     @Autowired
     private BookService bookService;
 
@@ -25,23 +28,25 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
+    @GetMapping("/admin/dashboard")
     public String dashboard(Model model) {
-        return "Admin/dashboard";
+        return "/Admin/dashboard";
     }
 
     @PostMapping("/login")
-    public String signupUser(@RequestParam("username") String username,
-                             @RequestParam("password") String password,
-                             Model model) {
+    public String loginUser(@RequestParam("username") String username,
+                            @RequestParam("password") String password,
+                            Model model) {
         // Login process ...
         // If successful, then redirect to the dashboard
-        return "redirect:/Admin/dashboard";
+        return "redirect:/admin/dashboard";
         // Else handle the case accordingly
     }
 
     @GetMapping("/users")
-    public String viewUsersPage() {
+    public String viewUsersPage(Model model) {
+        List<User> users = userService.findAll();
+        model.addAttribute("users", users);
         return "Admin/users/users";
     }
 
@@ -58,7 +63,7 @@ public class AdminController {
                           @RequestParam("confirmPassword") String confirmPassword) {
         try {
             userService.addUser(username, password, email, confirmPassword);
-            return "redirect:/admin/users/users";
+            return "redirect:/admin/users";
         } catch (RuntimeException e) {
             // Handle error case
             return "redirect:/error/not_found";
@@ -70,7 +75,7 @@ public class AdminController {
         User user = userService.findByIdUser(id);
         if (user != null) {
             model.addAttribute("user", user);
-            return "Admin/users/UpdateUser";
+            return "Admin/users/updateUser";
         } else {
             return "redirect:/admin/users";
         }
@@ -79,23 +84,18 @@ public class AdminController {
     @PostMapping("/users/edit/{id}")
     public String updateUser(@PathVariable("id") Integer id, @ModelAttribute("user") User user) {
         userService.updateUser(id, user);
-        return "redirect:/admin/users/users";
+        return "redirect:/admin/users";
     }
 
     @PostMapping("/users/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id) {
         userService.DeleteUser(id);
-        return "redirect:/admin/users/users";
+        return "redirect:/admin/users";
     }
 
     @GetMapping("/login")
     public String viewLoginPage(Model model) {
         return "Admin/login";
-    }
-
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String viewUserPage() {
-        return "redirect:/admin/users/users";
     }
 
     @GetMapping("/books")
@@ -108,7 +108,7 @@ public class AdminController {
     @GetMapping("/books/add")
     public String showAddBookForm(Model model) {
         model.addAttribute("book", new Book());
-        return "Admin/books/AddBook";
+        return "Admin/books/addBook";
     }
 
     @PostMapping("/books/add")
@@ -122,26 +122,22 @@ public class AdminController {
         Book book = bookService.findByIdBook(id);
         if (book != null) {
             model.addAttribute("book", book);
-            return "Admin/books/UpdateBook";
+            return "Admin/books/updateBook";
         } else {
-            return "redirect:/admin/books/books";
+            return "redirect:/admin/books";
         }
     }
 
     @PostMapping("/books/edit/{id}")
     public String updateBook(@PathVariable("id") Integer id, @ModelAttribute("book") Book book) {
         bookService.updateBook(id, book);
-        return "redirect:/admin/books/books";
+        return "redirect:/admin/books";
     }
 
-    @PostMapping("/books/delete/{id}")
-    public String deleteBook(@PathVariable("id") Integer id) {
+    @PostMapping("/books/delete/{id}") public String deleteBook(@PathVariable("id") Integer id) {
         Book book = bookService.findByIdBook(id);
-        if (book != null) {
-            bookService.DeleteBook(book);
-        }
-        return "redirect:/admin/books/books";
-    }
+        if (book != null) { bookService.DeleteBook(book); }
+        return "redirect:/admin/books/books"; }
 
     @GetMapping("/collections")
     public String getAllCollections(Model model) {
@@ -150,17 +146,16 @@ public class AdminController {
         return "Admin/collections/collections";
     }
 
-    // please check paths !!!!
     @GetMapping("/collections/add")
     public String showAddCollectionForm(Model model) {
         model.addAttribute("collection", new Collection());
-        return "Admin/collections/AddCollection";
+        return "Admin/collections/addCollection";
     }
 
     @PostMapping("/collections/add")
     public String addCollection(@ModelAttribute("collection") Collection collection) {
         collectionService.addCollection(collection);
-        return "redirect:/admin/collections/collections";
+        return "redirect:/admin/collections";
     }
 
     @GetMapping("/collections/edit/{id}")
@@ -168,25 +163,15 @@ public class AdminController {
         Collection collection = collectionService.findByIdCollection(id);
         if (collection != null) {
             model.addAttribute("collection", collection);
-            return "Admin/collections/UpdateCollection";
+            return "Admin/collections/updateCollection";
         } else {
-            return "redirect:/admin/collections/collections";
+            return "redirect:/admin/collections";
         }
-    }
-
-    @PostMapping("/collections/edit/{id}")
-    public String updateCollection(@PathVariable("id") Integer id, @ModelAttribute("collection") Collection collection) {
-        collectionService.updateCollection(id, collection);
-        return "redirect:/admin/collections/collections";
     }
 
     @PostMapping("/collections/delete/{id}")
     public String deleteCollection(@PathVariable("id") Integer id) {
-        Collection collection = collectionService.findByIdCollection(id);
-        if (collection != null) {
-            collectionService.DeleteCollection(id);
-        }
-        return "redirect:/admin/collections/collections";
+        collectionService.DeleteCollection(id);
+        return "redirect:/admin/collections";
     }
-
 }

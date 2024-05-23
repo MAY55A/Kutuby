@@ -22,9 +22,16 @@
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+<style>
+    .cont{
+        margin-left: 300px;
+    }
+</style>
 <body>
+
 <div id="admin-dashboard"></div>
-<div class="container">
+
+<div class="cont">
     <h1 class="title">Books</h1>
     <!-- Add book button -->
     <a th:href="@{/books/add}" class="btn btn-success">Add Book</a>

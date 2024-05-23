@@ -3,9 +3,12 @@ package org.example.services;
 import org.example.entities.Book;
 import org.example.entities.Comment;
 import org.example.entities.User;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.util.List;
 import java.util.Set;
+
+import org.springframework.data.domain.Pageable;
 
 public interface IBookService {
 

@@ -1,0 +1,93 @@
+/* Custom Styles */
+body {
+    background-color: #F5F5DC;
+}
+.navbar {
+    min-height: 60px;
+    margin-left: min(30%, 250px);
+}
+.sidebar {
+    background-color: #582900;
+    color: #F5F5DC;
+    height: 100vh;
+}
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+.sidebar li {
+    padding: 10px;
+}
+.sidebar li a {
+    color: white;
+    text-decoration: none;
+}
+.content {
+    margin-left: min(30%, 270px);
+    padding: 20px;
+}
+.card {
+    margin-bottom: 20px;
+}
+.sidenav {
+    height: 100%;
+    width: 30%;
+    min-width: 150px;
+    max-width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #582900;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: wheat;
+    display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* White icons */
+.sidenav i {
+    color: white;
+    margin-right: 10px;
+}
+/* Custom Styles */
+.navbar-custom {
+    background-color: #B76774;
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: #F5F5DC;
+}
+.navbar-custom .navbar-nav .nav-link {
+    color: #F5F5DC;
+}
+.navbar-custom .navbar-nav .nav-link:hover {
+    color: #F5F5DC;
+}
+.dash{
+    margin-right: 20px;
+    color :white;
+    font-size: 20px;
+}
+img {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+}
+img.book {
+    border-radius: 0;
+    height: 100px;
+    width: 70px;
+}

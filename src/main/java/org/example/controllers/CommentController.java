@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/comments")
+@RequestMapping("comments")
 public class CommentController {
 
     private final ICommentService commentService;
@@ -20,7 +20,7 @@ public class CommentController {
         this.commentService = commentService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<Comment>> getAllComments() {
         List<Comment> comments = commentService.findAll();
         return new ResponseEntity<>(comments, HttpStatus.OK);

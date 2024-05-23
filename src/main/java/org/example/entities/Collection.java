@@ -34,7 +34,7 @@ public class Collection implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     private Date createdAt;
-    private String coverImage;
+    private String coverImage = "defaultColl.jpg";
     private int views;
 
     @ManyToOne

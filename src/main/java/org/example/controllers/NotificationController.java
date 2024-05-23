@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/notifications")
+@RequestMapping("/notifications")
 public class NotificationController {
 
     private final INotificationService notificationService;
@@ -20,7 +20,7 @@ public class NotificationController {
         this.notificationService = notificationService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<Notification>> getAllNotifications() {
         List<Notification> notifications = notificationService.findAll();
         return new ResponseEntity<>(notifications, HttpStatus.OK);

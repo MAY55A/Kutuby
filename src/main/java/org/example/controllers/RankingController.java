@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/api/rankings")
+@RequestMapping("/rankings")
 public class RankingController {
 
     private final IRankingService rankingService;
@@ -22,7 +22,7 @@ public class RankingController {
         this.rankingService = rankingService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<Ranking>> getAllRankings() {
         List<Ranking> rankings = rankingService.findAll();
         return new ResponseEntity<>(rankings, HttpStatus.OK);

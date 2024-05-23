@@ -25,12 +25,46 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/all")
-    public String getAllBooks(Model model) {
-        List<Book> books = bookService.findAll();
+ @GetMapping("/all")
+    public String getAllBooks(@RequestParam(value = "sortBy", required = false, defaultValue = "id") String sortBy,
+                              @RequestParam(value = "order", required = false, defaultValue = "asc") String order,
+                              @RequestParam(value = "genre", required = false) String genre,
+                              @RequestParam(value = "author", required = false) String author,
+                              @RequestParam(value = "weight", required = false) Integer weight,
+                              @RequestParam(value = "publishedYear", required = false) Integer publishedYear,
+                              Model model) {
+        Sort.Direction direction = "desc".equalsIgnoreCase(order) ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Sort sort = Sort.by(direction, sortBy);
+
+        Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE, sort); // Set page size to maximum
+
+        Specification<Book> specification = Specification.where(null);
+
+        if (genre != null && !genre.isEmpty()) {
+            specification = specification.and((root, query, builder) ->
+                    builder.isMember(Genre.valueOf(genre.toUpperCase()), root.get("genres")));
+        }
+
+        if (author != null && !author.isEmpty()) {
+            specification = specification.and((root, query, builder) ->
+                    builder.like(root.get("author"), "%" + author + "%"));
+        }
+
+        if (weight != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(root.get("weight"), weight));
+        }
+
+        if (publishedYear != null) {
+            specification = specification.and((root, query, builder) ->
+                    builder.equal(builder.function("year", Integer.class, root.get("publishedAt")), publishedYear));
+        }
+
+        List<Book> books = bookService.findAllFilteredAndSorted(specification, pageable);
         model.addAttribute("books", books);
         return "Guest/books";
     }
+
     @GetMapping("/{genre}")
     public String getBooksByGenre(@PathVariable("genre") String genre, Model model) {
         Set<Book> books = bookService.findByGenre(genre);

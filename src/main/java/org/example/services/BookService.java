@@ -26,7 +26,13 @@ public class BookService implements IBookService {
     public List<Book> findAll() {
         return bookRepository.findAll();
     }
+@Override
+    public List<Book> findAllSorted(String sortBy, String order) {
+        Sort.Direction direction = "desc".equalsIgnoreCase(order) ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Sort sort = Sort.by(direction, sortBy != null ? sortBy : "id");
 
+        return bookRepository.findAll(sort);
+    }
     @Override
     public Book findByIdBook(Integer id) {
         return bookRepository.findById(id).orElse(null);

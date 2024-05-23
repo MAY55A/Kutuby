@@ -17,6 +17,7 @@ public interface IBookService {
     public Set<Book> findByGenre(String genre);
 
     public Set<Book> findByYear(int year);
+    List<Book> findAllFilteredAndSorted(Specification<Book> spec, Pageable pageable);
 
 
 

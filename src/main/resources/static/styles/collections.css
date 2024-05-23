@@ -25,9 +25,9 @@
 }
 
 .collection-card {
-    height:320px;
+    height:360px;
     margin: 20px;
-    width: 250px; /* Adjusted width */
+    width: 330px; /* Adjusted width */
     background-color: #f6f1eb; /* Light brown color */
     border-radius: 2px;
     overflow: hidden;
@@ -55,3 +55,25 @@
         width: 90%;
     }
 }
+.views-count {
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 250px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    margin-top: -35px;
+    color: #D2B48C; /* Hexadecimal value for nude color */
+
+}
+
+.views-count .fa-eye {
+    margin-right: 5px;
+}
+.collection-description {
+    color: #000000; /* White text color */
+margin-top: 20px;
+    margin-left: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+/* Collection Details Section */
+

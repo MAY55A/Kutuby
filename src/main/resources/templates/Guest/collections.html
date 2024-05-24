@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../static/images/kutuby.ico" type="image/x-icon">
-
     <title>Collections - Kutuby</title>
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/collections.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-
 </head>
 <body>
 <header class="big" id="header">
@@ -22,26 +20,33 @@
         <a href="/collections">Collections</a>
         <a href="/about_us">About Us</a>
     </nav>
-    <div class="line-separatoor"></div>
+    <div class="line-separator1"></div>
 </header>
 
 <div class="collections-banner">
-    <!-- Optional: Add any introductory content or banners here -->
-</div>
+    <div class="sort-filter-container">
+        <label>Sort by:</label>
+        <input type="radio" id="sort-views" name="sort" value="views" onclick="window.location.href='/collections/all?sortBy=views';">
+        <label for="sort-views">Views</label>
 
-<!-- Example of collections with image and title in the same card -->
-<div class="collections-list">
-    <div class="collection-card" th:each="col : ${collections}">
-        <a th:href="@{/collections/{id}(id=${col.getId()})}">
-            <img class="collection-image" th:src="@{/images/collections/{cover}(cover=${col.getCoverImage()})}" th:alt="${col.getName()}">
-            <h2 class="collection-title" th:text="${col.getName()}"></h2>
-            <span class="views-count"><i class="fas fa-eye"></i><span th:text="${col.getViews()}"></span></span>
-            <span class="collection-description" th:text="${col.getDescription()}"></span>
-        </a>
+        <input type="radio" id="sort-creation-date" name="sort" value="creationDate" onclick="window.location.href='/collections/all?sortBy=creationDate';">
+        <label for="sort-creation-date">Creation Date</label>
+        <!-- Add more sorting options here if needed -->
     </div>
 </div>
 
 
+<!-- Example of collections with image and title in the same card -->
+<div class="collections-list">
+    <div class="collection-card" th:each="col : ${collections}">
+        <a th:href="@{/collections/{id}(id=${col.id})}">
+            <img class="collection-image" th:src="@{/images/collections/{cover}(cover=${col.coverImage})}" th:alt="${col.name}">
+            <h2 class="collection-title" th:text="${col.name}"></h2>
+            <span class="views-count"><i class="fas fa-eye"></i><span th:text="${col.views}"></span></span>
+            <span class="collection-description" th:text="${col.description}"></span>
+        </a>
+    </div>
+</div>
 
 <div class="line-separator"></div>
 

@@ -9,7 +9,12 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.Objects.nonNull;
 
 @Slf4j
 @AllArgsConstructor
@@ -56,5 +61,21 @@ public class Book implements Serializable {
         this.publishedAt = publishedAt;
         this.description = description;
         this.weight = weight;
+    }
+    private List<Short> getRatings() {
+        return getCollectionItems().stream().map(CollectionItem::getRating).filter(rating -> rating >0).toList();
+    }
+    public int nbRatings() {
+        return getRatings().size();
+    }
+    public int getRating() {
+        if (nbRatings() == 0) {
+            return 0;
+        }
+        short sum = 0;
+        for (Short rating : getRatings()) {
+            sum += rating;
+        }
+        return sum / nbRatings();
     }
 }

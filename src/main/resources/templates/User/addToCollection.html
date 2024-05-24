@@ -23,24 +23,24 @@
         </div>
         <div class="form-group">
             <label for="title">Book</label>
-            <input type="hidden" name="bookId" th:value="${item != null ? item.getBook().getId(): ''}">
-            <output type="text" class="form-control" id="title" name="title" th:text="${item != null ? item.getBook().getTitle() : ''}"></output>
+            <input type="hidden" name="bookId" th:value="${item.getBook().getId()}">
+            <output type="text" class="form-control" id="title" name="title" th:text="${item.getBook().getTitle()}"></output>
         </div>
         <div class="form-group">
             <label for="rating">Rating</label>
-            <input type="text" class="form-control" id="rating" name="rating" th:value="${item != null && item.getRating() != null && item.getRating() != 0 ? item.getRating() : ''}">
+            <input type="text" class="form-control" id="rating" name="rating" th:value="${item.getRating() > 0 ? item.getRating() : '-'}">
         </div>
         <div class="form-group">
             <label for="progress">Reading Progress</label>
-            <input type="text" class="form-control" id="progress" name="progress" th:value="${item != null && item.getReadingProgress() != null && item.getReadingProgress() != 0 ? item.getReadingProgress() : ''}">
+            <input type="number" min="0" max="100" class="form-control" id="progress" name="progress" th:value="${item.getReadingProgress()}">
         </div>
         <div class="form-group">
             <label for="startedAt">Started Reading At</label>
-            <input type="date" class="form-control" id="startedAt" name="startedAt" th:value="${item != null ? item.getStartedReadingAt() : null}">
+            <input type="date" class="form-control" id="startedAt" name="startedAt" th:value="${item.getStartedReadingAt()}">
         </div>
         <div class="form-group">
             <label for="finishedAt">Finished Reading At</label>
-            <input type="date" class="form-control" id="finishedAt" name="finishedAt" th:value="${item != null ? item.getFinishedReadingAt(): null}">
+            <input type="date" class="form-control" id="finishedAt" name="finishedAt" th:value="${item.getFinishedReadingAt()}">
         </div>
         <select name="collId" required>
             <option th:each="col : ${item != null ? item.getCreator().getCollections() : ''}" th:value="${col.getId()}" th:text="${col.getName()}"></option>

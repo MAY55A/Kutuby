@@ -271,11 +271,8 @@
         </div>
         <div class="article-image-section" th:style="'background-image: url('+@{/images/books/{cover}(cover=${book.getCoverImage()})}+');'">
             <div class="rating-stars">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9734;</span> <!-- Empty star -->
+                <span class="star" th:each="r : ${#numbers.sequence(1, book.getRating(), 1)}">&#9733;</span>
+                <span class="star" th:each="r : ${#numbers.sequence(1, 10 - book.getRating(), 1)}">&#9734;</span>
             </div>
         </div>
     </div>
@@ -291,7 +288,6 @@
         <p><strong>Language:</strong> <span th:text="${book.getLanguage()}"></span></p>
         <p><strong>ISBN:</strong> <span th:text="${book.getIsbn()}"></span></p>
         <p><strong>Published At:</strong> <span th:text="${#dates.format(book.getPublishedAt(), 'dd-MM-yyyy')}"></span></p>
-        <p><strong>Weight:</strong> <span th:text="${book.getWeight()}"></span> grams</p>
         <p><strong>Genres:</strong>
             <span th:each="genre : ${book.getGenres()}" th:text="${genre} "></span>
         </p>
@@ -303,11 +299,6 @@
         <i class="far fa-comment"></i>
     </span>&nbsp;&nbsp;&nbsp;
         <a th:href="@{/collections/add/{id}(id=${book.id})}"><span class="ellipsis-icon" title="Add to collection">+</span></a>
-        <!-- Rating Section -->
-        <div class="rating-section">
-            <label for="rating">Rate this book:</label>
-            <input type="number" class="rating-input" id="rating" name="rating" min="1" max="5">
-        </div>
     </div>
 
 

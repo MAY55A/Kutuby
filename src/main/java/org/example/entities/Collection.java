@@ -16,7 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString
+@ToString(exclude = "owner")
 @Entity
 public class Collection implements Serializable {
     @Serial

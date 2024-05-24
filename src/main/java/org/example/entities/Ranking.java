@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString
+@ToString(exclude = "user")
 @Entity
 public class Ranking implements Serializable {
     @Serial

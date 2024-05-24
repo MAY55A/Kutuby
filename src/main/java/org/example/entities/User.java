@@ -17,7 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString(exclude = "collections")
+@ToString(exclude = {"collections", "rankings"})
 @Entity
 @Builder
 public class User implements Serializable {

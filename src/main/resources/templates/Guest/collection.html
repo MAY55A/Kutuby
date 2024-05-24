@@ -231,10 +231,10 @@
 <!-- Collection Details Section -->
 <div class="collection-details-section">
     <div class="collection-details">
-        <p><strong class="visibility-label">Visibility :</strong> <span th:text="${collection.getVisibility()}"></span></p>
+        <p><strong class="visibility-label">Creator :</strong> <span th:text="${collection.getOwner().getUserName()}"></span></p>
         <p><strong class="created-at-label">Created At :</strong> <span th:text="${collection.getCreatedAt()}"></span></p>
         <p><strong class="views-label">Views :</strong> <span th:text="${collection.getViews()}"></span></p>
-
+        <p><strong class="views-label">Likes :</strong> <span th:text="${collection.getLikers().size()}"></span></p>
         <p class="description centered" th:text="${collection.getDescription()}"></p>
     </div>
 </div>

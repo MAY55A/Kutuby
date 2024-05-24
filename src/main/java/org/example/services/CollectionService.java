@@ -16,17 +16,19 @@ public class CollectionService implements ICollectionService {
     private final CollectionRepository collectionRepository;
     private final CollectionItemService collectionItemService;
     private final RankingRepository rankingRepository;
+    private final UserService userService;
 
     @Autowired
-    public CollectionService(CollectionRepository collectionRepository, CollectionItemRepository collectionItemRepository, CollectionItemService collectionItemService, RankingRepository rankingRepository) {
+    public CollectionService(CollectionRepository collectionRepository, CollectionItemRepository collectionItemRepository, CollectionItemService collectionItemService, RankingRepository rankingRepository, UserService userService) {
         this.collectionRepository = collectionRepository;
         this.collectionItemService = collectionItemService;
         this.rankingRepository = rankingRepository;
+        this.userService = userService;
     }
 
     @Override
     public List<Collection> findAll() {
-        return collectionRepository.findAll();
+        return collectionRepository.findNotPrivate();
     }
 
     @Override
@@ -121,9 +123,14 @@ public class CollectionService implements ICollectionService {
             rankingRepository.save(newRanking);
         }
     }
+
     @Override
     public Collection viewCollection(Collection c) {
-        c.setViews(c.getViews()+1);
-        return collectionRepository.save(c);
+        User user = userService.getCurrentUser();
+        if (user == null || c.getOwner() != user) {
+            c.setViews(c.getViews() + 1);
+            return collectionRepository.save(c);
+        }
+        return c;
     }
 }

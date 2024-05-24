@@ -45,7 +45,7 @@
         <div class="form-group">
             <label for="genres">Genres</label>
             <select multiple class="form-control" id="genres" name="genres" th:value="${book.getGenres()}">
-                <option th:each="genre : ${#arrays.asList(T(java.util.stream.Collectors).toSet(book.getGenres()).toArray())}" th:text="${genre}" th:value="${genre}"></option>
+                <option th:each="genre : ${book.getGenres()}" th:text="${genre}" th:value="${genre}"></option>
             </select>
         </div>
 

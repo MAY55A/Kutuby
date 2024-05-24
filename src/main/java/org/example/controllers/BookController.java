@@ -69,6 +69,7 @@ public class BookController {
 
         List<Book> books = bookService.findAllFilteredAndSorted(specification, pageable);
         model.addAttribute("books", books);
+        model.addAttribute("topBooks", bookService.findTop());
         model.addAttribute("genreList", Genre.values()); // Pass the genre list to the model
         return "Guest/books";
     }
@@ -79,6 +80,7 @@ public class BookController {
             return "Errors/not_found";
         }
         model.addAttribute("books", books);
+        model.addAttribute("topBooks", bookService.findTop());
         return "Guest/books";
     }
 

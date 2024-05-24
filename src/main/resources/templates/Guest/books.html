@@ -165,18 +165,11 @@
 </div>
     <div class="books1-container">
 
-        <div class="book-card">
-            <a th:href="@{/images/books/book1.jpg}">
-                <img class="book-image" th:src="@{/images/books/book1.jpg}" alt="Book 1">
+        <div class="book-card" th:each="book : ${topBooks}">
+            <a th:href="@{/books/book/{id}(id=${book.getId()})}">
+                <img class="book-image" th:src="@{/images/books/{coverImage}(coverImage=${book.getCoverImage()})}" th:alt="${book.getTitle()}">
             </a>
         </div>
-        <div class="book-card">
-            <a th:href="@{/images/books/book2.jpg}">
-                <img class="book-image" th:src="@{/images/books/book2.jpg}" alt="Book 2">
-            </a>
-        </div>
-
-
     </div>
 
     <div class="sort-filter-container">

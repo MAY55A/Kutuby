@@ -32,4 +32,5 @@ public interface IBookService {
     public Book updateBook(Integer id , Book book);
     void addComment(Comment comment, Integer bookId);
 
+    List<Book> findTop();
 }

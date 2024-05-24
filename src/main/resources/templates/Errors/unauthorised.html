@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pas autorisé</title>
+    <title>Unauthorised</title>
+    <link rel="stylesheet" th:href="@{/styles/errors.css}">
 </head>
 <body>
-
+<div class="message">
+    <h1>Unauthorized Access</h1>
+    <p>You do not have permission to access this page.</p>
+    <button class="back-button" onclick="window.history.back()">Go Back</button>
+</div>
 </body>
 </html>

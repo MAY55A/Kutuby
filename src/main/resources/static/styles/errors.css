@@ -1,0 +1,45 @@
+/* Center the content vertically and horizontally */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f8f9fa; /* Light gray background */
+}
+
+/* Style for the unauthorized access message */
+.message {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #dc3545; /* Red border */
+    border-radius: 5px;
+    background-color: #fff; /* White background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+/* Style for the heading */
+.message h1 {
+    color: #dc3545; /* Red color */
+}
+
+/* Style for the error description */
+.message p {
+    color: #333; /* Dark gray color */
+}
+
+/* Style for the back button */
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #dc3545; /* Red background */
+    color: #fff; /* White color */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the back button */
+.back-button:hover {
+    background-color: #c82333; /* Darker red */
+}

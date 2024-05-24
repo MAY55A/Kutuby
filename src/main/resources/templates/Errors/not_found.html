@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Not Found</title>
+    <link rel="stylesheet" th:href="@{/styles/errors.css}">
 </head>
 <body>
-
+<div class="message">
+    <h1>Not Found</h1>
+    <p>We could not find what you are looking for :(</p>
+    <button class="back-button" onclick="window.history.back()">Go Back</button>
+</div>
 </body>
 </html>

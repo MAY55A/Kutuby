@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -35,12 +36,32 @@ public class CollectionController {
     }
 
 
+
     @GetMapping("/all")
-    public String getAllCollections(Model model) {
+    public String getAllCollections(Model model, @RequestParam(required = false) String sortBy) {
         List<Collection> collections = collectionService.findAll();
+
+        // Sort collections based on sortBy parameter
+        if (sortBy != null) {
+            switch (sortBy) {
+                case "views":
+                    collections.sort(Comparator.comparing(Collection::getViews).reversed());
+                    break;
+                case "creationDate":
+                    collections.sort(Comparator.comparing(Collection::getCreatedAt).reversed());
+                    break;
+                default:
+                    // Handle invalid sortBy parameter
+                    model.addAttribute("error", "Invalid sortBy parameter: " + sortBy);
+                    // You can choose to return an error page or handle it in another way
+                    return "error";
+            }
+        }
+
         model.addAttribute("collections", collections);
         return "Guest/collections";
     }
+
 
     @GetMapping("/{id}")
     public String getCollectionById(@PathVariable Integer id, Model model) {

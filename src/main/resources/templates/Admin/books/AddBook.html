@@ -28,8 +28,31 @@
             <input type="text" class="form-control" id="language" name="language" required>
         </div>
         <div class="form-group">
+            <label for="coverImage">Cover Image</label>
+            <input type="text" class="form-control" id="coverImage" name="coverImage">
+        </div>
+        <div class="form-group">
+            <label for="isbn">ISBN</label>
+            <input type="number" class="form-control" id="isbn" name="isbn" required>
+        </div>
+        <div class="form-group">
+            <label for="genres">Genres</label>
+            <select multiple class="form-control" id="genres" name="genres">
+                <!-- Assuming genres are populated as a list of options -->
+                <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre}"></option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="publishedAt">Published At</label>
             <input type="date" class="form-control" id="publishedAt" name="publishedAt" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="weight">Weight</label>
+            <input type="number" class="form-control" id="weight" name="weight" required>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

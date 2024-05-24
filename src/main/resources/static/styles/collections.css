@@ -77,3 +77,49 @@ margin-top: 20px;
 }
 /* Collection Details Section */
 
+/* Collection Details Section */
+
+.line-separator1{
+    border-top: 1px solid #ccc;
+
+    margin-top: 15px;
+}
+
+/* Sort by and Filter styling */
+.sort-filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center horizontally */
+    margin-top: 20px;
+}
+
+.sort-filter-container label {
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+    margin-right: 10px;
+}
+
+.sort-filter-container select {
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+.sort-filter-container select:hover {
+    background-color: #ccc; /* Adjust hover background color */
+}
+
+.sort-filter-container select:focus {
+    outline: none; /* Remove outline on focus */
+}
+
+.sort-filter-container select option {
+    color: #000000; /* Adjust text color */
+    background-color: #ffffff; /* Adjust background color */
+    font-family: 'Courier New', monospace;
+}
+

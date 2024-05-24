@@ -30,13 +30,14 @@ public class BookController {
         this.bookService = bookService;
     }
 
- @GetMapping("/all")
+    @GetMapping("/all")
     public String getAllBooks(@RequestParam(value = "sortBy", required = false, defaultValue = "id") String sortBy,
                               @RequestParam(value = "order", required = false, defaultValue = "asc") String order,
                               @RequestParam(value = "genre", required = false) String genre,
                               @RequestParam(value = "author", required = false) String author,
                               @RequestParam(value = "weight", required = false) Integer weight,
                               @RequestParam(value = "publishedYear", required = false) Integer publishedYear,
+                              @RequestParam(value = "bookName", required = false) String bookName, // Add bookName parameter
                               Model model) {
         Sort.Direction direction = "desc".equalsIgnoreCase(order) ? Sort.Direction.DESC : Sort.Direction.ASC;
         Sort sort = Sort.by(direction, sortBy);
@@ -49,7 +50,10 @@ public class BookController {
             specification = specification.and((root, query, builder) ->
                     builder.isMember(Genre.valueOf(genre.toUpperCase()), root.get("genres")));
         }
-
+        if (bookName != null && !bookName.isEmpty()) { // Include filtering by bookName
+            specification = specification.and((root, query, builder) ->
+                    builder.like(root.get("title"), "%" + bookName + "%"));
+        }
         if (author != null && !author.isEmpty()) {
             specification = specification.and((root, query, builder) ->
                     builder.like(root.get("author"), "%" + author + "%"));
@@ -67,9 +71,9 @@ public class BookController {
 
         List<Book> books = bookService.findAllFilteredAndSorted(specification, pageable);
         model.addAttribute("books", books);
+        model.addAttribute("genreList", Genre.values()); // Pass the genre list to the model
         return "Guest/books";
     }
-
     @GetMapping("/{genre}")
     public String getBooksByGenre(@PathVariable("genre") String genre, Model model) {
         Set<Book> books = bookService.findByGenre(genre);

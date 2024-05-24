@@ -5,10 +5,12 @@ import org.example.entities.*;
 import org.example.services.IBookService;
 import org.example.services.ICollectionItemService;
 import org.example.services.ICollectionService;
+import org.example.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,14 +27,14 @@ public class CollectionController {
     private final ICollectionService collectionService;
     private final ICollectionItemService collectionItemService;
     private final IBookService bookService;
-    private final ProfileController profileController;
+    private final IUserService userService;
 
     @Autowired
-    public CollectionController(ICollectionService collectionService, IBookService bookService, ICollectionItemService collectionItemService, IBookService bookService1, ProfileController profileController) {
+    public CollectionController(ICollectionService collectionService, IBookService bookService, ICollectionItemService collectionItemService, IBookService bookService1, ProfileController profileController, IUserService userService) {
         this.collectionService = collectionService;
         this.collectionItemService = collectionItemService;
         this.bookService = bookService1;
-        this.profileController = profileController;
+        this.userService = userService;
     }
 
 
@@ -54,7 +56,7 @@ public class CollectionController {
                     // Handle invalid sortBy parameter
                     model.addAttribute("error", "Invalid sortBy parameter: " + sortBy);
                     // You can choose to return an error page or handle it in another way
-                    return "error";
+                    return "Errors/not_found";
             }
         }
 
@@ -66,41 +68,54 @@ public class CollectionController {
     @GetMapping("/{id}")
     public String getCollectionById(@PathVariable Integer id, Model model) {
         Collection collection = collectionService.findByIdCollection(id);
-        if (collection != null) {
+        User user = userService.getCurrentUser();
+        if (collection != null && (collection.getVisibility() != Visibility.Private || user == collection.getOwner())) {
             collectionService.viewCollection(collection);
             model.addAttribute("collection", collection);
-            model.addAttribute("user", profileController.getCurrentUser());
+            model.addAttribute("user", user);
             return "Guest/collection";
-        } else {
+        } else if(collection == null)
             return "Errors/not_found";
-        }
+        else
+            return "Errors/unauthorised";
     }
 
     @PostMapping
-    public ResponseEntity<Collection> addCollection(@RequestBody Collection collection) {
+    @PreAuthorize("hasRole('USER')")
+    public String addCollection(@RequestBody Collection collection) {
         Collection addedCollection = collectionService.addCollection(collection);
-        return new ResponseEntity<>(addedCollection, HttpStatus.CREATED);
+        return "redirect:profile/collections";
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Collection> updateCollection(@PathVariable Integer id, @RequestBody Collection collection) {
-        Collection updatedCollection = collectionService.updateCollection(id, collection);
-        if (updatedCollection != null) {
-            return new ResponseEntity<>(updatedCollection, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @PreAuthorize("hasRole('USER')")
+    public String updateCollection(@PathVariable Integer id, @RequestBody Collection collection) {
+        if (userService.getCurrentUser() == collection.getOwner()) {
+            Collection updatedCollection = collectionService.updateCollection(id, collection);
+            if(updatedCollection != null)
+                return "redirect:profile/collections";
+            return "Errors/not_found";
         }
+        return "Errors/unauthorised";
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCollection(@PathVariable Integer id) {
-        collectionService.DeleteCollection(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @PreAuthorize("hasRole('USER')")
+    public String deleteCollection(@PathVariable Integer id) {
+        Collection collection = collectionService.findByIdCollection(id);
+        if (collection != null && userService.getCurrentUser() == collection.getOwner()) {
+            collectionService.DeleteCollection(id);
+            return "redirect:profile/collections";
+        }else if(collection == null)
+            return "Errors/not_found";
+        else
+            return "Errors/unauthorised";
     }
     @GetMapping("/add/{id}")
-    public String viewAddPage(@PathVariable Integer id, Model model) {
+    @PreAuthorize("hasRole('USER')")
+    public String viewAddItemPage(@PathVariable Integer id, Model model) {
         Book book = bookService.findByIdBook(id);
-        User user = profileController.getCurrentUser();
+        User user = userService.getCurrentUser();
         CollectionItem existingItem = collectionItemService.findByUserAndBook(user, book);
         if (existingItem != null) {
             model.addAttribute("item", existingItem);
@@ -113,16 +128,17 @@ public class CollectionController {
         return "User/addToCollection";
     }
     @PostMapping("/add")
-    public String addItemToCollection(Model model, @RequestParam("bookId") Integer bookId, @RequestParam(value = "rating", required = false) String rating, @RequestParam(value = "progress", required = false) String progress, @RequestParam(value = "startedAt", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date startedAt, @RequestParam(value = "finishedAT", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date finishedAt, @RequestParam("collId") Integer collId){
+    @PreAuthorize("hasRole('USER')")
+    public String addItemToCollection(Model model, @RequestParam("bookId") Integer bookId, @RequestParam(value = "rating", required = false) String rating, @RequestParam(value = "progress", required = false) short progress, @RequestParam(value = "startedAt", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date startedAt, @RequestParam(value = "finishedAT", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date finishedAt, @RequestParam("collId") Integer collId){
         CollectionItem item = new CollectionItem();
         Book book = bookService.findByIdBook(bookId);
-        User user = profileController.getCurrentUser();
+        User user = userService.getCurrentUser();
         item.setCreator(user);
         item.setBook(book);
         item.setStartedReadingAt(startedAt);
         item.setFinishedReadingAt(finishedAt);
         model.addAttribute("item", item);
-        if (rating != null) {
+        if (!rating.equals("-")) {
             try {
                 if (Integer.parseInt(rating) < 1 || Integer.parseInt(rating) > 10) {
                     model.addAttribute("message", "Rating must be between 1 and 10 !");
@@ -135,23 +151,17 @@ public class CollectionController {
                 return "User/addToCollection";
             }
         }
-        if (progress != null) {
-            try {
-                if (Integer.parseInt(progress) < 0 || Integer.parseInt(progress) > 100) {
-                    model.addAttribute("message", "Reading progress must be between 0 and 100");
-                    return "User/addToCollection";
-                } else {
-                    item.setReadingProgress(Short.parseShort(progress));
-                }
-            } catch (Exception e) {
-                model.addAttribute("message", "Reading progress must be a number !");
-                return "User/addToCollection";
-            }
+        if (progress < 0 || progress > 100) {
+            model.addAttribute("message", "Reading progress must be between 0 and 100");
+            return "User/addToCollection";
+        } else {
+            item.setReadingProgress(progress);
         }
         collectionService.addItem(item, collId);
         return "redirect:/books";
     }
 @PostMapping("/{collectionId}/comments")
+@PreAuthorize("hasRole('USER')")
 public ResponseEntity<Comment> addCommentToCollection(@PathVariable Integer collectionId, @RequestBody Comment comment) {
     Collection collection = collectionService.findByIdCollection(collectionId);
     if (collection != null) {
@@ -163,20 +173,15 @@ public ResponseEntity<Comment> addCommentToCollection(@PathVariable Integer coll
 }
 
     @DeleteMapping("/{collectionId}/items/{itemId}")
-    public ResponseEntity<Void> removeItemFromCollection(@PathVariable Integer collectionId, @PathVariable Integer itemId) {
-        // Retrieve the collection item by collectionId and itemId
+    @PreAuthorize("hasRole('USER')")
+    public String removeItemFromCollection(@PathVariable Integer collectionId, @PathVariable Integer itemId) {
         CollectionItem collectionItem = collectionItemService.findByIdCollectionItem(itemId);
-
-        // Check if the collection item exists
         if (collectionItem == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return "Errors/not_found";
         }
+        if (userService.getCurrentUser() == collectionItem.getCreator())
+            collectionService.removeItem(collectionItem, collectionId);
 
-        // Remove the collection item from the collection
-        collectionService.removeItem(collectionItem, collectionId);
-
-        return new ResponseEntity<>(HttpStatus.OK);
+        return "Errors/unauthorised";
     }
-
-    // Add other endpoints for collection manipulation (e.g., adding/removing items, adding comments) if needed
 }

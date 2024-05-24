@@ -23,4 +23,5 @@ public interface IUserService  {
     public User updateUser(Integer id , User user);
 
 
+    User getCurrentUser();
 }

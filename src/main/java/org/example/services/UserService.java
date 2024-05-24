@@ -50,9 +50,9 @@ public class UserService implements IUserService {
         if (user != null) throw new RuntimeException("exists");
         if (!password.equals(confirmPassword)) throw new RuntimeException("password mismatch");
         user = new User(username, email, passwordEncoder.encode(password));
-        user.getCollections().add(new Collection("Completed", CollectionType.Completed, user, "completed.jpg"));
-        user.getCollections().add(new Collection("Reading", CollectionType.Reading, user, "reading.jpg"));
-        user.getCollections().add(new Collection("Want to Read", CollectionType.WantToRead, user, "wantToRead.jpg"));
+        user.getCollections().add(new Collection("Completed", CollectionType.Completed, user, "completed.jpg","This collection includes books that you are eager to read in the near future. Explore a curated selection of captivating titles and start building your reading list!"));
+        user.getCollections().add(new Collection("Reading", CollectionType.Reading, user, "reading.jpg", "Discover the books that you are currently engrossed in. Dive into captivating stories, intriguing mysteries, and thought-provoking narratives as you explore the titles in this collection."));
+        user.getCollections().add(new Collection("Want to Read", CollectionType.WantToRead, user, "wantToRead.jpg","Congratulations on finishing these captivating reads! This collection features the books that you have successfully completed. Reflect on your literary journey and consider sharing your thoughts with others."));
         user.getRankings().add(new Ranking(RankingPeriod.Week));
         user.getRankings().add(new Ranking(RankingPeriod.Month));
         user.getRankings().add(new Ranking(RankingPeriod.Year));

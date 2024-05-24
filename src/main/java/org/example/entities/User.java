@@ -17,7 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString
+@ToString(exclude = "collections")
 @Entity
 @Builder
 public class User implements Serializable {
@@ -52,4 +52,5 @@ public class User implements Serializable {
         this.email = email;
         this.passwordHash = hash;
     }
+
 }

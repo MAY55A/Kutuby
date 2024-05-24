@@ -14,13 +14,13 @@ import java.util.Optional;
 public class CollectionService implements ICollectionService {
 
     private final CollectionRepository collectionRepository;
-    private final CollectionItemRepository collectionItemRepository;
+    private final CollectionItemService collectionItemService;
     private final RankingRepository rankingRepository;
 
     @Autowired
-    public CollectionService(CollectionRepository collectionRepository, CollectionItemRepository collectionItemRepository, RankingRepository rankingRepository) {
+    public CollectionService(CollectionRepository collectionRepository, CollectionItemRepository collectionItemRepository, CollectionItemService collectionItemService, RankingRepository rankingRepository) {
         this.collectionRepository = collectionRepository;
-        this.collectionItemRepository = collectionItemRepository;
+        this.collectionItemService = collectionItemService;
         this.rankingRepository = rankingRepository;
     }
 
@@ -75,10 +75,16 @@ public class CollectionService implements ICollectionService {
 
     @Override
     public void addItem(CollectionItem item, Integer coll) {
+        CollectionItem existingItem = collectionItemService.findByUserAndBook(item.getCreator(), item.getBook());
         Collection collection = collectionRepository.findById(coll).get();
+        if (existingItem != null)
+            collectionItemService.updateCollectionItem(item.getId(), item);
+        else {
+            collectionItemService.addCollectionItem(item);
+            updateUserScore(collection.getOwner(), 5); //incremantation point lorsque ajout item
+        }
         collection.getItems().add(item);
         collectionRepository.save(collection);
-        updateUserScore(collection.getOwner(), 5); //incremantation point lorsque ajout item
     }
 
     @Override

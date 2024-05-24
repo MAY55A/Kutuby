@@ -4,17 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3fce9203-837a-4e50-9c4a-2fae6e09c564" name="Changes" comment="add styling and settings for admin">
+    <list default="true" id="3fce9203-837a-4e50-9c4a-2fae6e09c564" name="Changes" comment="fixing last errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/NotificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/RankingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/RankingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Collection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Admin/books/books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Admin/books/books.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Guest/about_us.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/about_us.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/User/myCollections.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/User/myCollections.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/CollectionItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/CollectionItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/ICollectionItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/ICollectionItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Guest/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/book.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +75,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Spring Boot.KutubyApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/mayss/Desktop/kutuby/Kutuby/src/main/resources/static/images/users&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
@@ -111,7 +113,8 @@
       <updated>1715873751541</updated>
       <workItem from="1715873754740" duration="13898000" />
       <workItem from="1715933705346" duration="25573000" />
-      <workItem from="1716473885859" duration="9704000" />
+      <workItem from="1716473885859" duration="19065000" />
+      <workItem from="1716534460559" duration="3634000" />
     </task>
     <task id="LOCAL-00001" summary="creation de quelques utilisateurs et des livres">
       <option name="closed" value="true" />
@@ -161,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716478950598</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fixing last errors">
+      <option name="closed" value="true" />
+      <created>1716494944154</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716494944154</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +223,7 @@
     <MESSAGE value="collections display problem fix and adding views count" />
     <MESSAGE value="admin routes fix" />
     <MESSAGE value="add styling and settings for admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="add styling and settings for admin" />
+    <MESSAGE value="fixing last errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing last errors" />
   </component>
 </project>

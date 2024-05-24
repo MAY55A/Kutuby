@@ -16,7 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString
+@ToString(exclude = "owner")
 @Entity
 public class Collection implements Serializable {
     @Serial
@@ -30,7 +30,7 @@ public class Collection implements Serializable {
     @Enumerated(EnumType.STRING)
     private Visibility visibility = Visibility.Public;
     @Column(columnDefinition = "TEXT")
-    private String description;
+    private String description = "Explore a diverse collection of books curated just for you. From classic literature to contemporary fiction, there\\'s something for every reader in this collection.";
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     private Date createdAt;
@@ -46,11 +46,11 @@ public class Collection implements Serializable {
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "favourites")
     private Set<User> likers = new HashSet<>();
 
-    public Collection(String name, CollectionType type, User owner, String coverImage) {
+    public Collection(String name, CollectionType type, User owner, String coverImage, String desc) {
         this.name = name;
         this.type = type;
         this.owner = owner;
         this.coverImage = coverImage;
+        this.description = desc;
     }
-
 }

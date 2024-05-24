@@ -36,4 +36,13 @@ public class CollectionItem implements Serializable {
     private Book book;
     @ManyToOne
     private User creator;
+
+    public CollectionItem(Date startedAt, Date finishedAt, short progress, short rating, Book book, User user) {
+        this.startedReadingAt = startedAt;
+        this.finishedReadingAt = finishedAt;
+        this.readingProgress = progress;
+        this.rating = rating;
+        this.book = book;
+        this.creator = user;
+    }
 }

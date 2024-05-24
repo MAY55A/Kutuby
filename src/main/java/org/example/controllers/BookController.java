@@ -24,10 +24,12 @@ import org.springframework.data.domain.Sort;
 public class BookController {
 
     private final IBookService bookService;
+    private final ProfileController profileController;
 
     @Autowired
-    public BookController(IBookService bookService) {
+    public BookController(IBookService bookService, ProfileController profileController) {
         this.bookService = bookService;
+        this.profileController = profileController;
     }
 
  @GetMapping("/all")
@@ -87,6 +89,7 @@ public class BookController {
             return "Errors/not_found";
         }
         model.addAttribute("book", book);
+        model.addAttribute("user", profileController.getCurrentUser());
         return "Guest/book";
     }
 

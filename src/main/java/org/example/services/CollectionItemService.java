@@ -30,6 +30,7 @@ public class CollectionItemService implements ICollectionItemService {
         Optional<CollectionItem> optionalCollectionItem = collectionItemRepository.findById(id);
         return optionalCollectionItem.orElse(null);
     }
+    @Override
     public CollectionItem findByUserAndBook(User u, Book b) {
         Optional<CollectionItem> optionalCollectionItem = collectionItemRepository.findByCreatorAndBook(u, b);
         return optionalCollectionItem.orElse(null);

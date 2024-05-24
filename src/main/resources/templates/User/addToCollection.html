@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add To Collection</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Add Book To Collection</h1>
+    <form th:action="@{/collections/add}" method="post">
+        <div th:if="${message}" class="alert alert-info alert-dismissible fade show" role="alert">
+            <span th:text="${message}"></span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="form-group">
+            <label for="title">Book</label>
+            <input type="hidden" name="bookId" th:value="${item != null ? item.getBook().getId(): ''}">
+            <output type="text" class="form-control" id="title" name="title" th:text="${item != null ? item.getBook().getTitle() : ''}"></output>
+        </div>
+        <div class="form-group">
+            <label for="rating">Rating</label>
+            <input type="text" class="form-control" id="rating" name="rating" th:value="${item != null && item.getRating() != null && item.getRating() != 0 ? item.getRating() : ''}">
+        </div>
+        <div class="form-group">
+            <label for="progress">Reading Progress</label>
+            <input type="text" class="form-control" id="progress" name="progress" th:value="${item != null && item.getReadingProgress() != null && item.getReadingProgress() != 0 ? item.getReadingProgress() : ''}">
+        </div>
+        <div class="form-group">
+            <label for="startedAt">Started Reading At</label>
+            <input type="date" class="form-control" id="startedAt" name="startedAt" th:value="${item != null ? item.getStartedReadingAt() : null}">
+        </div>
+        <div class="form-group">
+            <label for="finishedAt">Finished Reading At</label>
+            <input type="date" class="form-control" id="finishedAt" name="finishedAt" th:value="${item != null ? item.getFinishedReadingAt(): null}">
+        </div>
+        <select name="collId" required>
+            <option th:each="col : ${item != null ? item.getCreator().getCollections() : ''}" th:value="${col.getId()}" th:text="${col.getName()}"></option>
+        </select>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<!-- Include Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

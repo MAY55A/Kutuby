@@ -302,7 +302,7 @@
     <span class="comment-icon" title="Comment on this book">
         <i class="far fa-comment"></i>
     </span>&nbsp;&nbsp;&nbsp;
-        <span class="ellipsis-icon" title="Add to collection">+</span>
+        <a th:href="@{/collections/add/{id}(id=${book.id})}"><span class="ellipsis-icon" title="Add to collection">+</span></a>
         <!-- Rating Section -->
         <div class="rating-section">
             <label for="rating">Rate this book:</label>

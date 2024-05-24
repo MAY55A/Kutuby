@@ -4,10 +4,12 @@ import org.example.entities.Book;
 import org.example.entities.Comment;
 import org.example.entities.Genre;
 import org.example.services.IBookService;
+import org.example.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,12 +26,12 @@ import org.springframework.data.domain.Sort;
 public class BookController {
 
     private final IBookService bookService;
-    private final ProfileController profileController;
+    private final UserService userService;
 
     @Autowired
-    public BookController(IBookService bookService, ProfileController profileController) {
+    public BookController(IBookService bookService, ProfileController profileController, UserService userService) {
         this.bookService = bookService;
-        this.profileController = profileController;
+        this.userService = userService;
     }
 
     @GetMapping("/all")
@@ -37,7 +39,6 @@ public class BookController {
                               @RequestParam(value = "order", required = false, defaultValue = "asc") String order,
                               @RequestParam(value = "genre", required = false) String genre,
                               @RequestParam(value = "author", required = false) String author,
-                              @RequestParam(value = "weight", required = false) Integer weight,
                               @RequestParam(value = "publishedYear", required = false) Integer publishedYear,
                               @RequestParam(value = "bookName", required = false) String bookName, // Add bookName parameter
                               Model model) {
@@ -59,11 +60,6 @@ public class BookController {
         if (author != null && !author.isEmpty()) {
             specification = specification.and((root, query, builder) ->
                     builder.like(root.get("author"), "%" + author + "%"));
-        }
-
-        if (weight != null) {
-            specification = specification.and((root, query, builder) ->
-                    builder.equal(root.get("weight"), weight));
         }
 
         if (publishedYear != null) {
@@ -93,11 +89,12 @@ public class BookController {
             return "Errors/not_found";
         }
         model.addAttribute("book", book);
-        model.addAttribute("user", profileController.getCurrentUser());
+        model.addAttribute("user", userService.getCurrentUser());
         return "Guest/book";
     }
 
     @PostMapping("/{bookId}/comments")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<Comment> addCommentToBook(@PathVariable Integer bookId, @RequestBody Comment comment) {
         Book book = bookService.findByIdBook(bookId);
         if (book != null) {
@@ -108,15 +105,19 @@ public class BookController {
         }
     }
     @GetMapping("/add")
-    public String viewAddPage() {
+    @PreAuthorize("hasRole('ADMIN')")
+    public String viewAddPage(Model model) {
+        model.addAttribute("genres", Genre.values());
         return "Admin/books/AddBook";
     }
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public String addBook(@RequestBody Book book) {
         Book addedBook = bookService.addBook(book);
         return "redirect:/admin/books";
     }
     @GetMapping("/update/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String viewUpdatePage(@PathVariable("id") Integer id, Model model) {
         Book book = bookService.findByIdBook(id);
         if (book == null) {
@@ -126,6 +127,7 @@ public class BookController {
         return "Admin/books/UpdateBook";
     }
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String updateBook(@PathVariable Integer id, @RequestBody Book updatedBook) {
         Book book = bookService.findByIdBook(id);
         if (book != null) {
@@ -137,6 +139,7 @@ public class BookController {
     }
 
     @GetMapping("delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String deleteBook(@PathVariable Integer id) {
         Book book = bookService.findByIdBook(id);
         if (book != null) {

@@ -1,33 +1,28 @@
 package org.example.controllers;
 
-import org.example.entities.Notification;
+
 import org.example.entities.User;
 import org.example.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/users")
 public class UserController {
 
     private final IUserService userService;
-
     @Autowired
-    public UserController(IUserService userService) {
+    public UserController(IUserService userService, ProfileController profileController) {
         this.userService = userService;
     }
 
     @GetMapping("/all")
+    @PreAuthorize("hasRole('ADMIN')")
     public String getAllUsers(Model model) {
         List<User> users = userService.findAll();
         model.addAttribute("users", users);
@@ -55,20 +50,21 @@ public class UserController {
         }
     }
 
-    @PutMapping("/{id}")
-    public String updateUser(@PathVariable Integer id, @RequestBody User user, Model model) {
+    @PutMapping("/update")
+    public String updateUser(@RequestBody User user, Model model) {
+        Integer id = userService.getCurrentUser().getId();
         User updatedUser = userService.updateUser(id, user);
         model.addAttribute("user", updatedUser);
         if (updatedUser != null) {
-            return "User/user_account";
+            return "redirect:profile";
         } else {
             return "Errors/not_found";
         }
     }
 
-    @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable Integer id) {
-        userService.DeleteUser(id);
+    @DeleteMapping("/")
+    public String deleteUser() {
+        userService.DeleteUser(userService.getCurrentUser().getId());
         return "Guest/home";
     }
 

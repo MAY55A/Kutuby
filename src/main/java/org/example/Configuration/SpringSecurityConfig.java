@@ -39,7 +39,7 @@ public class SpringSecurityConfig {
         httpSecurity.formLogin().defaultSuccessUrl("/profile", true);
         httpSecurity.authorizeHttpRequests().requestMatchers("/webjars/**", "/styles/**","/images/**","https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css", "https://cdnjs.cloudflare.com/**", "http://www.w3.org/**").permitAll();
         //URLs accessible
-        httpSecurity.authorizeHttpRequests().requestMatchers("/", "/books/**", "/collections/**", "/about_us", "/signup", "/leaderboard/**", "/admin/login").permitAll();
+        httpSecurity.authorizeHttpRequests().requestMatchers("/", "/books/**", "/collections/**", "/about_us", "/signup", "/leaderboard/**", "/admin/login", "/users/{id}", "/error").permitAll();
 
         //httpSecurity.authorizeHttpRequests().requestMatchers("/user/**").hasRole("USER");
         httpSecurity.authorizeHttpRequests().requestMatchers("/admin/**").hasRole("ADMIN");

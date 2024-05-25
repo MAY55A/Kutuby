@@ -30,7 +30,7 @@ public class CollectionController {
     private final IUserService userService;
 
     @Autowired
-    public CollectionController(ICollectionService collectionService, IBookService bookService, ICollectionItemService collectionItemService, IBookService bookService1, ProfileController profileController, IUserService userService) {
+    public CollectionController(ICollectionService collectionService, ICollectionItemService collectionItemService, IBookService bookService1, IUserService userService) {
         this.collectionService = collectionService;
         this.collectionItemService = collectionItemService;
         this.bookService = bookService1;
@@ -183,5 +183,29 @@ public ResponseEntity<Comment> addCommentToCollection(@PathVariable Integer coll
             collectionService.removeItem(collectionItem, collectionId);
 
         return "Errors/unauthorised";
+    }
+    @GetMapping("/like/{id}")
+    @PreAuthorize("hasRole('USER')")
+    public String likeCollection(@PathVariable Integer id) {
+        Collection collection = collectionService.findByIdCollection(id);
+        User user = userService.getCurrentUser();
+        if (collection != null && collection.getVisibility() != Visibility.Private && user != collection.getOwner()) {
+            userService.addToFavorites(collection);
+            return "redirect:/collections/"+id;
+        } else if(collection == null)
+            return "Errors/not_found";
+        else
+            return "Errors/unauthorised";
+    }
+    @GetMapping("/dislike/{id}")
+    @PreAuthorize("hasRole('USER')")
+    public String dislikeCollection(@PathVariable Integer id) {
+        Collection collection = collectionService.findByIdCollection(id);
+        User user = userService.getCurrentUser();
+        if (collection != null) {
+            userService.removeFromFavorites(collection);
+            return "redirect:/collections/"+id;
+        } else
+            return "Errors/not_found";
     }
 }

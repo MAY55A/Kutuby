@@ -36,7 +36,7 @@ public class ProfileController {
     @GetMapping("/favorites")
     public String viewFavorites(Model model, @RequestParam(required = false) Integer userId) {
         User user = (userId != null) ? userService.findByIdUser(userId) : userService.getCurrentUser();
-        model.addAttribute("favorites", user.getFavourites());
+        model.addAttribute("favorites", user.getFavorites());
         return "User/myFavorites";
     }
 

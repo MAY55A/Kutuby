@@ -117,17 +117,31 @@
             border-top: 1px solid #ccc;
             width: 100%;
         }
-
+        .heart {
+            text-decoration: none;
+            padding: 8px;
+            font-size: 20px;
+            margin-left: 10px;
+        }
         .heart-icon {
             font-size: 2em;
             margin-top: 15px;
             margin-left: 2px;
             cursor: pointer;
+            &.liked {
+                color: rgb(203, 53, 121);
+                &:hover {
+                    color: #ffffff69;
+                }
+            }
+            &.not-liked {
+                color: #ffffff69;
+                &:hover {
+                    color: rgb(203, 53, 121);
+                }
+            }
         }
 
-        .heart-icon:hover {
-            color: rgb(203, 53, 121);
-        }
 
         /* Collection Details Section */
         .collection-details-section {}
@@ -225,7 +239,8 @@
 <!-- Collection Name Section -->
 <div class="collections-banner">
     <h2 class="collection-title" th:text="${collection.getName()}"></h2>
-    <span class="heart-icon" title="Favorite this collection">♡</span>&nbsp;&nbsp;&nbsp;
+    <a th:if="${ user != collection.getOwner() && !user.getFavorites().contains(collection)}" class="heart" th:href="@{'/collections/like/' + ${collection.getId()}}"><span class="heart-icon not-liked" title="Add it to my favorites">♥</span></a>&nbsp;&nbsp;&nbsp;
+    <a th:if="${ user != collection.getOwner() && user.getFavorites().contains(collection)}" class="heart" th:href="@{'/collections/dislike/' + ${collection.getId()}}"><span class="heart-icon liked" title="Remove it from my favorites">♥</span></a>&nbsp;&nbsp;&nbsp;
 </div>
 
 <!-- Collection Details Section -->

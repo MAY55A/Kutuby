@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface ICollectionService {
 
+    long getTotal();
+
     public List<Collection> findAll();
     public Collection findByIdCollection(Integer id);
     public Collection findByCreator(User user);

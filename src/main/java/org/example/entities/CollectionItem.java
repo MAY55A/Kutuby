@@ -32,9 +32,9 @@ public class CollectionItem implements Serializable {
     private short readingProgress = 0;
     private short rating = 0;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Book book;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User creator;
 
 }

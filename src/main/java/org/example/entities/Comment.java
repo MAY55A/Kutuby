@@ -28,6 +28,6 @@ public class Comment implements Serializable {
     @CreationTimestamp
     private Date createdAt;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 }

@@ -20,6 +20,7 @@ import java.util.Set;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/books")
@@ -97,13 +98,14 @@ public class BookController {
 
     @PostMapping("/{bookId}/comments")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<Comment> addCommentToBook(@PathVariable Integer bookId, @RequestBody Comment comment) {
+    public String addCommentToBook(@PathVariable Integer bookId, @ModelAttribute Comment comment) {
         Book book = bookService.findByIdBook(bookId);
         if (book != null) {
+            comment.setUser(userService.getCurrentUser());
             bookService.addComment(comment, bookId);
-            return new ResponseEntity<>(comment, HttpStatus.CREATED);
+            return "redirect:/books/book/#bookId";
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return "Errors/not_found";
         }
     }
     @GetMapping("/add")
@@ -114,8 +116,9 @@ public class BookController {
     }
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public String addBook(@RequestBody Book book) {
-        Book addedBook = bookService.addBook(book);
+    public String addBook(@ModelAttribute Book book, RedirectAttributes redirectAttributes) {
+        bookService.addBook(book);
+        redirectAttributes.addFlashAttribute("message", "Book successfully added !");
         return "redirect:/admin/books";
     }
     @GetMapping("/update/{id}")
@@ -126,14 +129,16 @@ public class BookController {
             return "Errors/not_found";
         }
         model.addAttribute("book", book);
+        model.addAttribute("genres", Genre.values());
         return "Admin/books/UpdateBook";
     }
-    @PutMapping("/{id}")
+    @PostMapping("/update/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public String updateBook(@PathVariable Integer id, @RequestBody Book updatedBook) {
+    public String updateBook(@PathVariable Integer id, @ModelAttribute Book updatedBook, RedirectAttributes redirectAttributes) {
         Book book = bookService.findByIdBook(id);
         if (book != null) {
-            Book updated = bookService.updateBook(id, updatedBook);
+            bookService.updateBook(id, updatedBook);
+            redirectAttributes.addFlashAttribute("message", "Book successfully updated!");
             return "redirect:/admin/books";
         } else {
             return "Errors/not_found";
@@ -142,10 +147,11 @@ public class BookController {
 
     @GetMapping("delete/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public String deleteBook(@PathVariable Integer id) {
+    public String deleteBook(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         Book book = bookService.findByIdBook(id);
         if (book != null) {
             bookService.DeleteBook(book);
+            redirectAttributes.addFlashAttribute("message", "Book successfully deleted !");
             return "redirect:/admin/books";
         } else {
             return "Errors/not_found";

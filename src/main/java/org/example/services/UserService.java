@@ -3,6 +3,7 @@ package org.example.services;
 import lombok.AllArgsConstructor;
 import org.example.entities.*;
 import org.example.repositories.AppRoleRepository;
+import org.example.repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,8 +24,14 @@ public class UserService implements IUserService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private AppRoleRepository appRoleRepository;
-
+    @Autowired
+    private RankingService rankingService;
+    @Autowired
+    private CommentRepository commentRepository;
     @Override
+    public long getTotal() {
+        return userRepository.count();
+    }@Override
     public List<User> findAll() {
         return userRepository.findAll();
     }
@@ -40,14 +47,6 @@ public class UserService implements IUserService {
         return userRepository.findByUserName(name);
     }
     @Override
-    public List<User> findAdmins() {
-        return findAll().stream().filter(u -> u.getRoles().contains("ADMIN")).toList();
-    }
-    public boolean isAdmin(Integer id) {
-        User user = findByIdUser(id);
-        return user.getRoles().contains(new AppRole("ADMIN"));
-    }
-    @Override
     public User addUser(String username, String email, String password, String confirmPassword) throws RuntimeException{
         User user = findByUserName(username);
         if (user != null) throw new RuntimeException("exists");
@@ -56,9 +55,9 @@ public class UserService implements IUserService {
         user.getCollections().add(new Collection("Completed", CollectionType.Completed, user, "completed.jpg","This collection includes books that you are eager to read in the near future. Explore a curated selection of captivating titles and start building your reading list!"));
         user.getCollections().add(new Collection("Reading", CollectionType.Reading, user, "reading.jpg", "Discover the books that you are currently engrossed in. Dive into captivating stories, intriguing mysteries, and thought-provoking narratives as you explore the titles in this collection."));
         user.getCollections().add(new Collection("Want to Read", CollectionType.WantToRead, user, "wantToRead.jpg","Congratulations on finishing these captivating reads! This collection features the books that you have successfully completed. Reflect on your literary journey and consider sharing your thoughts with others."));
-        user.getRankings().add(new Ranking(RankingPeriod.Week));
-        user.getRankings().add(new Ranking(RankingPeriod.Month));
-        user.getRankings().add(new Ranking(RankingPeriod.Year));
+        user.getRankings().add(new Ranking(user, RankingPeriod.Week));
+        user.getRankings().add(new Ranking(user, RankingPeriod.Month));
+        user.getRankings().add(new Ranking(user, RankingPeriod.Year));
         userRepository.save(user);
         return addRoleToUser(username,"USER");
     }
@@ -81,6 +80,11 @@ public class UserService implements IUserService {
 
     @Override
     public void DeleteUser(Integer id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+        for (Comment comment : user.getComments()) {
+            comment.setUser(null);
+            commentRepository.save(comment);
+        }
         userRepository.deleteById(id);
     }
 
@@ -99,17 +103,26 @@ public class UserService implements IUserService {
         }
     }
 
+    @Override
     public void getNotification(Notification n, Integer userid) {
         User user = userRepository.findById(userid).get();
         user.getNotifications().add(n);
         userRepository.save(user);
     }
-    public void addToFavourites(Collection c, Integer userid) {
-        User user = userRepository.findById(userid).get();
-        user.getFavourites().add(c);
+    @Override
+    public void addToFavorites(Collection c) {
+        User user = getCurrentUser();
+        user.getFavorites().add(c);
+        userRepository.save(user);
+        rankingService.updateUserScore(c.getOwner(), 10);
+        rankingService.updateUserScore(user, 3);
+    }
+    @Override
+    public void removeFromFavorites(Collection c) {
+        User user = getCurrentUser();
+        user.getFavorites().remove(c);
         userRepository.save(user);
     }
-
     public User getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated() && authentication.getPrincipal() instanceof UserDetails) {

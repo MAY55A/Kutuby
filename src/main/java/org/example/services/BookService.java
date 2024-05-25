@@ -21,12 +21,21 @@ import org.springframework.data.domain.Page;
 public class BookService implements IBookService {
 
     private final BookRepository bookRepository;
+    private final CommentService commentService;
+    private final RankingService rankingService;
+    private final UserService userService;
 
     @Autowired
-    public BookService(BookRepository bookRepository) {
+    public BookService(BookRepository bookRepository, CommentService commentService, RankingService rankingService, UserService userService) {
         this.bookRepository = bookRepository;
+        this.commentService = commentService;
+        this.rankingService = rankingService;
+        this.userService = userService;
     }
-
+    @Override
+    public long getTotal() {
+        return bookRepository.count();
+    }
     @Override
     public List<Book> findAll() {
         return bookRepository.findAll();
@@ -102,8 +111,10 @@ public class BookService implements IBookService {
     }
     public void addComment(Comment c, Integer bo) {
         Book book = bookRepository.findById(bo).get();
+        commentService.addComment(c);
         book.getComments().add(c);
         bookRepository.save(book);
+        rankingService.updateUserScore(userService.getCurrentUser(), 10);
     }
 
     @Override

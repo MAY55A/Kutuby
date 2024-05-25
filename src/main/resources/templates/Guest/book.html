@@ -119,7 +119,12 @@
             height: 1px;
             background-color: #e0e0e0;
         }
-
+        .comment-date {
+            color: gray;
+            font-style: italic;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
         .comment-content {
             display: flex;
             align-items: center;
@@ -127,7 +132,6 @@
 
         .comment-username {
             font-family: 'Courier New', monospace;
-
             font-weight: bold;
             margin-right: 10px;
             color: #333;
@@ -231,24 +235,6 @@
             margin-right: 5px; /* Add some spacing between label and input */
         }
 
-        .rating-input {
-            width: 50px; /* Adjust width as needed */
-            padding: 5px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            text-align: center;
-        }
-
-        .rating-input:focus {
-            outline: none; /* Remove focus outline */
-        }
-
-        .rating-input::-webkit-inner-spin-button,
-        .rating-input::-webkit-outer-spin-button {
-            -webkit-appearance: none; /* Remove spin button */
-            margin: 0; /* Remove default margin */
-        }
 
     </style>
 </head>
@@ -303,21 +289,24 @@
 
 
     <hr class="article-separator">
-    <span class="comments-info">Comments: 20</span>
+    <span class="comments-info" th:text="'Comments: '+${book.getComments().size()}"></span>
 
     <div class="comment-container">
         <div class="comments">
-            <div class="comment">
+            <div class="comment" th:each=" comment : ${book.getComments()}">
+                <span class="comment-date" th:text="'written at '+${#dates.format(comment.getCreatedAt(), 'HH:mm dd, MMM yyyy')}"></span>
                 <div class="comment-content">
-                    <span class="comment-username">@Username</span>
-                    <p class="comment-text">Eye-opening read on wealth and mindset! 👍</p>
+                    <span class="comment-username" th:text="${comment.getUser()} != null ? '@'+${comment.getUser().getUserName()} : '@OldUser'"></span>
+                    <p class="comment-text" th:text="${comment.getContent()}"></p>
                 </div>
             </div>
         </div>
-        <div class="comment-input">
-            <input type="text" placeholder="Write a comment...">
-            <button class="send-button">&#10148;</button>
-        </div>
+        <form th:if="${user.getUserName()} != 'admin'" th:action="@{/books/{id}/comments(id=${book.getId()})}" method="post">
+            <div class="comment-input">
+                <input type="text" name="content" placeholder="Write a comment..." required>
+                <button class="send-button" type="submit">&#10148;</button>
+            </div>
+        </form>
     </div>
 </div>
 <br>

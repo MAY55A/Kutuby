@@ -26,15 +26,11 @@ public class Ranking implements Serializable {
     @Enumerated(EnumType.STRING)
     private RankingPeriod period;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
-    public Ranking(RankingPeriod period) {
+    public Ranking(User user, RankingPeriod period) {
+        this.user = user;
         this.period = period;
-    }
-
-    //ajout de methode inceremnte le score de lutilisateur
-    public void incrementPoints(int points) {
-        this.points += points;
     }
 }

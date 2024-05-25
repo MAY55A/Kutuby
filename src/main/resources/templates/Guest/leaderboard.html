@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kutuby Bookworms Leaderboard</title>
-    <link rel="shortcut icon" href="../../static/images/kutuby.ico" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{/images/kutuby.ico}" type="image/x-icon">
 
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
@@ -116,6 +116,34 @@
         .leaderboard-header a:hover:before {
             width: 0%;
         }
+        .period {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            margin: 20px;
+                a {
+                    text-decoration: none;
+                    color: rgba(206, 191, 191, 0.82);
+                    padding: 30px;
+                    width: 100%;
+                    background-color: rgba(88, 72, 72, 0.65);
+                    text-align: center;
+                    font-size: 18px;
+                    font-family: 'Playfair Display', serif;
+                }
+                a:hover, a:active {
+                    background-color: rgba(182, 174, 174, 0.45);
+                    color: rgba(0, 0, 0, 0.85);
+                    box-shadow: 6px 3px 11px rgb(185 172 172 / 86%);
+                }
+        }
+        .no-rankings {
+            text-align: center;
+            color: antiquewhite;
+            font-size: 25px;
+            padding: 50px;
+            font-family: math;
+        }
 
     </style>
 </head>
@@ -141,26 +169,20 @@
         <h2>Kutuby Bookworms Leaderboard</h2>
         <p>Join Kutuby to get on the leaderboard and see where you rank!</p>
     </div>
-
-    <!-- Array of Users -->
+    <div class="period">
+        <a th:href="@{/leaderboard/{period}(period='Week')}">Weekly</a>
+        <a th:href="@{/leaderboard/{period}(period='Month')}">Monthly</a>
+        <a th:href="@{/leaderboard/{period}(period='Year')}">Yearly</a>
+    </div>
     <div class="leaderboard-users" style="border: 1px solid #fff; padding: 10px;">
-        <div class="leaderboard-item">
-            <div class="leaderboard-rank">1.</div>
-            <div class="leaderboard-username">@user1</div>
-            <div class="leaderboard-score">1000</div>
+        <div th:if="${#lists.isEmpty(rankings)}" class="no-rankings">
+            <p>No rankings available yet.</p>
         </div>
-        <div class="leaderboard-item">
-            <div class="leaderboard-rank">2.</div>
-            <div class="leaderboard-username">@user2</div>
-            <div class="leaderboard-score">950</div>
+        <div class="leaderboard-item" th:each="ranking : ${rankings}">
+            <div class="leaderboard-rank" th:text="${ranking.getRank()}"></div>
+            <div class="leaderboard-username" th:text="${ranking.getUser().getUserName()}"></div>
+            <div class="leaderboard-score" th:text="${ranking.getPoints()}"></div>
         </div>
-        <div class="leaderboard-item">
-            <div class="leaderboard-rank">3.</div>
-            <div class="leaderboard-username">@user3</div>
-            <div class="leaderboard-score">900</div>
-        </div>
-     
-        <!-- Add more users as needed -->
     </div>
 </section>
 

@@ -43,7 +43,7 @@ public class Collection implements Serializable {
     private Set<CollectionItem> items = new HashSet<>();
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Comment> comments = new HashSet<>();
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "favourites")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "favorites")
     private Set<User> likers = new HashSet<>();
 
     public Collection(String name, CollectionType type, User owner, String coverImage, String desc) {

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -21,7 +22,7 @@ import static java.util.Objects.nonNull;
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString
+@ToString(exclude = "collectionItems")
 @Entity
 public class Book implements Serializable {
     @Serial
@@ -39,6 +40,7 @@ public class Book implements Serializable {
     @Enumerated(EnumType.STRING)
     private Set<Genre> genres;
     @Temporal (TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date publishedAt;
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp

@@ -23,9 +23,12 @@ public class UserController {
 
     @GetMapping("/all")
     @PreAuthorize("hasRole('ADMIN')")
-    public String getAllUsers(Model model) {
+    public String getAllUsers(@RequestParam(value = "message", required = false) String message, Model model) {
         List<User> users = userService.findAll();
         model.addAttribute("users", users);
+        if (message != null) {
+            model.addAttribute("message", message);
+        }
         return "Admin/users";
     }
 

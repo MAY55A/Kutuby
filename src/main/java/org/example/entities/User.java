@@ -7,17 +7,14 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Slf4j
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString(exclude = {"collections", "rankings"})
+@ToString(exclude = {"collections", "rankings", "comments", "favorites"})
 @Entity
 @Builder
 public class User implements Serializable {
@@ -29,21 +26,23 @@ public class User implements Serializable {
     private String userName;
     private String passwordHash;
     private String email;
-    private String profilePicture;
+    private String profilePicture = "defaultUser.jpg";
+    @Column(columnDefinition = "TEXT")
+    private String description = "Hi, welcome to my account !";
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     private Date createdAt;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private Set<Collection> collections = new HashSet<>();
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     private Set<Comment> comments = new HashSet<>();
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private Set<Ranking> rankings = new HashSet<>();
+    private List<Ranking> rankings = new ArrayList<>();
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Notification> notifications = new HashSet<>();
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Collection> favourites = new HashSet<>();
+    private Set<Collection> favorites = new HashSet<>();
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<AppRole> roles = new HashSet<>();
 

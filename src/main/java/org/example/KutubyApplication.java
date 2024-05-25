@@ -37,6 +37,7 @@ public class KutubyApplication {
             //userService.addRoleToUser("user2","USER");
             //userService.addRoleToUser("admin","USER");
             userService.addRoleToUser("admin","ADMIN");
+            userService.removeRoleFromUser("admin","USER");
 
         };
     }

@@ -29,7 +29,13 @@
 <div class="content">
     <h1 class="title">Books</h1>
     <!-- Add book button -->
-    <a href="/books/add" class="btn btn-success">Add Book</a>
+    <a href="/books/add" class="btn btn-success" style=" margin-bottom: 10px;">Add Book</a>
+    <div th:if="${message}" class="alert alert-info alert-dismissible fade show" role="alert">
+        <span th:text="${message}"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     <table class="table table-bordered">
         <thead>
         <tr>

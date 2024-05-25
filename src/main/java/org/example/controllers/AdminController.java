@@ -5,9 +5,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.entities.Book;
 import org.example.entities.Collection;
+import org.example.entities.RankingPeriod;
 import org.example.services.BookService;
 import org.example.services.CollectionService;
 import org.example.services.IUserService;
+import org.example.services.RankingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,6 +17,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -29,9 +32,16 @@ public class AdminController {
     private CollectionService collectionService;
     @Autowired
     private IUserService userService;
-
+    @Autowired
+    private RankingService rankingService;
     @GetMapping("/dashboard")
-    public String dashboard() {
+    public String dashboard(Model model) {
+        model.addAttribute("totalBooks", bookService.getTotal());
+        model.addAttribute("totalCollections", collectionService.getTotal());
+        model.addAttribute("totalUsers", userService.getTotal()-1);
+        model.addAttribute("topWeeklyReaders", rankingService.getTop3RankingsByPeriod(RankingPeriod.Week));
+        model.addAttribute("topMonthlyReaders", rankingService.getTop3RankingsByPeriod(RankingPeriod.Month));
+        model.addAttribute("topYearlyReaders", rankingService.getTop3RankingsByPeriod(RankingPeriod.Year));
         return "Admin/dashboard";
     }
     @GetMapping("/login")
@@ -43,24 +53,37 @@ public class AdminController {
     public String viewUsersPage() {
         return "redirect:/users/all";
     }
-    @GetMapping("/delete-user/{id}")
-    public String deleteUser(@PathVariable Integer id) {
+    @GetMapping("users/delete/{id}")
+    public String deleteUser(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         userService.DeleteUser(id);
-        return "redirect:/admin/users";
+        redirectAttributes.addFlashAttribute("message", "User successfully deleted !");
+        return "redirect:/users/all";
     }
 
     @GetMapping("/books")
-    public String getAllBooks(Model model) {
+    public String getAllBooks(@RequestParam(value = "message", required = false) String message, Model model) {
         List<Book> books = bookService.findAll();
         model.addAttribute("books", books);
+        if (message != null) {
+            model.addAttribute("message", message);
+        }
         return "Admin/books/books";
     }
 
     @GetMapping("/collections")
-    public String getAllCollections(Model model) {
+    public String getAllCollections(@RequestParam(value = "message", required = false) String message,Model model) {
         List<Collection> collections = collectionService.findAll();
         model.addAttribute("collections", collections);
+        if (message != null) {
+            model.addAttribute("message", message);
+        }
         return "Admin/collections";
+    }
+    @GetMapping("/collections/delete/{id}")
+    public String deleteCollection(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
+        collectionService.DeleteCollection(id);
+        redirectAttributes.addFlashAttribute("message", "Collection successfully deleted !");
+        return "redirect:/admin/collections";
     }
     @GetMapping("/settings")
     public String getSettings(Model model) {

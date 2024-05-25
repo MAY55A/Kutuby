@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Update Book</title>
-    <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/styles/admin.css}">
     <style>
         .container {
-            margin-top: 50px;
+            padding: 5%;
+            h1 {
+                text-align: center;
+            }
+            form {
+                padding: 10%;
+            }
         }
     </style>
 </head>
@@ -34,7 +42,7 @@
 
         <div class="form-group">
             <label for="coverImage">Cover Image</label>
-            <input type="text" class="form-control" id="coverImage" name="coverImage" th:value="${book.getCoverImage()}">
+            <input type="text" class="form-control" id="coverImage" name="coverImage" th:value="${book.getCoverImage()}" required>
         </div>
 
         <div class="form-group">
@@ -44,19 +52,22 @@
 
         <div class="form-group">
             <label for="genres">Genres</label>
-            <select multiple class="form-control" id="genres" name="genres" th:value="${book.getGenres()}">
-                <option th:each="genre : ${book.getGenres()}" th:text="${genre}" th:value="${genre}"></option>
+            <select multiple class="form-control" id="genres" name="genres" required>
+                <option th:each="genre : ${genres}"
+                        th:value="${genre}"
+                        th:text="${genre}"
+                        th:selected="${book.genres.contains(genre)}"></option>
             </select>
         </div>
 
         <div class="form-group">
             <label for="publishedAt">Published At</label>
-            <input type="date" class="form-control" id="publishedAt" name="publishedAt" th:value="${#dates.format(book.getPublishedAt(), 'yyyy-MM-dd')}" required>
+            <input type="date" class="form-control" id="publishedAt" name="publishedAt" th:value="${book.getPublishedAt()}" required>
         </div>
 
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea class="form-control" id="description" name="description" rows="3" th:text="${book.getDescription()}"></textarea>
+            <textarea class="form-control" id="description" name="description" rows="3" th:text="${book.getDescription()}" required></textarea>
         </div>
 
         <div class="form-group">

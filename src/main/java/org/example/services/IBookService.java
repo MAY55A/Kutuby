@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 
 public interface IBookService {
 
+    long getTotal();
+
     public List<Book> findAll();
     //filtrage
     public Book findByIdBook(Integer id);

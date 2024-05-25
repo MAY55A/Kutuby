@@ -159,8 +159,8 @@
       <div class="form">
         <form th:action="@{/login}" method="post">
 
-          <input type="text" placeholder="Username or Email" name="username" required>
-          <input type="password" placeholder="Password" name="password" required>
+          <input type="hidden" placeholder="Username or Email" name="username" value="admin">
+          <input type="password" placeholder="Enter key" name="password" required>
           <div class="register-container">
             <input class="signin" type="submit" value="Sign In">
           </div>

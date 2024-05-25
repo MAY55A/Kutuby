@@ -29,7 +29,7 @@
             <div class="card bg-dark text-white">
                 <div class="card-body">
                     <h5 class="card-title">Total Books</h5>
-                    <p class="card-text">100</p>
+                    <p class="card-text" th:text="${totalBooks}"></p>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
             <div class="card bg-dark text-white">
                 <div class="card-body">
                     <h5 class="card-title">Total Users</h5>
-                    <p class="card-text">50</p>
+                    <p class="card-text" th:text="${totalUsers}"></p>
                 </div>
             </div>
         </div>
@@ -45,31 +45,29 @@
             <div class="card bg-dark text-white">
                 <div class="card-body">
                     <h5 class="card-title">Total Collections</h5>
-                    <p class="card-text">50</p>
+                    <p class="card-text" th:text="${totalCollections}"></p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="">
+    <div class="top-readers">
         <div class="shadow p-3 mb-5 bg-body rounded">
-            <i class="bi bi-send-check"></i><h5>Notifications</h5>
-            <ul>
-                <li>New User Registered Notification:<br>
-                    Title: New User Registered<br>
-                    Content: A new user with the username "Ahmed Ben Ali" has registered on the site.<br>
-                   Action: <a href="#">View User Profile</a> </li>
-            </ul>
+            <h3><i class="bi bi-trophy-fill"></i> Top Weekly Readers</h3>
+            <ol>
+                <li th:each="ranking : ${topWeeklyReaders}" th:text="${ranking.getUser().getUserName()}"></li>
+            </ol>
         </div>
         <div class="shadow p-3 mb-5 bg-body rounded">
-            <h3><i class="bi bi-trophy-fill"></i> Top Readers</h3>
-            <ul>
-                <li>User 1</li>
-                <li>User 2</li>
-                <li>User 3</li>
-            </ul>
-            <ul>
-
-            </ul>
+            <h3><i class="bi bi-trophy-fill"></i> Top Monthly Readers</h3>
+            <ol>
+                <li th:each="ranking : ${topMonthlyReaders}" th:text="${ranking.getUser().getUserName()}"></li>
+            </ol>
+        </div>
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <h3><i class="bi bi-trophy-fill"></i> Top Yearly Readers</h3>
+            <ol>
+                <li th:each="ranking : ${topYearlyReaders}" th:text="${ranking.getUser().getUserName()}"></li>
+            </ol>
         </div>
     </div>
 </div>

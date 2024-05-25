@@ -15,18 +15,21 @@ public class CollectionService implements ICollectionService {
 
     private final CollectionRepository collectionRepository;
     private final CollectionItemService collectionItemService;
-    private final RankingRepository rankingRepository;
+    private final RankingService rankingService;
     private final UserService userService;
 
     @Autowired
-    public CollectionService(CollectionRepository collectionRepository, CollectionItemRepository collectionItemRepository, CollectionItemService collectionItemService, RankingRepository rankingRepository, UserService userService) {
+    public CollectionService(CollectionRepository collectionRepository, CollectionItemRepository collectionItemRepository, CollectionItemService collectionItemService, RankingRepository rankingRepository, RankingService rankingRepository1, RankingService rankingService, UserService userService) {
         this.collectionRepository = collectionRepository;
         this.collectionItemService = collectionItemService;
-        this.rankingRepository = rankingRepository;
+        this.rankingService = rankingService;
         this.userService = userService;
     }
 
     @Override
+    public long getTotal() {
+        return collectionRepository.count();
+    }@Override
     public List<Collection> findAll() {
         return collectionRepository.findNotPrivate();
     }
@@ -50,7 +53,8 @@ public class CollectionService implements ICollectionService {
     @Override
     public Collection addCollection(Collection col) {
         Collection savedCollection = collectionRepository.save(col);
-        updateUserScore(col.getOwner(), 10); // incremantation point lorsque user ajout collection
+        if(savedCollection.getVisibility() != Visibility.Private)
+            rankingService.updateUserScore(col.getOwner(), 70); // incremantation point lorsque user ajout collection visible par les autres
         return savedCollection;
     }
 
@@ -64,8 +68,9 @@ public class CollectionService implements ICollectionService {
         Optional<Collection> optionalCollection = collectionRepository.findById(id);
         if (optionalCollection.isPresent()) {
             Collection existingCollection = optionalCollection.get();
+            if(existingCollection.getVisibility() == Visibility.Private && col.getVisibility() != Visibility.Private)
+                rankingService.updateUserScore(col.getOwner(), 50);
             existingCollection.setName(col.getName());
-            existingCollection.setType(col.getType());
             existingCollection.setVisibility(col.getVisibility());
             existingCollection.setDescription(col.getDescription());
             existingCollection.setCoverImage(col.getCoverImage());
@@ -79,13 +84,17 @@ public class CollectionService implements ICollectionService {
     public void addItem(CollectionItem item, Integer coll) {
         CollectionItem existingItem = collectionItemService.findByUserAndBook(item.getCreator(), item.getBook());
         Collection collection = collectionRepository.findById(coll).get();
-        if (existingItem != null)
+        if (existingItem != null) {
             collectionItemService.updateCollectionItem(item.getId(), item);
-        else {
+            if (collection.getType() != CollectionType.Personnalised)
+                collection.getOwner().getCollections().stream().filter(c -> c.getType() != CollectionType.Personnalised && c.getType() != collection.getType()).forEach(col -> removeItem(item, col.getId()));
+        } else
             collectionItemService.addCollectionItem(item);
-            updateUserScore(collection.getOwner(), 5); //incremantation point lorsque ajout item
-        }
-        collection.getItems().add(item);
+        if(collection.getItems().add(item))
+            if(collection.getType() == CollectionType.Reading)
+                rankingService.updateUserScore(collection.getOwner(), item.getBook().getWeight());
+            else if (collection.getType() == CollectionType.Completed)
+                rankingService.updateUserScore(collection.getOwner(), item.getBook().getWeight()*2);
         collectionRepository.save(collection);
     }
 
@@ -101,27 +110,7 @@ public class CollectionService implements ICollectionService {
         Collection collection = collectionRepository.findById(idCol).get();
         collection.getComments().add(c);
         collectionRepository.save(collection);
-        updateUserScore(c.getUser(), 3); // incremantation point lorsque user ajout commentaire
-    }
-
-    //MAJ des scores de users par week /month/year
-    private void updateUserScore(User user, int points) {
-        updateRanking(user, points, RankingPeriod.Week);
-        updateRanking(user, points, RankingPeriod.Month);
-        updateRanking(user, points, RankingPeriod.Year);
-    }
-
-    private void updateRanking(User user, int points, RankingPeriod period) {
-        Ranking ranking = rankingRepository.findByUserAndPeriod(user, period);
-        if (ranking != null) {
-            ranking.incrementPoints(points);
-            rankingRepository.save(ranking);
-        } else {
-            Ranking newRanking = new Ranking(period);
-            newRanking.setUser(user);
-            newRanking.incrementPoints(points);
-            rankingRepository.save(newRanking);
-        }
+        rankingService.updateUserScore(userService.getCurrentUser(), 10); // incremantation point lorsque user ajout commentaire
     }
 
     @Override

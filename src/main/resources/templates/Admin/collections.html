@@ -29,6 +29,12 @@
 <div class="content">
     <h1 class="title">Collections</h1>
     <div id="admin-dashboard"></div>
+    <div th:if="${message}" class="alert alert-info alert-dismissible fade show" role="alert">
+        <span th:text="${message}"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -55,7 +61,7 @@
             <td th:text="${collection.getLikers().size()}"></td>
                 <!-- Delete button -->
             <td>
-                <a th:href="@{/admin/delete-collection/{id}(id=${collection.getId()})}" class="btn btn-danger btn-sm">Delete</a>
+                <a th:href="@{/admin/collections/delete/{id}(id=${collection.getId()})}" class="btn btn-danger btn-sm">Delete</a>
             </td>
         </tr>
         </tbody>

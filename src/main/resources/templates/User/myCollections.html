@@ -22,7 +22,7 @@
         /* Global styles */
 
         .collections-list {
-            margin-top: 160px;
+            margin-top: 100px;
         }
         .collection-card {
             position: relative;
@@ -83,7 +83,23 @@
             }
 
             }
+        /* Add this CSS to hide the delete button by default */
+        /* Add this CSS to style the delete button */
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: red;
+            cursor: pointer;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.3s ease;
+        }
 
+        /* Add this CSS to show the delete button on hover */
+        .collection-card:hover .delete-button {
+            opacity: 1; /* Show on hover */
+        }
 
 
     </style>
@@ -100,7 +116,6 @@
     <br><br>
     <!-- Page content        -->
 
-
     <a href="/profile/home">My Account</a>
     <a href="/profile/collections">My Collections</a>
     <a href="/profile/favorites">My Favorites</a>
@@ -108,6 +123,7 @@
     <a href="/profile/logout">Logout</a>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="line-separator9"></div> <!-- Add this line for the vertical separator -->
+
 
 </div>
 <!-- Bar icon to open sidebar -->
@@ -134,41 +150,51 @@
 
 <!-- Example of collections with image and title in the same card -->
 <div class="collections-list">
+
+
+    <div class="collection-card new" th:if="${user == currentUser}" style="height: 358px;">
+        <h2 class="collection-title">Create new Collection</h2>
+        <form th:action="@{/collections/new}" method="post">
+            <div class="fields">
+                <label>Name : </label>
+                <input type="text" name="name" required>
+                <br><label>Description : </label><br>
+                <textarea cols="20" rows="7" name="description"></textarea>
+                <br><label>Visibility : </label>
+                <input type="radio" value="Public" name="visibility">Public
+                <input type="radio" value="Rated" name="visibility">Rated
+                <input type="radio" value="Limited" name="visibility">Limited
+                <input type="radio" value="Private" name="visibility" checked>Private
+                <br>
+            </div>
+            <input type="submit" value="create">
+        </form>
+    </div>
     <div class="collection-card" th:each="col : ${user.getCollections()}">
         <a th:href="@{/collections/{id}(id=${col.id})}">
             <img class="collection-image" th:src="@{/images/collections/{cover}(cover=${col.coverImage})}" th:alt="${col.name}">
             <div class="desc">
-                <p th:text="${col.getDescription()}"></p>
+                <p th:text="${col.description}"></p>
                 <ul>
-                    <li th:text="'Created at : '+${#dates.format(col.getCreatedAt(), 'dd MMMM yyyy')}"></li>
-                    <li th:text="'Books : '+${col.getItems().size()}"></li>
-                    <li th:text="'Views : '+${col.getViews()}"></li>
-                    <li th:text="'Likes : '+${col.getLikers().size()}"></li>
+                    <li th:text="'Created at : '+${#dates.format(col.createdAt, 'dd MMMM yyyy')}"></li>
+                    <li th:text="'Books : '+${col.items.size()}"></li>
+                    <li th:text="'Views : '+${col.views}"></li>
+                    <li th:text="'Likes : '+${col.likers.size()}"></li>
                 </ul>
             </div>
-            <h2 class="collection-title"  th:text="${col.getName()}"></h2>
+            <h2 class="collection-title" th:text="${col.name}"></h2>
         </a>
 
-    </div>
-
-    <div class="collection-card new" th:if="${user == currentUser}">
-        <h2 class="collection-title">Create new Collection</h2>
-        <form th:action="@{/collections/new}" method="post">
-            <div class="fields">
-            <label>Name : </label>
-        <input type="text" name="name" required>
-        <br><label>Description : </label><br>
-        <textarea cols="20" rows="7" name="description"></textarea>
-        <br><label>Visibility : </label>
-        <input type="radio" value="Public" name="visibility">Public
-        <input type="radio" value="Rated" name="visibility">Rated
-        <input type="radio" value="Limited" name="visibility">Limited
-        <input type="radio" value="Private" name="visibility" checked>Private
-        <br>
-        </div>
-        <input type="submit" value="create">
+        <form th:action="@{/collections/{id}(id=${col.id})}" th:method="delete" id="delete-form-${col.id}" style="display:inline;">
+            <button type="submit" th:if="${col.type == T(org.example.entities.CollectionType).Personnalised}" class="delete-button" style="color: red; background: none; border: none; cursor: pointer;">X</button>
         </form>
     </div>
+
+
+
+
+
+
 
 </div>
 
@@ -247,6 +273,50 @@
         document.getElementById("header").style.width = "100%";
         document.getElementById("sidebarToggle").style.display = "block";
     }
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get all delete buttons
+        const deleteButtons = document.querySelectorAll(".delete-button");
+
+        // Attach event listener to each delete button
+        deleteButtons.forEach(function(button) {
+            button.addEventListener("click", function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                const form = this.closest("form"); // Get the parent form of the clicked button
+                const collectionId = form.getAttribute("action").split("/").pop(); // Get the collection ID from the form's action attribute
+
+                // Confirm deletion with the user
+                if (confirm("Are you sure you want to delete this collection?")) {
+                    // Call the deleteCollection function
+                    deleteCollection(collectionId);
+                }
+            });
+        });
+    });
+
+
+    // Function to delete a collection
+    function deleteCollection(id) {
+        fetch(`/collections/${id}`, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Collection deleted successfully');
+                    // Reload the page after successful deletion
+                    location.reload();
+                } else {
+                    console.error('Failed to delete collection');
+                    alert('Failed to delete collection');
+                }
+            })
+            .catch(error => {
+                console.error('Network error:', error);
+                alert('Network error: ' + error);
+            });
+    }
+
+
 </script>
 </body>
 </html>

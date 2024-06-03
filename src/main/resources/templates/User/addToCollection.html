@@ -4,16 +4,54 @@
     <meta charset="UTF-8">
     <title>Add To Collection</title>
     <!-- Include Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+
         .container {
-            margin-top: 50px;
+            margin-top: 20px;
+            padding: 60px;
+
+            background-color: #ccc; /* Gray background */
+            border: 1px solid #ddd;
+            border-radius: 0px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 1em;
+            color: white;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .alert {
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #391e02;
+            border-color: #391e02;
+            border-radius: 5px;
+        }
+
+        .btn-primary:hover {
+            background-color:rgb(203, 53, 121);
+        ;
+            border-color: rgb(203, 53, 121);
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>Add Book To Collection</h1>
+    <h1 style="color: white; font-family: 'Anton', sans-serif; text-align: center;">Add Book To Collection</h1>
     <form th:action="@{/collections/add}" method="post">
         <div th:if="${message}" class="alert alert-info alert-dismissible fade show" role="alert">
             <span th:text="${message}"></span>

@@ -187,19 +187,19 @@
             align-items: center;
         }
         .visibility-label {
-            color: rgb(203, 53, 121);
+            color: #F3E0D2;
         }
         .created-at-label {
-            color: rgb(203, 53, 121);
+            color: #F3E0D2;
         }
 
         .views-label {
-            color: rgb(203, 53, 121);
+            color: #F3E0D2;
         }
 
-        .user {
-            color: darkkhaki;
-            text-decoration: none;
+        .collection-details span {
+            display: inline;
+            margin-right: 5px; /* Adjust spacing between details */
         }
 
     </style>
@@ -225,15 +225,30 @@
 </div>
 
 <!-- Collection Details Section -->
+<!-- Collection Details Section -->
 <div class="collection-details-section">
     <div class="collection-details">
-        <p><strong class="visibility-label">Creator :</strong> <a th:href="@{/profile/home(userId=${collection.getOwner().getId()})}" class="user"><span th:text="${collection.getOwner().getUserName()}"></span></a></p>
-        <p><strong class="created-at-label">Created At :</strong> <span th:text="${#dates.format(collection.getCreatedAt(), 'dd MMMM yyyy')}"></span></p>
-        <p><strong class="views-label">Views :</strong> <span th:text="${collection.getViews()}"></span></p>
-        <p><strong class="views-label">Likes :</strong> <span th:text="${collection.getLikers().size()}"></span></p>
-        <p class="description centered" th:text="${collection.getDescription()}"></p>
+        <span>
+            <strong class="visibility-label">Creator :</strong> <span th:text="${collection.getOwner().getUserName()}"></span>
+        </span>
+        <span>|</span>
+        <span>
+            <strong class="created-at-label">Created At :</strong> <span th:text="${#dates.format(collection.getCreatedAt(), 'dd MMMM yyyy')}"></span>
+        </span>
+        <span>|</span>
+        <span>
+            <strong class="views-label">Views :</strong> <span th:text="${collection.getViews()}"></span>
+        </span>
+        <span>|</span>
+        <span>
+            <strong class="views-label">Likes :</strong> <span th:text="${collection.getLikers().size()}"></span>
+        </span>
+        <br> <!-- Add a line break here -->
+        <p class="description" th:text="${collection.getDescription()}"></p>
     </div>
 </div>
+
+
 <hr class="article-separator">
 <!-- Add sorting and filtering options -->
 

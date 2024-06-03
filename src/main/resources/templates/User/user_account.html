@@ -225,29 +225,9 @@
          <div class="last-completed books">
          <h3>Last Completed</h3>
          <div class="book-container">
-             <div class="book-card">
-                 <a href="../Guest/book.html">
-                     <img class="book-image" src="../../static/images/book12.jpg" alt="Book 4" width="150" height="200">
-                 </a>
-             </div>
-             <div class="book-card">
-                 <a href="../Guest/book.html">
-                     <img class="book-image" src="../../static/images/book10.jpg" alt="Book 4" width="150" height="200">
-                 </a>
-             </div>
-             <div class="book-card">
-                 <a href="../Guest/book.html">
-                     <img class="book-image" src="../../static/images/book11.jpg" alt="Book 4" width="150" height="200">
-                 </a>
-             </div>
-             <div class="book-card">
-                 <a href="../Guest/book.html">
-                     <img class="book-image" src="../../static/images/book1.jpg" alt="Book 4" width="150" height="200">
-                 </a>
-             </div>
-             <div class="book-card">
-                 <a href="../Guest/book.html">
-                     <img class="book-image" src="../../static/images/book2.jpg" alt="Book 4" width="150" height="200">
+             <div class="book-card" th:each="item : ${completed}">
+                 <a th:href="@{'/books/book/' + ${item.book.id}}">
+                     <img class="book-image" th:src="@{'/images/books/' + ${item.book.coverImage}}" th:alt="${item.book.title}" width="150" height="200">
                  </a>
              </div>
          </div>
@@ -255,29 +235,9 @@
          <div class="reading books">
              <h3>Currently Reading</h3>
              <div class="book-container">
-                 <div class="book-card">
-                     <a href="../Guest/book.html">
-                         <img class="book-image" src="../../static/images/book12.jpg" alt="Book 4" width="150" height="200">
-                     </a>
-                 </div>
-                 <div class="book-card">
-                     <a href="../Guest/book.html">
-                         <img class="book-image" src="../../static/images/book10.jpg" alt="Book 4" width="150" height="200">
-                     </a>
-                 </div>
-                 <div class="book-card">
-                     <a href="../Guest/book.html">
-                         <img class="book-image" src="../../static/images/book11.jpg" alt="Book 4" width="150" height="200">
-                     </a>
-                 </div>
-                 <div class="book-card">
-                     <a href="../Guest/book.html">
-                         <img class="book-image" src="../../static/images/book1.jpg" alt="Book 4" width="150" height="200">
-                     </a>
-                 </div>
-                 <div class="book-card">
-                     <a href="../Guest/book.html">
-                         <img class="book-image" src="../../static/images/book2.jpg" alt="Book 4" width="150" height="200">
+                 <div class="book-card" th:each="item : ${reading}">
+                     <a th:href="@{'/books/book/' + ${item.book.id}}">
+                         <img class="book-image" th:src="@{'/images/books/' + ${item.book.coverImage}}" th:alt="${item.book.title}" width="150" height="200">
                      </a>
                  </div>
              </div>

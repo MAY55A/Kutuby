@@ -2,6 +2,7 @@ package org.example.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.example.entities.CollectionType;
 import org.example.entities.User;
 import org.example.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/profile")
@@ -24,6 +27,8 @@ public class ProfileController {
         User user = (userId != null) ? userService.findByIdUser(userId) : userService.getCurrentUser();
         model.addAttribute("user", user);
         model.addAttribute("currentUser", userService.getCurrentUser());
+        model.addAttribute("reading", user.getCollections().stream().filter(collection -> collection.getType() == CollectionType.Reading).findFirst().get().getItems().stream().limit(5).collect(Collectors.toList()));
+        model.addAttribute("completed", user.getCollections().stream().filter(collection -> collection.getType() == CollectionType.Completed).findFirst().get().getItems().stream().limit(5).collect(Collectors.toList()));
         return "User/user_account";
     }
 

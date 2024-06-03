@@ -23,10 +23,6 @@
         .article-container {
             max-width: 1200px;
             margin: 0 auto;
-            a {
-                text-decoration: none;
-                color: inherit;
-            }
         }
 
         .article-top-section {
@@ -62,13 +58,13 @@
             font-size: 3em;
             font-weight: bold;
             font-style: italic;
+            font-family: 'Rouge Script', cursive;
             margin-left: 10px;
         }
 
         .article-content {
+
             overflow: hidden;
-            font-family: 'Rouge Script', cursive;
-            font-size: 23px;
         }
 
         .article-author {
@@ -107,9 +103,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        #commentForm {
-            display: none;
-        }
+
 
         .comment {
             margin-bottom: 15px;
@@ -119,7 +113,7 @@
         .comment::after {
             content: '';
             position: absolute;
-            top: -5px;
+            bottom: 0;
             left: 0;
             width: 100%;
             height: 1px;
@@ -148,7 +142,7 @@
         }
 
         .comment-input {
-            margin-bottom: 20px;
+            margin-top: 20px;
             display: flex;
             align-items: center;
         }
@@ -216,6 +210,7 @@
         }
 
         .article-details {
+            margin-left: 220px;
             margin-top:-30px;
             font-family: 'Courier New', monospace;
             padding: 20px;
@@ -286,11 +281,11 @@
     </div>
 
 
-    <div class="article-interaction-section" th:if="${user == null || user.getUserName() != 'admin'}">
-    <span class="comment-icon" title="Comment on this book" onclick="showCommentForm()">
+    <div class="article-interaction-section">
+    <span class="comment-icon" title="Comment on this book">
         <i class="far fa-comment"></i>
     </span>&nbsp;&nbsp;&nbsp;
-        <a th:href="@{/collections/add/{id}(id=${book.id})}"><span class="ellipsis-icon" title="Add to collection">+</span></a>
+        <a th:href="@{/collections/add/{id}(id=${book.id})}" style="color: white;margin-bottom: -9px; text-decoration: none;"><span class="ellipsis-icon" title="Add to collection">+</span></a>
     </div>
 
 
@@ -298,22 +293,21 @@
     <span class="comments-info" th:text="'Comments: '+${book.getComments().size()}"></span>
 
     <div class="comment-container">
-        <form th:action="@{/books/{id}/comments(id=${book.getId()})}" method="post" id="commentForm">
+        <div class="comments">
+            <div class="comment" th:each=" comment : ${book.getComments()}">
+                <span class="comment-date" th:text="'written at '+${#dates.format(comment.getCreatedAt(), 'HH:mm dd, MMM yyyy')}"></span>
+                <div class="comment-content">
+                    <span class="comment-username" th:text="${comment.getUser()} != null ? '@'+${comment.getUser().getUserName()} : '@OldUser'"></span>
+                    <p class="comment-text" th:text="${comment.getContent()}"></p>
+                </div>
+            </div>
+        </div>
+        <form th:if="${user == null || user.getUserName() != 'admin'}" th:action="@{/books/{id}/comments(id=${book.getId()})}" method="post">
             <div class="comment-input">
                 <input type="text" name="content" placeholder="Write a comment..." required>
                 <button class="send-button" type="submit">&#10148;</button>
             </div>
         </form>
-        <div class="comments">
-            <div class="comment" th:each=" comment : ${book.getComments().reversed()}">
-                <span class="comment-date" th:text="'written at '+${#dates.format(comment.getCreatedAt(), 'HH:mm dd, MMM yyyy')}"></span>
-                <div class="comment-content">
-                    <a th:href="@{/profile/home(userId=${comment.getUser().getId()})}" th:if="${comment.getUser()} != null"><span class="comment-username" th:text="'@'+${comment.getUser().getUserName()}"></span></a>
-                    <span th:if="${comment.getUser()} == null" class="comment-username">@OldUser</span>
-                    <p class="comment-text" th:text="${comment.getContent()}"></p>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <br>
@@ -362,10 +356,6 @@
     document.getElementById('kutuby').onclick = function() {
         window.location.href = '/';
     };
-    function showCommentForm() {
-        const formContainer = document.getElementById('commentForm');
-        formContainer.style.display = formContainer.style.display === 'block' ? 'none' : 'block';
-    }
 </script>
 </body>
 </html>

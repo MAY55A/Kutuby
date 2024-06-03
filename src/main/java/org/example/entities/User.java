@@ -34,15 +34,15 @@ public class User implements Serializable {
     private Date createdAt;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
-    private Set<Collection> collections = new HashSet<>();
+    private List<Collection> collections = new ArrayList<>();
     @OneToMany(mappedBy = "user")
     private Set<Comment> comments = new HashSet<>();
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Ranking> rankings = new ArrayList<>();
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Notification> notifications = new HashSet<>();
+    private List<Notification> notifications = new ArrayList<>();
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Collection> favorites = new HashSet<>();
+    private List<Collection> favorites = new ArrayList<>();
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<AppRole> roles = new HashSet<>();
 

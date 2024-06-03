@@ -7,9 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Slf4j
 @AllArgsConstructor
@@ -26,9 +24,9 @@ public class Collection implements Serializable {
     private int id;
     private String name;
     @Enumerated(EnumType.STRING)
-    private CollectionType type;
+    private CollectionType type = CollectionType.Personnalised;
     @Enumerated(EnumType.STRING)
-    private Visibility visibility = Visibility.Public;
+    private Visibility visibility = Visibility.Private;
     @Column(columnDefinition = "TEXT")
     private String description = "Explore a diverse collection of books curated just for you. From classic literature to contemporary fiction, there\\'s something for every reader in this collection.";
     @Temporal(TemporalType.TIMESTAMP)
@@ -39,10 +37,10 @@ public class Collection implements Serializable {
 
     @ManyToOne
     private User owner;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<CollectionItem> items = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<CollectionItem> items = new HashSet<>();
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Comment> comments = new HashSet<>();
+    private List<Comment> comments = new ArrayList<>();
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "favorites")
     private Set<User> likers = new HashSet<>();
 

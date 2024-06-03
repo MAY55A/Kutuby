@@ -8,10 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -50,7 +47,7 @@ public class Book implements Serializable {
     private int weight;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<Comment> comments = new HashSet<>();
+    private List<Comment> comments = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "book")
     private Set<CollectionItem> collectionItems = new HashSet<>();
 

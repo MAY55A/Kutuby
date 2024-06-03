@@ -20,6 +20,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/styles/style.css}">
+    <link rel="stylesheet" th:href="@{/styles/profile.css}">
 
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap" rel="stylesheet">
@@ -29,64 +30,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Anton&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Sidebar Styles */
-
-        .sidebar {
-            font-family: 'Playfair Display', serif;
-
-            height: 46%;
-            width: 200px;
-            position: fixed;
-            z-index: 3;
-            top: 0;
-            left: 0;
-            background-color: #000000; /* Black background */
-            padding-top: 60px; /* Place content below the header */
-        }
-
-        .sidebar a {
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #fff;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .sidebar a:hover {
-            background-color: #444; /* Darker background on hover */
-        }
-        /* Sidebar Styles */
-
-        /* Sidebar Styles */
-        .sidebar {
-            text-align: center;
-            height: 100%;
-            width: 0; /* Initially hidden */
-            position: fixed;
-            z-index: 3;
-            top: 0;
-            left: 0;
-            background-color:#000000; /* Black background */
-            overflow-x: hidden; /* Hide horizontal scrollbar */
-            padding-top: 60px; /* Place content below the header */
-            transition: 0.2s; /* 0.5 second transition effect to slide in the sidebar */
-        }
-
-        .sidebar a {
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #fff;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .sidebar a:hover {
-            background-color: #fff; /* Darker background on hover */
-            color:#000000
-        }
-
         .line-separator4 {
       border-top: 1px solid #ccc;
       margin-top: 0px;
@@ -207,17 +150,54 @@
 </style>
 </head>
 <body>
-<header class="big" id="header">
-    <h1 id="kutuby" style="margin: 0; font-size: 3rem; font-family: 'Playfair Display', serif; cursor: pointer; text-decoration: none;">KUTUBY</h1>
-    <nav>
-        <a href="/profile" class="far fa-user"></a>
-        <a href="/books"><svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: -7px;"  height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M248-300q53.57 0 104.28 12.5Q403-275 452-250v-427q-45-30-97.62-46.5Q301.76-740 248-740q-38 0-74.5 9.5T100-707v434q31-14 70.5-20.5T248-300Zm264 50q50-25 98-37.5T712-300q38 0 78.5 6t69.5 16v-429q-34-17-71.82-25-37.82-8-76.18-8-54 0-104.5 16.5T512-677v427Zm-30 90q-51-38-111-58.5T248-239q-36.54 0-71.77 9T106-208q-23.1 11-44.55-3Q40-225 40-251v-463q0-15 7-27.5T68-761q42-20 87.39-29.5 45.4-9.5 92.61-9.5 63 0 122.5 17T482-731q51-35 109.5-52T712-800q46.87 0 91.93 9.5Q849-781 891-761q14 7 21.5 19.5T920-714v463q0 27.89-22.5 42.45Q875-194 853-208q-34-14-69.23-22.5Q748.54-239 712-239q-63 0-121 21t-109 58ZM276-489Z"/></svg></a>
-        <a href="/collections">Collections</a>
-        <a href="/about_us">About Us</a>
-    </nav>
-    <div class="line-separatoor"></div>
-</header>
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
 
+    <br>
+    <br>
+    <br>
+    <br><br>
+    <!-- Page content        -->
+    <a href="/profile/home">My Account</a>
+    <a href="/profile/collections">My Collections</a>
+    <a href="/profile/favorites">My Favorites</a>
+    <a href="/profile/settings">Settings</a>
+    <a href="/profile/logout">Logout</a>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="line-separator9"></div> <!-- Add this line for the vertical separator -->
+
+</div>
+<!-- Bar icon to open sidebar -->
+<div id="main">
+    <header class="big" id="header">
+        <h1 id="kutuby" style="margin: 0; font-size: 3rem; font-family: 'Playfair Display', serif; cursor: pointer; text-decoration: none;">KUTUBY</h1>
+        <span th:if="${user == currentUser}" id="sidebarToggle" style="font-size:30px;cursor:pointer;margin-left:-1000px;" onclick="openNav()">&#9776;</span>
+        <nav>
+            <a href="/profile" class="far fa-user"></a>
+            <a href="/books"><svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: -7px;"  height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M248-300q53.57 0 104.28 12.5Q403-275 452-250v-427q-45-30-97.62-46.5Q301.76-740 248-740q-38 0-74.5 9.5T100-707v434q31-14 70.5-20.5T248-300Zm264 50q50-25 98-37.5T712-300q38 0 78.5 6t69.5 16v-429q-34-17-71.82-25-37.82-8-76.18-8-54 0-104.5 16.5T512-677v427Zm-30 90q-51-38-111-58.5T248-239q-36.54 0-71.77 9T106-208q-23.1 11-44.55-3Q40-225 40-251v-463q0-15 7-27.5T68-761q42-20 87.39-29.5 45.4-9.5 92.61-9.5 63 0 122.5 17T482-731q51-35 109.5-52T712-800q46.87 0 91.93 9.5Q849-781 891-761q14 7 21.5 19.5T920-714v463q0 27.89-22.5 42.45Q875-194 853-208q-34-14-69.23-22.5Q748.54-239 712-239q-63 0-121 21t-109 58ZM276-489Z"/></svg></a>
+            <a href="/collections">Collections</a>
+            <a href="/about_us">About Us</a>
+            </nav>
+        <div class="line-separatoor"></div>
+    </header>
+
+    <!-- Sidebar toggle function -->
+    <script>
+        function openNav() {
+            document.getElementById("sidebar").style.width = "200px";
+            document.getElementById("main").style.marginLeft = "200px";
+            document.getElementById("header").style.width = "calc(100% - 200px)";
+            document.getElementById("sidebarToggle").style.display = "none";
+        }
+
+        function closeNav() {
+            document.getElementById("sidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft= "0";
+            document.getElementById("header").style.width = "100%";
+            document.getElementById("sidebarToggle").style.display = "block";
+        }
+    </script>
+</div>
 <!-- User Profile Component -->
         <div class="user-profile">
             <div>
@@ -238,25 +218,6 @@
             </ul>
             </div>
         </div>
-            <!-- Sidebar toggle function
-            <script>
-                function openNav() {
-                    document.getElementById("sidebar").style.width = "200px";
-                    document.getElementById("main").style.marginLeft = "200px";
-                    document.getElementById("header").style.marginLeft = "200px";
-                    document.getElementById("header").style.width = "calc(100% - 200px)";
-                    document.getElementById("sidebarToggle").style.display = "none";
-                }
-
-                function closeNav() {
-                    document.getElementById("sidebar").style.width = "0";
-                    document.getElementById("main").style.marginLeft= "0";
-                    document.getElementById("header").style.marginLeft = "0";
-                    document.getElementById("header").style.width = "100%";
-                    document.getElementById("sidebarToggle").style.display = "block";
-                }
-            </script>
-            -->
 
   <!--Elegant Separator -->
   <hr class="elegant-separator">

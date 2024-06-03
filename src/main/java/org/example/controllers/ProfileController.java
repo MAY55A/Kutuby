@@ -23,20 +23,23 @@ public class ProfileController {
     public String viewProfile(Model model, @RequestParam(required = false) Integer userId) {
         User user = (userId != null) ? userService.findByIdUser(userId) : userService.getCurrentUser();
         model.addAttribute("user", user);
+        model.addAttribute("currentUser", userService.getCurrentUser());
         return "User/user_account";
     }
 
     @GetMapping("/collections")
     public String viewCollections(Model model, @RequestParam(required = false) Integer userId) {
         User user = (userId != null) ? userService.findByIdUser(userId) : userService.getCurrentUser();
-        model.addAttribute("collections", user.getCollections());
+        model.addAttribute("user", user);
+        model.addAttribute("currentUser", userService.getCurrentUser());
         return "User/myCollections";
     }
 
     @GetMapping("/favorites")
     public String viewFavorites(Model model, @RequestParam(required = false) Integer userId) {
         User user = (userId != null) ? userService.findByIdUser(userId) : userService.getCurrentUser();
-        model.addAttribute("favorites", user.getFavorites());
+        model.addAttribute("user", user);
+        model.addAttribute("currentUser", userService.getCurrentUser());
         return "User/myFavorites";
     }
 

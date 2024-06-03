@@ -36,11 +36,11 @@
         </div>
         <div class="form-group">
             <label for="startedAt">Started Reading At</label>
-            <input type="date" class="form-control" id="startedAt" name="startedAt" th:value="${item.getStartedReadingAt()}">
+            <input type="date" class="form-control" id="startedAt" name="startedAt" th:value="${#dates.format(item.getStartedReadingAt(), 'yyyy-MM-dd')}">
         </div>
         <div class="form-group">
             <label for="finishedAt">Finished Reading At</label>
-            <input type="date" class="form-control" id="finishedAt" name="finishedAt" th:value="${item.getFinishedReadingAt()}">
+            <input type="date" class="form-control" id="finishedAt" name="finishedAt" th:value="${#dates.format(item.getFinishedReadingAt(), 'yyyy-MM-dd')}">
         </div>
         <select name="collId" required>
             <option th:each="col : ${item != null ? item.getCreator().getCollections() : ''}" th:value="${col.getId()}" th:text="${col.getName()}"></option>

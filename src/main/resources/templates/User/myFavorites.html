@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../static/images/kutuby.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="styles/profile.css">
-    <link rel="stylesheet" href="../styles/collections.css">
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
+    <link rel="stylesheet" th:href="@{/styles/profile.css}">
+    <link rel="stylesheet" th:href="@{/styles/collections.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -32,11 +32,11 @@
     <br><br>
     <!-- Page content        -->
 
-    <a href="user_account.html">My Account</a>
-    <a href="myCollections.html">My Collections</a>
-    <a href="myFavorites.html">My Favorites</a>
-    <a href="settings.html">Settings</a>
-    <a href="logout.html">Logout</a>
+    <a href="/profile/home">My Account</a>
+    <a href="/profile/collections">My Collections</a>
+    <a href="/profile/favorites">My Favorites</a>
+    <a href="/profile/settings">Settings</a>
+    <a href="/profile/logout">Logout</a>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="line-separator9"></div> <!-- Add this line for the vertical separator -->
 
@@ -49,37 +49,32 @@
     <header class="big" id="header">
         <h1 id="kutuby">KUTUBY</h1>
         <span id="sidebarToggle" style="font-size:30px;cursor:pointer;margin-left:-1000px;" onclick="openNav()">&#9776;</span>
-
-
         <nav>
-
-            <a href="user_account.html" class="far fa-user"></a>
-            <a href="../Guest/books.html"><svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: -7px;" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M248-300q53.57 0 104.28 12.5Q403-275 452-250v-427q-45-30-97.62-46.5Q301.76-740 248-740q-38 0-74.5 9.5T100-707v434q31-14 70.5-20.5T248-300Zm264 50q50-25 98-37.5T712-300q38 0 78.5 6t69.5 16v-429q-34-17-71.82-25-37.82-8-76.18-8-54 0-104.5 16.5T512-677v427Zm-30 90q-51-38-111-58.5T248-239q-36.54 0-71.77 9T106-208q-23.1 11-44.55-3Q40-225 40-251v-463q0-15 7-27.5T68-761q42-20 87.39-29.5 45.4-9.5 92.61-9.5 63 0 122.5 17T482-731q51-35 109.5-52T712-800q46.87 0 91.93 9.5Q849-781 891-761q14 7 21.5 19.5T920-714v463q0 27.89-22.5 42.45Q875-194 853-208q-34-14-69.23-22.5Q748.54-239 712-239q-63 0-121 21t-109 58ZM276-489Z"/></svg></a>
-            <a href="../Guest/collections.html">Collections</a>
-            <a href="../Guest/about_us.html">About Us</a>
+            <a href="/profile" class="far fa-user"></a>
+            <a href="/books"><svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: -7px;"  height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M248-300q53.57 0 104.28 12.5Q403-275 452-250v-427q-45-30-97.62-46.5Q301.76-740 248-740q-38 0-74.5 9.5T100-707v434q31-14 70.5-20.5T248-300Zm264 50q50-25 98-37.5T712-300q38 0 78.5 6t69.5 16v-429q-34-17-71.82-25-37.82-8-76.18-8-54 0-104.5 16.5T512-677v427Zm-30 90q-51-38-111-58.5T248-239q-36.54 0-71.77 9T106-208q-23.1 11-44.55-3Q40-225 40-251v-463q0-15 7-27.5T68-761q42-20 87.39-29.5 45.4-9.5 92.61-9.5 63 0 122.5 17T482-731q51-35 109.5-52T712-800q46.87 0 91.93 9.5Q849-781 891-761q14 7 21.5 19.5T920-714v463q0 27.89-22.5 42.45Q875-194 853-208q-34-14-69.23-22.5Q748.54-239 712-239q-63 0-121 21t-109 58ZM276-489Z"/></svg></a>
+            <a href="/collections">Collections</a>
+            <a href="/about_us">About Us</a>
         </nav>
         <div class="line-separatoor"></div>
     </header>
-
-    <!-- Sidebar toggle function -->
-    <script>
-        function openNav() {
-            document.getElementById("sidebar").style.width = "200px";
-            document.getElementById("main").style.marginLeft = "200px";
-            document.getElementById("header").style.marginLeft = "200px";
-            document.getElementById("header").style.width = "calc(100% - 200px)";
-            document.getElementById("sidebarToggle").style.display = "none";
-        }
-
-        function closeNav() {
-            document.getElementById("sidebar").style.width = "0";
-            document.getElementById("main").style.marginLeft= "0";
-            document.getElementById("header").style.marginLeft = "0";
-            document.getElementById("header").style.width = "100%";
-            document.getElementById("sidebarToggle").style.display = "block";
-        }
-    </script>
 </div>
+<div class="collections-list">
+    <div class="empty" th:if="${user.getFavorites().size() == 0}">
+        <p>No collections have been liked yet</p>
+        <a th:if="${user == currentUser}" href="/collections">See what collections you might like</a>
+    </div>
+
+    <div class="collection-card" th:each="col : ${user.getFavorites()}">
+        <a th:href="@{/collections/{id}(id=${col.id})}">
+            <img class="collection-image" th:src="@{/images/collections/{cover}(cover=${col.coverImage})}" th:alt="${col.name}">
+            <h2 class="collection-title" th:text="${col.name}"></h2>
+            <span class="views-count"><i class="fas fa-eye"></i><span th:text="${col.views}"></span></span>
+            <span class="collection-description" th:text="${col.description}"></span>
+        </a>
+    </div>
+</div>
+
+<div class="line-separator"></div>
 <footer id="footer">
 
     <div class="footer-content">
@@ -124,12 +119,7 @@
 
 <script>
     document.getElementById('kutuby').onclick = function() {
-        window.location.href = 'home.html';
-    };
-</script>
-<script>
-    document.getElementById('kutuby').onclick = function() {
-        window.location.href = 'home.html';
+        window.location.href = '/';
     };
 
     // Open sidebar function

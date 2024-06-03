@@ -27,14 +27,18 @@
         .collection-card {
             position: relative;
             &:hover .desc {
-                color: #dacece;
+                color: #e5e2e2;
                 background-color: rgba(0, 0, 0, 0.47);
-
+                p {
+                    border-bottom: 1px solid #777777;
+                }
+            }
+            .collection-image {
+                height: 280px;
             }
         }
         .new {
             height: 400px;
-            width: 300px;
             color: #333333;
             .fields {
                 padding-left: 30px;
@@ -45,7 +49,7 @@
             input {
                 height: 20px;
             }
-            input[type="button"] {
+            input[type="submit"] {
                 width: 100%;
                 position: absolute;
                 bottom: 0;
@@ -65,14 +69,13 @@
         .desc {
             text-align: center;
             width: 100%;
-                    height: 260px;
+                    height: 280px;
                     position: absolute;
                     top: 0;
                     color: transparent;
                     p {
                         margin: 20px;
                         padding-bottom: 10px;
-                        border-bottom: 1px solid #777777;
                     }
             ul {
                 padding: 5%;
@@ -97,14 +100,14 @@
     <br><br>
     <!-- Page content        -->
 
-    <a href="profile/home">My Account</a>
-    <a href="profile/collections">My Collections</a>
-    <a href="profile/favorites">My Favorites</a>
-    <a href="profile/settings">Settings</a>
-    <a href="profile/logout">Logout</a>
+
+    <a href="/profile/home">My Account</a>
+    <a href="/profile/collections">My Collections</a>
+    <a href="/profile/favorites">My Favorites</a>
+    <a href="/profile/settings">Settings</a>
+    <a href="/profile/logout">Logout</a>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="line-separator9"></div> <!-- Add this line for the vertical separator -->
-
 
 </div>
 <!-- Bar icon to open sidebar -->
@@ -114,36 +117,14 @@
     <header class="big" id="header">
         <h1 id="kutuby">KUTUBY</h1>
         <span id="sidebarToggle" style="font-size:30px;cursor:pointer;margin-left:-1000px;" onclick="openNav()">&#9776;</span>
-
-
         <nav>
-
-            <a href="user_account.html" class="far fa-user"></a>
-            <a href="../Guest/books.html"><svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: -7px;" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M248-300q53.57 0 104.28 12.5Q403-275 452-250v-427q-45-30-97.62-46.5Q301.76-740 248-740q-38 0-74.5 9.5T100-707v434q31-14 70.5-20.5T248-300Zm264 50q50-25 98-37.5T712-300q38 0 78.5 6t69.5 16v-429q-34-17-71.82-25-37.82-8-76.18-8-54 0-104.5 16.5T512-677v427Zm-30 90q-51-38-111-58.5T248-239q-36.54 0-71.77 9T106-208q-23.1 11-44.55-3Q40-225 40-251v-463q0-15 7-27.5T68-761q42-20 87.39-29.5 45.4-9.5 92.61-9.5 63 0 122.5 17T482-731q51-35 109.5-52T712-800q46.87 0 91.93 9.5Q849-781 891-761q14 7 21.5 19.5T920-714v463q0 27.89-22.5 42.45Q875-194 853-208q-34-14-69.23-22.5Q748.54-239 712-239q-63 0-121 21t-109 58ZM276-489Z"/></svg></a>
-            <a href="../Guest/collections.html">Collections</a>
-            <a href="../Guest/about_us.html">About Us</a>
+            <a href="/profile" class="far fa-user"></a>
+            <a href="/books"><svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom: -7px;"  height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M248-300q53.57 0 104.28 12.5Q403-275 452-250v-427q-45-30-97.62-46.5Q301.76-740 248-740q-38 0-74.5 9.5T100-707v434q31-14 70.5-20.5T248-300Zm264 50q50-25 98-37.5T712-300q38 0 78.5 6t69.5 16v-429q-34-17-71.82-25-37.82-8-76.18-8-54 0-104.5 16.5T512-677v427Zm-30 90q-51-38-111-58.5T248-239q-36.54 0-71.77 9T106-208q-23.1 11-44.55-3Q40-225 40-251v-463q0-15 7-27.5T68-761q42-20 87.39-29.5 45.4-9.5 92.61-9.5 63 0 122.5 17T482-731q51-35 109.5-52T712-800q46.87 0 91.93 9.5Q849-781 891-761q14 7 21.5 19.5T920-714v463q0 27.89-22.5 42.45Q875-194 853-208q-34-14-69.23-22.5Q748.54-239 712-239q-63 0-121 21t-109 58ZM276-489Z"/></svg></a>
+            <a href="/collections">Collections</a>
+            <a href="/about_us">About Us</a>
         </nav>
         <div class="line-separatoor"></div>
     </header>
-
-    <!-- Sidebar toggle function -->
-    <script>
-        function openNav() {
-            document.getElementById("sidebar").style.width = "200px";
-            document.getElementById("main").style.marginLeft = "200px";
-            document.getElementById("header").style.marginLeft = "200px";
-            document.getElementById("header").style.width = "calc(100% - 200px)";
-            document.getElementById("sidebarToggle").style.display = "none";
-        }
-
-        function closeNav() {
-            document.getElementById("sidebar").style.width = "0";
-            document.getElementById("main").style.marginLeft= "0";
-            document.getElementById("header").style.marginLeft = "0";
-            document.getElementById("header").style.width = "100%";
-            document.getElementById("sidebarToggle").style.display = "block";
-        }
-    </script>
 </div>
 
 
@@ -153,94 +134,40 @@
 
 <!-- Example of collections with image and title in the same card -->
 <div class="collections-list">
-    <div class="collection-card">
-        <a href="../Guest/collection.html">
-            <img class="collection-image" src="../../static/images/defaultColl.jpg" alt="Collection 1">
+    <div class="collection-card" th:each="col : ${user.getCollections()}">
+        <a th:href="@{/collections/{id}(id=${col.id})}">
+            <img class="collection-image" th:src="@{/images/collections/{cover}(cover=${col.coverImage})}" th:alt="${col.name}">
             <div class="desc">
+                <p th:text="${col.getDescription()}"></p>
                 <ul>
-                    <li>Created at : 1 July 2023</li>
-                    <li>Views : 40</li>
-                    <li>Likes : 12</li>
-                    <li>Books : 12</li>
+                    <li th:text="'Created at : '+${#dates.format(col.getCreatedAt(), 'dd MMMM yyyy')}"></li>
+                    <li th:text="'Books : '+${col.getItems().size()}"></li>
+                    <li th:text="'Views : '+${col.getViews()}"></li>
+                    <li th:text="'Likes : '+${col.getLikers().size()}"></li>
                 </ul>
             </div>
-            <h2 class="collection-title">Currently Reading</h2>
+            <h2 class="collection-title"  th:text="${col.getName()}"></h2>
         </a>
 
     </div>
-    <div class="collection-card">
-        <a href="../Guest/collection.html">
-            <img class="collection-image" src="../../static/images/defaultColl.jpg" alt="Collection 2">
-            <div class="desc">
-                <ul>
-                    <li>Created at : 1 July 2023</li>
-                    <li>Views : 40</li>
-                    <li>Likes : 12</li>
-                    <li>Books : 12</li>
-                </ul>
-            </div>
-            <h2 class="collection-title">Completed</h2>
-        </a>
-    </div>
-    <div class="collection-card">
-        <a href="../Guest/collection.html">
-            <img class="collection-image" src="../../static/images/defaultColl.jpg" alt="Collection 2">
-            <div class="desc">
-                <ul>
-                    <li>Created at : 1 July 2023</li>
-                    <li>Views : 40</li>
-                    <li>Likes : 12</li>
-                    <li>Books : 12</li>
-                </ul>
-            </div>
-            <h2 class="collection-title">Want to Read</h2>
-        </a>
-    </div>
-    <div class="collection-card">
-        <a href="../Guest/collection.html">
-            <img class="collection-image" src="../../static/images/coll5.jpg" alt="Collection 2">
-            <div class="desc">
-                <p>df dfqdfd, sdfqd ddf.Sdf dfq sdd qdfqdd dsd sqdsd.</p>
-                <ul>
-                    <li>Created at : 1 July 2023</li>
-                    <li>Views : 40</li>
-                    <li>Likes : 12</li>
-                    <li>Books : 12</li>
-                </ul>
-            </div>
-            <h2 class="collection-title">Collection 4 Title</h2>
-        </a>
-    </div>
-    <div class="collection-card">
-        <a href="../Guest/collection.html">
-            <img class="collection-image" src="../../static/images/coll6.jpg" alt="Collection 2">
-            <div class="desc">
-                <p>df dfqdfd, sdfqd ddf.Sdf dfq sdd qdfqdd dsd sqdsd.</p>
-                <ul>
-                    <li>Created at : 1 July 2023</li>
-                    <li>Views : 40</li>
-                    <li>Likes : 12</li>
-                    <li>Books : 12</li>
-                </ul>
-            </div>
-            <h2 class="collection-title">Collection 5 Title</h2>
-        </a>
-    </div>
-    <div class="collection-card new">
+
+    <div class="collection-card new" th:if="${user == currentUser}">
         <h2 class="collection-title">Create new Collection</h2>
-        <div class="fields">
+        <form th:action="@{/collections/new}" method="post">
+            <div class="fields">
             <label>Name : </label>
-        <input type="text"></input>
+        <input type="text" name="name" required>
         <br><label>Description : </label><br>
-        <textarea cols="20" rows="7"></textarea>
+        <textarea cols="20" rows="7" name="description"></textarea>
         <br><label>Visibility : </label>
-        <input type="radio" value="Public" name="visibility">Public</input>
-        <input type="radio" value="Rated" name="visibility">Rated</input>
-        <input type="radio" value="Limited" name="visibility">Limited</input>
-        <input type="radio" value="Private" name="visibility">Private</input>
+        <input type="radio" value="Public" name="visibility">Public
+        <input type="radio" value="Rated" name="visibility">Rated
+        <input type="radio" value="Limited" name="visibility">Limited
+        <input type="radio" value="Private" name="visibility" checked>Private
         <br>
         </div>
-        <input type="button" value="create">
+        <input type="submit" value="create">
+        </form>
     </div>
 
 </div>
@@ -296,12 +223,7 @@
 
 <script>
     document.getElementById('kutuby').onclick = function() {
-        window.location.href = 'home.html';
-    };
-</script>
-<script>
-    document.getElementById('kutuby').onclick = function() {
-        window.location.href = 'home.html';
+        window.location.href = '/';
     };
 
     // Open sidebar function

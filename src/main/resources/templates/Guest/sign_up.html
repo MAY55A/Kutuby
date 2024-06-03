@@ -146,7 +146,10 @@
         margin-right: 10px;
       }
     }
-   
+    .msg {
+      color: #777777;
+      margin: 10px;
+    }
 
    
   </style>
@@ -159,14 +162,16 @@
       <div class="register-container">
         <div class="already-signed-in">Already have an account? <a href="login"><span>Sign in</span></a></div>
       </div>
-      <div th:if="${msg}" th:text="${msg}"></div>
+      <div th:if="${msg}" th:text="${msg}" class="msg"></div>
       <div class="form">
         <form th:action="@{/signup}" method="post">
           <input type="email" placeholder="Email" required name="email">
           <input type="text" placeholder="Username" required name="name">
           <input type="password" placeholder="Password" required name="password">
           <input type="password" placeholder="Confirm password" required name="confirmPassword">
-          <input class="signin" type="submit" value="Register">
+          <div class="register-container">
+            <input class="signin" type="submit" value="Register">
+          </div>
         </form>
       </div>
       <div class="register-container">

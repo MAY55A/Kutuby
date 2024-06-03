@@ -143,6 +143,10 @@
       border-left: 1px solid #ccc;
       height: 100%;
     }
+    .msg {
+      color: #777777;
+      margin: 10px;
+    }
 
   </style>
 </head>
@@ -155,7 +159,9 @@
 
     <div class="right-section">
         <div class="already-signed-in">Contact the administration for assistance.</div>
-
+      <div th:if="${param.error}" class="msg">
+        Invalid Administration Key.
+      </div>
       <div class="form">
         <form th:action="@{/login}" method="post">
 

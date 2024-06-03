@@ -30,14 +30,7 @@ public class KutubyApplication {
         return args-> {
             roleService.addNewRole("USER");
             roleService.addNewRole("ADMIN");
-            //userService.addUser("user1", "1234", "user1@gmail.com", "1234");
-            //userService.addUser("user2", "1234", "user2@gmail.com", "1234");
-            userService.addUser("admin", "admin@gmail.com", "1234", "1234");
-            //userService.addRoleToUser("user1","USER");
-            //userService.addRoleToUser("user2","USER");
-            //userService.addRoleToUser("admin","USER");
-            userService.addRoleToUser("admin","ADMIN");
-
+            userService.addAdmin("admin", "admin@gmail.com", "1234", "1234");
         };
     }
     @Bean

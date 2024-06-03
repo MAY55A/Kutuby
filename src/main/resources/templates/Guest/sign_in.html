@@ -145,7 +145,10 @@
         margin-right: 10px;
       }
     }
-   
+   .msg {
+     color: #777777;
+     margin: 10px;
+   }
 
    
   </style>
@@ -158,17 +161,19 @@
       <div class="register-container">
         <div class="already-signed-in">Don't have an account? <a href="/signup"><span>Sign up</span></a></div>
       </div>
-      <div th:if="${param.error}">
+      <div th:if="${param.error}" class="msg">
         Invalid username and password.
       </div>
-      <div th:if="${param.logout}">
+      <div th:if="${param.logout}" class="msg">
         You have been logged out.
       </div>
       <div class="form">
         <form th:action="@{/login}" method="post">
           <input type="text" placeholder="Username or Email" name="username" required>
           <input type="password" placeholder="Password" name="password" required>
-          <button class="signin" type="submit" value="Sign In">Sign In</button>
+          <div class="register-container">
+            <input class="signin" type="submit" value="Sign In">
+          </div>
         </form>
       </div>
       <div class="register-container">

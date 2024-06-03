@@ -35,7 +35,9 @@
     </div>
 </div>
 
-
+<div class="empty" th:if="${collections.size() == 0}">
+    <p>No collections were found</p>
+</div>
 <!-- Example of collections with image and title in the same card -->
 <div class="collections-list">
     <div class="collection-card" th:each="col : ${collections}">

@@ -163,3 +163,13 @@ footer {
     border-top: 1px solid #ccc;
     margin-top: 15px;
 }
+.empty {
+    padding: 250px 100px;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    a {
+        color: antiquewhite;
+        font-size: 15px;
+    }
+}

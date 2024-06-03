@@ -197,7 +197,9 @@
         <input type="number" id="filter-year" name="filter-year" placeholder="Published Year">
         <button onclick="applyFilters()">Apply Filters</button>
     </div>
-
+    <div class="empty" th:if="${books.size() == 0}">
+        <p>No books were found</p>
+    </div>
     <div class="books2-container">
         <div th:each="book : ${books}" class="book-card">
             <a th:href="@{/books/book/{id}(id=${book.getId()})}">

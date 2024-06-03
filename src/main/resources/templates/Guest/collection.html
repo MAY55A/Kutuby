@@ -50,7 +50,9 @@
         }
 
         /* Collection Details Section */
-        .collection-details-section {}
+        .collection-details-section {
+            padding: 20px;
+        }
 
         .collection-details p {
             font-size: 17px;
@@ -75,7 +77,7 @@
         .collections-banner {
             margin-top: 90px;
             margin-bottom: -10px;
-            padding-top: 10px; /* Adjusted padding */
+            padding-top: 20px; /* Adjusted padding */
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -141,31 +143,6 @@
                 }
             }
         }
-
-
-        /* Collection Details Section */
-        .collection-details-section {}
-
-        .collection-details p {
-            font-weight: bold;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        .description {
-            text-align: left;
-            font-size: 5px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        .collection-details strong {
-            font-family: 'Anton', sans-serif;
-        }
-
-        .centered {
-            text-align: center;
-            font-size: 5px;
-
-        }
         /* Sort by and Filter styling */
         .sort-filter-container {
             display: flex;
@@ -220,6 +197,10 @@
             color: rgb(203, 53, 121);
         }
 
+        .user {
+            color: darkkhaki;
+            text-decoration: none;
+        }
 
     </style>
 </head>
@@ -239,15 +220,15 @@
 <!-- Collection Name Section -->
 <div class="collections-banner">
     <h2 class="collection-title" th:text="${collection.getName()}"></h2>
-    <a th:if="${ user != collection.getOwner() && !user.getFavorites().contains(collection)}" class="heart" th:href="@{'/collections/like/' + ${collection.getId()}}"><span class="heart-icon not-liked" title="Add it to my favorites">♥</span></a>&nbsp;&nbsp;&nbsp;
-    <a th:if="${ user != collection.getOwner() && user.getFavorites().contains(collection)}" class="heart" th:href="@{'/collections/dislike/' + ${collection.getId()}}"><span class="heart-icon liked" title="Remove it from my favorites">♥</span></a>&nbsp;&nbsp;&nbsp;
+    <a th:if="${ user != null && user.getUserName() != 'admin' && user != collection.getOwner() && !user.getFavorites().contains(collection)}" class="heart" th:href="@{'/collections/like/' + ${collection.getId()}}"><span class="heart-icon not-liked" title="Add it to my favorites">♥</span></a>&nbsp;&nbsp;&nbsp;
+    <a th:if="${ user != null && user.getUserName() != 'admin' && user != collection.getOwner() && user.getFavorites().contains(collection)}" class="heart" th:href="@{'/collections/dislike/' + ${collection.getId()}}"><span class="heart-icon liked" title="Remove it from my favorites">♥</span></a>&nbsp;&nbsp;&nbsp;
 </div>
 
 <!-- Collection Details Section -->
 <div class="collection-details-section">
     <div class="collection-details">
-        <p><strong class="visibility-label">Creator :</strong> <span th:text="${collection.getOwner().getUserName()}"></span></p>
-        <p><strong class="created-at-label">Created At :</strong> <span th:text="${collection.getCreatedAt()}"></span></p>
+        <p><strong class="visibility-label">Creator :</strong> <a th:href="@{/profile/home(userId=${collection.getOwner().getId()})}" class="user"><span th:text="${collection.getOwner().getUserName()}"></span></a></p>
+        <p><strong class="created-at-label">Created At :</strong> <span th:text="${#dates.format(collection.getCreatedAt(), 'dd MMMM yyyy')}"></span></p>
         <p><strong class="views-label">Views :</strong> <span th:text="${collection.getViews()}"></span></p>
         <p><strong class="views-label">Likes :</strong> <span th:text="${collection.getLikers().size()}"></span></p>
         <p class="description centered" th:text="${collection.getDescription()}"></p>
@@ -268,7 +249,10 @@
     <input type="radio" id="sort-year" name="sort" value="year"> <!-- New option for sorting by year -->
     <label for="sort-year">Year</label> <!-- New label for sorting by year -->
 </div>
-
+<div class="empty" th:if="${collection.getItems().size() == 0}">
+    <p>No books were added to this collection</p>
+    <a th:if="${user == collection.getOwner()}" href="/books"> See what books you can add to this collection</a>
+</div>
 
 
 <!-- List of Books in the Collection -->

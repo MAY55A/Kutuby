@@ -46,13 +46,21 @@ public class CollectionService implements ICollectionService {
     }
 
     @Override
-    public Collection findByName(String name) {
-        return collectionRepository.findByName(name);
+    public List<Collection> findByName(String name) {
+        return collectionRepository.findByNameContainingIgnoreCase(name);
+    }
+    @Override
+    public Collection findByNameAndCreator(String name, User user) {
+        return collectionRepository.findByNameAndOwner(name, user);
     }
 
     @Override
     public Collection addCollection(Collection col) {
+        col.setOwner(userService.getCurrentUser());
+        if(findByNameAndCreator(col.getName(), col.getOwner()) != null)
+            return null;
         Collection savedCollection = collectionRepository.save(col);
+        col.getOwner().getCollections().add(col);
         if(savedCollection.getVisibility() != Visibility.Private)
             rankingService.updateUserScore(col.getOwner(), 70); // incremantation point lorsque user ajout collection visible par les autres
         return savedCollection;
@@ -85,16 +93,19 @@ public class CollectionService implements ICollectionService {
         CollectionItem existingItem = collectionItemService.findByUserAndBook(item.getCreator(), item.getBook());
         Collection collection = collectionRepository.findById(coll).get();
         if (existingItem != null) {
-            collectionItemService.updateCollectionItem(item.getId(), item);
-            if (collection.getType() != CollectionType.Personnalised)
-                collection.getOwner().getCollections().stream().filter(c -> c.getType() != CollectionType.Personnalised && c.getType() != collection.getType()).forEach(col -> removeItem(item, col.getId()));
-        } else
+            collectionItemService.updateCollectionItem(existingItem.getId(), item);
+            if (collection.getType() != CollectionType.Personnalised) {
+                collection.getOwner().getCollections().stream().filter(c -> c.getType() != CollectionType.Personnalised).forEach(col -> removeItem(existingItem, col.getId()));
+            }
+            item = existingItem;
+        } else {
             collectionItemService.addCollectionItem(item);
-        if(collection.getItems().add(item))
-            if(collection.getType() == CollectionType.Reading)
-                rankingService.updateUserScore(collection.getOwner(), item.getBook().getWeight());
-            else if (collection.getType() == CollectionType.Completed)
-                rankingService.updateUserScore(collection.getOwner(), item.getBook().getWeight()*2);
+        }
+        collection.getItems().add(item);
+        if(collection.getType() == CollectionType.Reading)
+            rankingService.updateUserScore(collection.getOwner(), item.getBook().getWeight());
+        else if (collection.getType() == CollectionType.Completed)
+            rankingService.updateUserScore(collection.getOwner(), item.getBook().getWeight()*2);
         collectionRepository.save(collection);
     }
 

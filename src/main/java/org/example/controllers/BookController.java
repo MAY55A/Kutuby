@@ -103,7 +103,7 @@ public class BookController {
         if (book != null) {
             comment.setUser(userService.getCurrentUser());
             bookService.addComment(comment, bookId);
-            return "redirect:/books/book/#bookId";
+            return "redirect:/books/book/"+bookId;
         } else {
             return "Errors/not_found";
         }

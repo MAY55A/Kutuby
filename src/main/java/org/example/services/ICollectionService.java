@@ -14,7 +14,9 @@ public interface ICollectionService {
     public List<Collection> findAll();
     public Collection findByIdCollection(Integer id);
     public Collection findByCreator(User user);
-    public Collection findByName(String name);
+    public List<Collection> findByName(String name);
+
+    Collection findByNameAndCreator(String name, User user);
 
     //CRUD
     public Collection addCollection(Collection col);

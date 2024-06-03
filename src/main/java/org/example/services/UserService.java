@@ -52,14 +52,23 @@ public class UserService implements IUserService {
         if (user != null) throw new RuntimeException("exists");
         if (!password.equals(confirmPassword)) throw new RuntimeException("password mismatch");
         user = new User(username, email, passwordEncoder.encode(password));
-        user.getCollections().add(new Collection("Completed", CollectionType.Completed, user, "completed.jpg","This collection includes books that you are eager to read in the near future. Explore a curated selection of captivating titles and start building your reading list!"));
+        user.getCollections().add(new Collection("Completed", CollectionType.Completed, user, "completed.jpg","Congratulations on finishing these captivating reads! This collection features the books that you have successfully completed. Reflect on your literary journey and consider sharing your thoughts with others."));
         user.getCollections().add(new Collection("Reading", CollectionType.Reading, user, "reading.jpg", "Discover the books that you are currently engrossed in. Dive into captivating stories, intriguing mysteries, and thought-provoking narratives as you explore the titles in this collection."));
-        user.getCollections().add(new Collection("Want to Read", CollectionType.WantToRead, user, "wantToRead.jpg","Congratulations on finishing these captivating reads! This collection features the books that you have successfully completed. Reflect on your literary journey and consider sharing your thoughts with others."));
+        user.getCollections().add(new Collection("Want to Read", CollectionType.WantToRead, user, "wantToRead.jpg","This collection includes books that you are eager to read in the near future. Explore a curated selection of captivating titles and start building your reading list!"));
         user.getRankings().add(new Ranking(user, RankingPeriod.Week));
         user.getRankings().add(new Ranking(user, RankingPeriod.Month));
         user.getRankings().add(new Ranking(user, RankingPeriod.Year));
         userRepository.save(user);
         return addRoleToUser(username,"USER");
+    }
+    @Override
+    public User addAdmin(String username, String email, String password, String confirmPassword) throws RuntimeException{
+        User user = findByUserName(username);
+        if (user != null) throw new RuntimeException("exists");
+        if (!password.equals(confirmPassword)) throw new RuntimeException("password mismatch");
+        user = new User(username, email, passwordEncoder.encode(password));
+        userRepository.save(user);
+        return addRoleToUser(username,"Admin");
     }
 
     @Override
@@ -129,5 +138,10 @@ public class UserService implements IUserService {
             return findByUserName(authentication.getName());
         } else
             return null;
+    }
+
+    @Override
+    public List<User> findByName(String name) {
+        return userRepository.findByUserNameContainingIgnoreCase(name);
     }
 }

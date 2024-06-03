@@ -9,8 +9,10 @@ import java.util.List;
 
 public interface CollectionRepository extends JpaRepository<Collection, Integer> {
     Collection findByOwner(User owner);
-    Collection findByName(String name);
+    List<Collection> findByNameContainingIgnoreCase(String name);
 
     @Query("SELECT c FROM Collection c WHERE c.visibility != 'Private'")
     List<Collection> findNotPrivate();
+
+    Collection findByNameAndOwner(String name, User user);
 }

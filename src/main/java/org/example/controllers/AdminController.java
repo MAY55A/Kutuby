@@ -50,7 +50,9 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String viewUsersPage() {
+    public String viewUsersPage(@RequestParam(value = "name", required = false) String name) {
+        if(name != null && !name.isEmpty())
+            return "redirect:/users/all?name=" + name;
         return "redirect:/users/all";
     }
     @GetMapping("users/delete/{id}")
@@ -61,9 +63,13 @@ public class AdminController {
     }
 
     @GetMapping("/books")
-    public String getAllBooks(@RequestParam(value = "message", required = false) String message, Model model) {
+    public String getAllBooks(@RequestParam(value = "message", required = false) String message, @RequestParam(value = "name", required = false) String name, Model model) {
         List<Book> books = bookService.findAll();
-        model.addAttribute("books", books);
+        if(name != null && !name.isEmpty()) {
+            model.addAttribute("books", bookService.findByTitle(name));
+            model.addAttribute("name", name);
+        } else
+            model.addAttribute("books", books);
         if (message != null) {
             model.addAttribute("message", message);
         }
@@ -71,9 +77,13 @@ public class AdminController {
     }
 
     @GetMapping("/collections")
-    public String getAllCollections(@RequestParam(value = "message", required = false) String message,Model model) {
+    public String getAllCollections(@RequestParam(value = "message", required = false) String message, @RequestParam(value = "name", required = false) String name, Model model) {
         List<Collection> collections = collectionService.findAll();
-        model.addAttribute("collections", collections);
+        if(name != null && !name.isEmpty()) {
+            model.addAttribute("collections", collectionService.findByName(name));
+            model.addAttribute("name", name);
+        } else
+            model.addAttribute("collections", collections);
         if (message != null) {
             model.addAttribute("message", message);
         }

@@ -14,6 +14,9 @@ public interface IUserService  {
     public User findByIdUser(Integer id);
     public User findByUserName(String name);
     public User addUser(String username, String password, String email, String confirmPassword) throws Exception;
+
+    User addAdmin(String username, String email, String password, String confirmPassword) throws RuntimeException;
+
     User addRoleToUser(String username, String role);
     void removeRoleFromUser(String username, String role);
     public void DeleteUser(Integer id);
@@ -27,4 +30,6 @@ public interface IUserService  {
     void removeFromFavorites(Collection c);
 
     User getCurrentUser();
+
+    List<User> findByName(String name);
 }

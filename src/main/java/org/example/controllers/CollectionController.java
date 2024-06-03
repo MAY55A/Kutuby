@@ -80,11 +80,11 @@ public class CollectionController {
             return "Errors/unauthorised";
     }
 
-    @PostMapping
+    @PostMapping("/new")
     @PreAuthorize("hasRole('USER')")
-    public String addCollection(@RequestBody Collection collection) {
+    public String addCollection(@ModelAttribute Collection collection) {
         Collection addedCollection = collectionService.addCollection(collection);
-        return "redirect:profile/collections";
+        return "redirect:/profile/collections";
     }
 
     @PutMapping("/{id}")
@@ -129,7 +129,7 @@ public class CollectionController {
     }
     @PostMapping("/add")
     @PreAuthorize("hasRole('USER')")
-    public String addItemToCollection(Model model, @RequestParam("bookId") Integer bookId, @RequestParam(value = "rating", required = false) String rating, @RequestParam(value = "progress", required = false) short progress, @RequestParam(value = "startedAt", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date startedAt, @RequestParam(value = "finishedAT", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date finishedAt, @RequestParam("collId") Integer collId){
+    public String addItemToCollection(Model model, @RequestParam("bookId") Integer bookId, @RequestParam(value = "rating", required = false) String rating, @RequestParam(value = "progress", required = false) short progress, @RequestParam(value = "startedAt", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date startedAt, @RequestParam(value = "finishedAt", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date finishedAt, @RequestParam("collId") Integer collId){
         CollectionItem item = new CollectionItem();
         Book book = bookService.findByIdBook(bookId);
         User user = userService.getCurrentUser();

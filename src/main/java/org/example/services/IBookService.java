@@ -2,7 +2,6 @@ package org.example.services;
 
 import org.example.entities.Book;
 import org.example.entities.Comment;
-import org.example.entities.User;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.List;
@@ -17,7 +16,7 @@ public interface IBookService {
     public List<Book> findAll();
     //filtrage
     public Book findByIdBook(Integer id);
-    public Book findByTitle(String title);
+    public List<Book> findByTitle(String title);
     public Set<Book> findByAuthor(String author);
     public Set<Book> findByGenre(String genre);
 

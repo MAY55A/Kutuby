@@ -4,19 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3fce9203-837a-4e50-9c4a-2fae6e09c564" name="Changes" comment="fixing last errors">
+    <list default="true" id="3fce9203-837a-4e50-9c4a-2fae6e09c564" name="Changes" comment="modif in book template">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/BookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controllers/CollectionItemController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Collection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/CollectionItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/CollectionItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/CollectionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/ICollectionItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/ICollectionItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Guest/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Guest/books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/books.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Guest/collection.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Guest/collection.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/User/myCollections.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/User/myCollections.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/User/myFavorites.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/User/myFavorites.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/User/user_account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/User/user_account.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +25,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Class" />
         <option value="CSS File" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -36,9 +35,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;OPEN&quot;
+    }
+  ],
   &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;MAY55A&quot;
+    &quot;state&quot;: &quot;OPEN&quot;
   }
 }</component>
   <component name="GithubPullRequestsUISettings">
@@ -77,7 +80,7 @@
     &quot;Spring Boot.KutubyApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mayss/Desktop/kutuby/Kutuby/src/main/resources/static/images/users&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mayss/Desktop/Cours &amp; TP/java/SwingProject&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -103,6 +106,27 @@
       <recent name="org.example.controllers" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="KutubyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Kutuby" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.KutubyApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.KutubyApplication" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -115,6 +139,13 @@
       <workItem from="1715933705346" duration="25573000" />
       <workItem from="1716473885859" duration="19065000" />
       <workItem from="1716534460559" duration="3634000" />
+      <workItem from="1716559425431" duration="22270000" />
+      <workItem from="1716622864123" duration="32464000" />
+      <workItem from="1717268244873" duration="248000" />
+      <workItem from="1717316047260" duration="20541000" />
+      <workItem from="1717429638145" duration="16336000" />
+      <workItem from="1717485143279" duration="5956000" />
+      <workItem from="1717495985262" duration="2007000" />
     </task>
     <task id="LOCAL-00001" summary="creation de quelques utilisateurs et des livres">
       <option name="closed" value="true" />
@@ -172,7 +203,175 @@
       <option name="project" value="LOCAL" />
       <updated>1716494944154</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="modification du profil admin">
+      <option name="closed" value="true" />
+      <created>1716583047849</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1716583047849</updated>
+    </task>
+    <task id="LOCAL-00009" summary="modification des pages d'erreurs">
+      <option name="closed" value="true" />
+      <created>1716583097526</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1716583097526</updated>
+    </task>
+    <task id="LOCAL-00010" summary="ajout de rating des livres">
+      <option name="closed" value="true" />
+      <created>1716583355281</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1716583355281</updated>
+    </task>
+    <task id="LOCAL-00011" summary="ajout de rating des livres">
+      <option name="closed" value="true" />
+      <created>1716583394798</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1716583394798</updated>
+    </task>
+    <task id="LOCAL-00012" summary="ajout de securité sur les routes">
+      <option name="closed" value="true" />
+      <created>1716583480100</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716583480100</updated>
+    </task>
+    <task id="LOCAL-00013" summary="deplacement de methode getCurrentUser">
+      <option name="closed" value="true" />
+      <created>1716583555617</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716583555617</updated>
+    </task>
+    <task id="LOCAL-00014" summary="modification dans les templates et l'affichage de seulement des collections non privées">
+      <option name="closed" value="true" />
+      <created>1716583611985</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716583611985</updated>
+    </task>
+    <task id="LOCAL-00015" summary="affichage des top Books">
+      <option name="closed" value="true" />
+      <created>1716584504229</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1716584504229</updated>
+    </task>
+    <task id="LOCAL-00016" summary="rankings">
+      <option name="closed" value="true" />
+      <created>1716669161757</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1716669161757</updated>
+    </task>
+    <task id="LOCAL-00017" summary="modification admin et ses crud">
+      <option name="closed" value="true" />
+      <created>1716669376846</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1716669376846</updated>
+    </task>
+    <task id="LOCAL-00018" summary="modifications de main et des entités">
+      <option name="closed" value="true" />
+      <created>1716669504923</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1716669504923</updated>
+    </task>
+    <task id="LOCAL-00019" summary="creation des commentaires">
+      <option name="closed" value="true" />
+      <created>1716669574319</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1716669574319</updated>
+    </task>
+    <task id="LOCAL-00020" summary="faire des likes sur les collections">
+      <option name="closed" value="true" />
+      <created>1716669600079</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1716669600079</updated>
+    </task>
+    <task id="LOCAL-00021" summary="adding missing book covers images">
+      <option name="closed" value="true" />
+      <created>1717441915966</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1717441915966</updated>
+    </task>
+    <task id="LOCAL-00022" summary="adding search functionality to admin">
+      <option name="closed" value="true" />
+      <created>1717442114442</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1717442114442</updated>
+    </task>
+    <task id="LOCAL-00023" summary="modifying entities">
+      <option name="closed" value="true" />
+      <created>1717442156346</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1717442156346</updated>
+    </task>
+    <task id="LOCAL-00024" summary="modifying user related pages">
+      <option name="closed" value="true" />
+      <created>1717442211715</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1717442211715</updated>
+    </task>
+    <task id="LOCAL-00025" summary="fixing some login/signup problems">
+      <option name="closed" value="true" />
+      <created>1717442320232</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1717442320232</updated>
+    </task>
+    <task id="LOCAL-00026" summary="modifying books and collections templates">
+      <option name="closed" value="true" />
+      <created>1717442406541</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1717442406541</updated>
+    </task>
+    <task id="LOCAL-00027" summary="books display on user profile">
+      <option name="closed" value="true" />
+      <created>1717444916218</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1717444916218</updated>
+    </task>
+    <task id="LOCAL-00028" summary="modif in book template">
+      <option name="closed" value="true" />
+      <created>1717445395920</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1717445395920</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,13 +416,31 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="creation de quelques utilisateurs et des livres" />
-    <MESSAGE value="redirection to admin dashboard and roles fix" />
-    <MESSAGE value="merging commit" />
-    <MESSAGE value="collections display problem fix and adding views count" />
     <MESSAGE value="admin routes fix" />
     <MESSAGE value="add styling and settings for admin" />
     <MESSAGE value="fixing last errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing last errors" />
+    <MESSAGE value="add to Collection" />
+    <MESSAGE value="modification du profil admin" />
+    <MESSAGE value="modification des pages d'erreurs" />
+    <MESSAGE value="ajout de rating des livres" />
+    <MESSAGE value="ajout de securité sur les routes" />
+    <MESSAGE value="deplacement de methode getCurrentUser" />
+    <MESSAGE value="modification dans les templates et l'affichage de seulement des collections non privées" />
+    <MESSAGE value="affichage des top Books" />
+    <MESSAGE value="rankings" />
+    <MESSAGE value="modification admin et ses crud" />
+    <MESSAGE value="modifications de main et des entités" />
+    <MESSAGE value="creation des commentaires" />
+    <MESSAGE value="faire des likes sur les collections" />
+    <MESSAGE value="adding missing book covers images" />
+    <MESSAGE value="adding search functionality to admin" />
+    <MESSAGE value="modifying entities" />
+    <MESSAGE value="modifying user related pages" />
+    <MESSAGE value="fixing some login/signup problems" />
+    <MESSAGE value="modifying books and collections templates" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
+    <MESSAGE value="books display on user profile" />
+    <MESSAGE value="modif in book template" />
+    <option name="LAST_COMMIT_MESSAGE" value="modif in book template" />
   </component>
 </project>

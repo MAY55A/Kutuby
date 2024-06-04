@@ -34,7 +34,7 @@ public class CollectionItem implements Serializable {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Book book;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     private User creator;
 
 }

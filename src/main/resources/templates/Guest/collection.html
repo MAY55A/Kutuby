@@ -99,6 +99,7 @@
         }
 
         .book-card {
+            position: relative;
             height: 400px;
             margin: 20px;
             width: 250px; /* Adjusted width */
@@ -201,7 +202,25 @@
             display: inline;
             margin-right: 5px; /* Adjust spacing between details */
         }
+        .user {
+            color: darkkhaki;
+            text-decoration: none;
+        }
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: red;
+            cursor: pointer;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.3s ease;
+        }
 
+        /* Add this CSS to show the delete button on hover */
+        .book-card:hover .delete-button {
+            opacity: 1; /* Show on hover */
+        }
     </style>
 </head>
 <body>
@@ -229,7 +248,7 @@
 <div class="collection-details-section">
     <div class="collection-details">
         <span>
-            <strong class="visibility-label">Creator :</strong> <span th:text="${collection.getOwner().getUserName()}"></span>
+        <strong class="visibility-label">Creator :</strong> <a th:href="@{/profile/home(userId=${collection.getOwner().getId()})}" class="user"><span th:text="${collection.getOwner().getUserName()}"></span></a>
         </span>
         <span>|</span>
         <span>
@@ -254,16 +273,7 @@
 
 
 
-<div class="sort-filter-container">
-    <label for="sort-title">Sort by:</label>
-    <input type="radio" id="sort-title" name="sort" value="title">
-    <label for="sort-title">Title</label>
 
-    <input type="radio" id="sort-rating" name="sort" value="rating">
-    <label for="sort-rating">Rating</label>
-    <input type="radio" id="sort-year" name="sort" value="year"> <!-- New option for sorting by year -->
-    <label for="sort-year">Year</label> <!-- New label for sorting by year -->
-</div>
 <div class="empty" th:if="${collection.getItems().size() == 0}">
     <p>No books were added to this collection</p>
     <a th:if="${user == collection.getOwner()}" href="/books"> See what books you can add to this collection</a>
@@ -278,6 +288,7 @@
             <a th:href="@{'/books/book/' + ${item.book.id}}">
                 <img class="book-image" th:src="@{'/images/books/' + ${item.book.coverImage}}" th:alt="${item.book.title}">
             </a>
+            <button th:if="${user == collection.getOwner()}" class="delete-button" style="color: red; background: none; border: none; cursor: pointer;" th:attr="onclick=|removeItem('${collection.getId()}', '${item.getId()}')|">X</button>
         </div>
     </li>
     <!-- Add empty placeholders to ensure 4 items per row -->
@@ -349,6 +360,14 @@
         const filterQueryString = filters.join('&');
         window.location.href = '/collections/all?' + filterQueryString;
     }
+
+    // Function to delete a collection
+    function removeItem(col,item) {
+        if (confirm("Are you sure you want to remove this item from this collection ?")) {
+            window.location.href = "/collections/" + col + "/items/" + item;
+        }
+    }
+
 
 </script>
 

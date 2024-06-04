@@ -99,13 +99,13 @@ public class CollectionController {
         return "Errors/unauthorised";
     }
 
-    @DeleteMapping("/{id}")
+    @GetMapping("/delete/{id}")
     @PreAuthorize("hasRole('USER')")
     public String deleteCollection(@PathVariable Integer id) {
         Collection collection = collectionService.findByIdCollection(id);
         if (collection != null && userService.getCurrentUser() == collection.getOwner()) {
             collectionService.DeleteCollection(id);
-            return "redirect:profile/collections";
+            return "redirect:/profile/collections";
         }else if(collection == null)
             return "Errors/not_found";
         else
@@ -172,16 +172,17 @@ public ResponseEntity<Comment> addCommentToCollection(@PathVariable Integer coll
     }
 }
 
-    @DeleteMapping("/{collectionId}/items/{itemId}")
+    @GetMapping("/{collectionId}/items/{itemId}")
     @PreAuthorize("hasRole('USER')")
     public String removeItemFromCollection(@PathVariable Integer collectionId, @PathVariable Integer itemId) {
         CollectionItem collectionItem = collectionItemService.findByIdCollectionItem(itemId);
         if (collectionItem == null) {
             return "Errors/not_found";
         }
-        if (userService.getCurrentUser() == collectionItem.getCreator())
+        if (userService.getCurrentUser() == collectionItem.getCreator()) {
             collectionService.removeItem(collectionItem, collectionId);
-
+            return "redirect:/collections/" + collectionId;
+        }
         return "Errors/unauthorised";
     }
     @GetMapping("/like/{id}")

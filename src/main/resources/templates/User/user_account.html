@@ -146,6 +146,10 @@
         nav a:hover {
             text-decoration: underline;
         }
+        .no-books {
+            padding: 50px 10px;
+            color: #777777;
+        }
 
 </style>
 </head>
@@ -161,7 +165,6 @@
     <a href="/profile/home">My Account</a>
     <a href="/profile/collections">My Collections</a>
     <a href="/profile/favorites">My Favorites</a>
-    <a href="/profile/settings">Settings</a>
     <a href="/profile/logout">Logout</a>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <div class="line-separator9"></div> <!-- Add this line for the vertical separator -->
@@ -204,17 +207,17 @@
             <div class="profile-pic-container">
                 
                 <!-- Replace the source with the path to the static image -->
-                <img th:src="@{/images/bg1.jpg}" alt="Profile Picture" style="object-fit: cover;width: 100%; height: 100%; margin: 0 auto; ">
+                <img th:src="@{/images/users/{profilePicture}(profilePicture=${user.getProfilePicture()})}" alt="Profile Picture" style="object-fit: cover;width: 100%; height: 100%; margin: 0 auto; ">
             </div>
 
-            <div class="username" th:text="${user.getUserName()}">@amamou</div>
+            <div class="username" th:text="'@'+${user.getUserName()}"></div>
 
             </div>
             <div class="description">
-            <p>sdf sdf qfd df dfdfd jk .d fgqdf dfd gdfsdf fdqdq</p>
+            <p th:text="${user.getDescription()}"></p>
             <ul>
-                <li>Member since : 01 September 2022</li>
-                <li>Ranking : 57</li>
+                <li th:text="'Member since : '+${#dates.format(user.getCreatedAt(), 'dd MMMM yyyy')}"></li>
+                <li th:each="ranking : ${user.getRankings()}" th:text="'Ranking of this '+${ranking.getPeriod()}+': '+${ranking.getRank()}"></li>
             </ul>
             </div>
         </div>
@@ -224,7 +227,8 @@
 
          <div class="last-completed books">
          <h3>Last Completed</h3>
-         <div class="book-container">
+             <div th:if="${completed.size()==0}" class="no-books">No books have been completed</div>
+             <div class="book-container">
              <div class="book-card" th:each="item : ${completed}">
                  <a th:href="@{'/books/book/' + ${item.book.id}}">
                      <img class="book-image" th:src="@{'/images/books/' + ${item.book.coverImage}}" th:alt="${item.book.title}" width="150" height="200">
@@ -234,6 +238,7 @@
          </div>
          <div class="reading books">
              <h3>Currently Reading</h3>
+             <div th:if="${reading.size()==0}" class="no-books">No books are currently being read</div>
              <div class="book-container">
                  <div class="book-card" th:each="item : ${reading}">
                      <a th:href="@{'/books/book/' + ${item.book.id}}">
@@ -242,26 +247,21 @@
                  </div>
              </div>
          </div>
+<!--
          <div class="container-fluid">
              <section id="minimal-statistics">
                  <div class="row">
-                     <div class="col-12 mt-3 mb-1">
-                         <h4 class="text-uppercase">Minimal Statistics Cards</h4>
-                         <p>Statistics on minimal cards.</p>
-                     </div>
-                 </div>
-                 <div class="row">
                      <div class="col-xl-3 col-sm-6 col-12">
                          <div class="card">
                              <div class="card-content">
                                  <div class="card-body">
                                      <div class="media d-flex">
                                          <div class="media-body text-left">
-                                             <h3 class="danger">278</h3>
-                                             <span>New Projects</span>
+                                             <h3 class="primary" th:text="${user.getCollections().size()}"></h3>
+                                             <span>Collections</span>
                                          </div>
                                          <div class="align-self-center">
-                                             <i class="icon-rocket danger font-large-2 float-right"></i>
+                                             <i class="icon-book primary font-large-2 float-right"></i>
                                          </div>
                                      </div>
                                  </div>
@@ -274,236 +274,43 @@
                                  <div class="card-body">
                                      <div class="media d-flex">
                                          <div class="media-body text-left">
-                                             <h3 class="success">156</h3>
-                                             <span>New Clients</span>
-                                         </div>
-                                         <div class="align-self-center">
-                                             <i class="icon-user success font-large-2 float-right"></i>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-
-                     <div class="col-xl-3 col-sm-6 col-12">
-                         <div class="card">
-                             <div class="card-content">
-                                 <div class="card-body">
-                                     <div class="media d-flex">
-                                         <div class="media-body text-left">
-                                             <h3 class="warning">64.89 %</h3>
-                                             <span>Conversion Rate</span>
-                                         </div>
-                                         <div class="align-self-center">
-                                             <i class="icon-pie-chart warning font-large-2 float-right"></i>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="col-xl-3 col-sm-6 col-12">
-                         <div class="card">
-                             <div class="card-content">
-                                 <div class="card-body">
-                                     <div class="media d-flex">
-                                         <div class="media-body text-left">
-                                             <h3 class="primary">423</h3>
-                                             <span>Support Tickets</span>
-                                         </div>
-                                         <div class="align-self-center">
-                                             <i class="icon-support primary font-large-2 float-right"></i>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-
-                 <div class="row">
-                     <div class="col-xl-3 col-sm-6 col-12">
-                         <div class="card">
-                             <div class="card-content">
-                                 <div class="card-body">
-                                     <div class="media d-flex">
-                                         <div class="media-body text-left">
-                                             <h3 class="primary">278</h3>
-                                             <span>New Posts</span>
+                                             <h3 class="warning" th:text="${completed.size()+reading.size()}"></h3>
+                                             <span>Books read</span>
                                          </div>
                                          <div class="align-self-center">
                                              <i class="icon-book-open primary font-large-2 float-right"></i>
                                          </div>
                                      </div>
-                                     <div class="progress mt-1 mb-0" style="height: 7px;">
-                                         <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                     </div>
+
                                  </div>
                              </div>
                          </div>
                      </div>
+
                      <div class="col-xl-3 col-sm-6 col-12">
                          <div class="card">
                              <div class="card-content">
                                  <div class="card-body">
                                      <div class="media d-flex">
                                          <div class="media-body text-left">
-                                             <h3 class="warning">156</h3>
-                                             <span>New Comments</span>
+                                             <h3 class="success" th:text="${user.getComments().size()}"></h3>
+                                             <span>Comments</span>
                                          </div>
                                          <div class="align-self-center">
                                              <i class="icon-bubbles warning font-large-2 float-right"></i>
                                          </div>
                                      </div>
-                                     <div class="progress mt-1 mb-0" style="height: 7px;">
-                                         <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                                     </div>
                                  </div>
                              </div>
                          </div>
                      </div>
 
-                     <div class="col-xl-3 col-sm-6 col-12">
-                         <div class="card">
-                             <div class="card-content">
-                                 <div class="card-body">
-                                     <div class="media d-flex">
-                                         <div class="media-body text-left">
-                                             <h3 class="success">64.89 %</h3>
-                                             <span>Bounce Rate</span>
-                                         </div>
-                                         <div class="align-self-center">
-                                             <i class="icon-cup success font-large-2 float-right"></i>
-                                         </div>
-                                     </div>
-                                     <div class="progress mt-1 mb-0" style="height: 7px;">
-                                         <div class="progress-bar bg-success" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="col-xl-3 col-sm-6 col-12">
-                         <div class="card">
-                             <div class="card-content">
-                                 <div class="card-body">
-                                     <div class="media d-flex">
-                                         <div class="media-body text-left">
-                                             <h3 class="danger">423</h3>
-                                             <span>Total Visits</span>
-                                         </div>
-                                         <div class="align-self-center">
-                                             <i class="icon-direction danger font-large-2 float-right"></i>
-                                         </div>
-                                     </div>
-                                     <div class="progress mt-1 mb-0" style="height: 7px;">
-                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
                      </div>
                  </div>
              </section>
 
-             <section id="stats-subtitle">
-                 <div class="row">
-                     <div class="col-12 mt-3 mb-1">
-                         <h4 class="text-uppercase">Statistics With Subtitle</h4>
-                         <p>Statistics on minimal cards with Title &amp; Sub Title.</p>
-                     </div>
-                 </div>
-
-                 <div class="row">
-                     <div class="col-xl-6 col-md-12">
-                         <div class="card overflow-hidden">
-                             <div class="card-content">
-                                 <div class="card-body cleartfix">
-                                     <div class="media align-items-stretch">
-                                         <div class="align-self-center">
-                                             <i class="icon-pencil primary font-large-2 mr-2"></i>
-                                         </div>
-                                         <div class="media-body">
-                                             <h4>Total Posts</h4>
-                                             <span>Monthly blog posts</span>
-                                         </div>
-                                         <div class="align-self-center">
-                                             <h1>18,000</h1>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-
-                     <div class="col-xl-6 col-md-12">
-                         <div class="card">
-                             <div class="card-content">
-                                 <div class="card-body cleartfix">
-                                     <div class="media align-items-stretch">
-                                         <div class="align-self-center">
-                                             <i class="icon-speech warning font-large-2 mr-2"></i>
-                                         </div>
-                                         <div class="media-body">
-                                             <h4>Total Comments</h4>
-                                             <span>Monthly blog comments</span>
-                                         </div>
-                                         <div class="align-self-center">
-                                             <h1>84,695</h1>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-
-                 <div class="row">
-                     <div class="col-xl-6 col-md-12">
-                         <div class="card">
-                             <div class="card-content">
-                                 <div class="card-body cleartfix">
-                                     <div class="media align-items-stretch">
-                                         <div class="align-self-center">
-                                             <h1 class="mr-2">$76,456.00</h1>
-                                         </div>
-                                         <div class="media-body">
-                                             <h4>Total Sales</h4>
-                                             <span>Monthly Sales Amount</span>
-                                         </div>
-                                         <div class="align-self-center">
-                                             <i class="icon-heart danger font-large-2"></i>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-
-                     <div class="col-xl-6 col-md-12">
-                         <div class="card">
-                             <div class="card-content">
-                                 <div class="card-body cleartfix">
-                                     <div class="media align-items-stretch">
-                                         <div class="align-self-center">
-                                             <h1 class="mr-2">$36,000.00</h1>
-                                         </div>
-                                         <div class="media-body">
-                                             <h4>Total Cost</h4>
-                                             <span>Monthly Cost</span>
-                                         </div>
-                                         <div class="align-self-center">
-                                             <i class="icon-wallet success font-large-2"></i>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </section>
          </div>
+-->
 
   <div class="line-separator4"></div>
 

@@ -37,7 +37,7 @@ public class Collection implements Serializable {
 
     @ManyToOne
     private User owner;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany()
     private List<CollectionItem> items = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();

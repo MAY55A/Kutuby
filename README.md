@@ -10,9 +10,10 @@
     - [Registered Users](#registered-users)
     - [Administrators](#administrators)
 - [Technologies](#technologies)
-- [Database Setup](#database-setup)
-- [Run the Project](#run-the-project)
-
+- [Installation and Setup](#installation-and-setup)
+- [Future Improvements](#future-improvements)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Introduction
 
@@ -45,7 +46,7 @@ The goal of this project is to develop an online platform where users can:
    ![](screenshots\books_management.jpeg)
 9. Collections management
    ![](screenshots\collections_management.jpeg)
-10. Users management
+10. User management
     ![](screenshots\users_management.jpeg)
 
 ## Features

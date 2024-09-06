@@ -28,26 +28,46 @@ The goal of this project is to develop an online platform where users can:
 
 ## Overview
 
-1. Home page
-   ![](screenshots\home_page.jpeg)
-2. Sign in page
-   ![](screenshots\user_login.png)
+1. Home
+
+   ![](screenshots/home_page.jpeg)
+
+2. Login
+
+   ![](screenshots/user_login.png)
+
 3. Books catalog
-   ![](screenshots\books_catalog.png)
+
+   ![](screenshots/books_catalog.png)
+
 4. Book details
-   ![](screenshots\book.jpeg)
+
+   ![](screenshots/book.jpeg)
+
 5. Collection details
-   ![](screenshots\collection.jpeg)
+
+   ![](screenshots/collection.jpeg)
+
 6. Leaderboard
-   ![](screenshots\leaderboard.jpeg)
+
+    ![](screenshots/leaderboard.jpeg)
+
 7. Admin dashboard
-   ![](screenshots\admin_dashboard.jpeg)
+
+   ![](screenshots/admin_dashboard.jpeg)
+
 8. Books management
-   ![](screenshots\books_management.jpeg)
+
+   ![](screenshots/books_management.jpeg)
+
 9. Collections management
-   ![](screenshots\collections_management.jpeg)
+
+   ![](screenshots/collections_management.jpeg)
+
 10. User management
-    ![](screenshots\users_management.jpeg)
+    
+    ![](screenshots/users_management.jpeg)
+
 
 ## Features
 
